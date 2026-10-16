@@ -20,12 +20,12 @@ export const CoverSection = () => {
       </div>
 
       {/* Centerpiece: The Iconic Cross-Stitch Portfolio Graphic */}
-      <div className="relative my-auto py-8 z-10 max-w-4xl w-full flex flex-col items-center justify-center">
-        <div className="relative w-full max-w-2xl px-4 group">
+      <div className="relative my-auto py-8 z-10 max-w-5xl w-full flex flex-col items-center justify-center">
+        <div className="relative w-full px-4 group">
           <img 
-            src="/assets/01 - Cover.png" 
+            src="/assets/extracted/intro/portfolio_title_crop.png" 
             alt="Louis Vigo Portfolio 2026" 
-            className="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105"
+            className="w-full h-auto object-contain drop-shadow-xl transition-transform duration-700 hover:scale-[1.02]"
           />
         </div>
       </div>

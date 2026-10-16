@@ -9,9 +9,7 @@ export const portfolioData = {
     location: "Semarang / Yogyakarta, Indonesia",
     status: "Open for Opportunities / Relocate / Remote",
     bio: "I'm a Visual Specialist and Communication Expert with 7+ years of experience translating complex corporate goals into high-impact visual solutions. From executive B2B pitch decks to end-to-end event art direction, I blend a marketer's strategy with advanced design and AI workflows. I don't just make things look good — I craft strategic visuals that communicate clearly and drive real results.",
-    cutoutImage: "/assets/extracted/intro/lui_cutout.png",
-    introBanner: "/assets/extracted/intro/intro_banner_composite.png",
-    robotBackdrop: "/assets/extracted/intro/robot_backdrop.png",
+    introBanner: "/assets/extracted/intro/intro_banner_4k.png",
     expertise: [
       { name: "Design", desc: "Branding, layout hierarchy, and production-grade art direction." },
       { name: "Concept & Ideation", desc: "Translating abstract briefs into resonant creative concepts." },
@@ -118,24 +116,10 @@ export const portfolioData = {
       category: "Wellness & Physical Health",
       period: "2025 – Present",
       logo: "/assets/extracted/harmoni_diri/hadir_logo.png",
-      slides: [
-        {
-          src: "/assets/05 - Hadir 1.png",
-          caption: "Harmoni Diri Mobile Interface & Social Media Strategy",
-          type: "overview"
-        },
-        {
-          src: "/assets/06 - Hadir 2.png",
-          caption: "Nationwide Clinical Anatomy Course Posters & Standing Banners",
-          type: "print"
-        }
-      ],
-      extractedAssets: [
-        { src: "/assets/extracted/harmoni_diri/posters/scoliosis_surabaya_1.png", caption: "Scoliosis Surabaya Course Flyer" },
-        { src: "/assets/extracted/harmoni_diri/posters/tsk_semarang_soft.png", caption: "TSK Semarang Anatomy Workshop Flyer" },
-        { src: "/assets/extracted/harmoni_diri/posters/fungsi_sendi_5.png", caption: "Biomekanika & Fungsi Sendi Educational Asset" },
-        { src: "/assets/extracted/harmoni_diri/posters/gerakan_benar_bisa_jadi_salah.png", caption: "Movement Misconception Educational Post" }
-      ],
+      heroMockup: "/assets/extracted/harmoni_diri/hadir_mobile_mockup.png",
+      heroMockupAlt: "Harmoni Diri Mobile App & Feed Showcase",
+      secondaryMockup: "/assets/extracted/harmoni_diri/hadir_standing_banner.png",
+      secondaryTitle: "Nationwide Workshop Print & Course Materials",
       description: "I handle the end-to-end visual design for Harmoni Diri's (HADIR) social media content, encompassing educational movement posts, wellness campaigns, and nationwide workshop promotions (including Jakarta, Surabaya, Bali, and Semarang).",
       focus: "My focus is on establishing a clean, premium, and consistent visual identity that perfectly aligns with the brand's core values in wellness management.",
       challenge: "The main challenge is translating complex anatomy and movement concepts—curated with experts—into engaging assets, social media posts, UI/UX. I solve this through strategic content hierarchy and strong typography, making technical information easily digestible for public audiences.",
@@ -149,6 +133,14 @@ export const portfolioData = {
         { label: "Workshop Coverage", value: "4 Major Cities" },
         { label: "Discipline", value: "Anatomy & Movement" },
         { label: "Deliverables", value: "Digital + Print" }
+      ],
+      deliverablesGallery: [
+        { src: "/assets/extracted/harmoni_diri/posters/scoliosis_surabaya_1.png", title: "Scoliosis Therapy (Surabaya)", category: "Clinical Poster" },
+        { src: "/assets/extracted/harmoni_diri/posters/tsk_semarang_soft.png", title: "Anatomi Klinis 50 Jam (Semarang)", category: "Workshop Flyer" },
+        { src: "/assets/extracted/harmoni_diri/posters/fungsi_sendi_5.png", title: "Sendi Bukan Sekadar Engsel", category: "Educational Carousel" },
+        { src: "/assets/extracted/harmoni_diri/posters/gerakan_benar_bisa_jadi_salah.png", title: "Miskonsepsi Visual Biomekanika", category: "Movement Post" },
+        { src: "/assets/extracted/harmoni_diri/posters/feed.png", title: "DBODY Clinical Anatomy Takeover", category: "IG Campaign" },
+        { src: "/assets/extracted/harmoni_diri/posters/1.png", title: "HADIR untuk Tubuh, HADIR untuk Diri", category: "Brand Identity" }
       ]
     },
     {
@@ -158,24 +150,10 @@ export const portfolioData = {
       category: "Mental Health & Psychology",
       period: "2025 – Present",
       logo: "/assets/extracted/school_of_parenting/sop_logo.png",
-      slides: [
-        {
-          src: "/assets/08 - School of Parenting 1.png",
-          caption: "Empathetic Mental Health Feeds & Viral Community Posts",
-          type: "overview"
-        },
-        {
-          src: "/assets/09 - School of Parenting 2.png",
-          caption: "2025 Mental Health Wrapped & Corporate Wellness (MHCU) Assets",
-          type: "gallery"
-        }
-      ],
-      extractedAssets: [
-        { src: "/assets/extracted/school_of_parenting/carousels/produktif_takut_diam_1.png", caption: "Burnout & Overworking Awareness" },
-        { src: "/assets/extracted/school_of_parenting/carousels/5_sinyal_tim.png", caption: "5 Sinyal Tim Nggak Baik-Baik Aja" },
-        { src: "/assets/extracted/school_of_parenting/carousels/s1.png", caption: "2025 Mental Health Wrapped (Office Edition)" },
-        { src: "/assets/extracted/school_of_parenting/carousels/untungnya_2.png", caption: "Dua Orang Sama-Sama Capek Educational Post" }
-      ],
+      heroMockup: "/assets/extracted/school_of_parenting/sop_mobile_highlight.png",
+      heroMockupAlt: "School of Parenting Viral Mental Health Feeds",
+      secondaryMockup: "/assets/extracted/school_of_parenting/sop_phone_hand.png",
+      secondaryTitle: "Corporate Wellness (MHCU) & High-Engagement Visuals",
       description: "I handle the visual design for School of Parenting's social media content, including mental health services, psychological assessments, and therapy campaigns.",
       focus: "My focus is on creating designs that are empathetic, professional, and suited to build trust with individuals, families, and corporate clients.",
       challenge: "One of the main challenges is presenting clinical psychological information in a simple, warm, and non-judgmental way. I address this through content hierarchy, clean layout, typography, and consistent branding to ensure the message feels approachable and supportive.",
@@ -188,7 +166,15 @@ export const portfolioData = {
       stats: [
         { label: "Audience Trust", value: "B2C & B2B Corporate" },
         { label: "Tone", value: "Warm & Non-judgmental" },
-        { label: "Impact", value: "22K+ Likes / Post" }
+        { label: "Engagement", value: "22K+ Likes / Post" }
+      ],
+      deliverablesGallery: [
+        { src: "/assets/extracted/school_of_parenting/carousels/produktif_takut_diam_1.png", title: "Punya Jabatan Bagus, Tapi Feeling Empty", category: "Mental Health" },
+        { src: "/assets/extracted/school_of_parenting/carousels/5_sinyal_tim.png", title: "5 Sinyal Tim Kamu Nggak Baik-Baik Aja", category: "Leadership & Team" },
+        { src: "/assets/extracted/school_of_parenting/carousels/s1.png", title: "2025 Mental Health Wrapped (Office Edition)", category: "Viral Wrapped" },
+        { src: "/assets/extracted/school_of_parenting/carousels/untungnya_2.png", title: "Apresiasi Ketangguhan Mereka", category: "Workplace Health" },
+        { src: "/assets/extracted/school_of_parenting/carousels/niki_4.png", title: "Floating Feather (Refleksi Akhir Hari)", category: "Mindfulness" },
+        { src: "/assets/extracted/school_of_parenting/carousels/1.png", title: "Dua Orang yang Sama-Sama Capek", category: "Communication" }
       ]
     },
     {
@@ -198,24 +184,10 @@ export const portfolioData = {
       category: "Hospital & Healthcare",
       period: "2023",
       logo: "/assets/extracted/telogorejo/telogorejo_logo.png",
-      slides: [
-        {
-          src: "/assets/10 - Telogorejo 1.png",
-          caption: "Hospital Social Media & Digital Patient Education",
-          type: "overview"
-        },
-        {
-          src: "/assets/11 - Telogorejo 2.png",
-          caption: "Maternity Packages, Medical Check-Up & Pediatric Rehab Print Assets",
-          type: "print"
-        }
-      ],
-      extractedAssets: [
-        { src: "/assets/extracted/telogorejo/maternity_pricing_brochure.png", caption: "Maternity Package Multi-tier Pricing Brochure" },
-        { src: "/assets/extracted/telogorejo/mcu_brosur_lipat.png", caption: "MCU Bi-fold Detailed Service Brochure" },
-        { src: "/assets/extracted/telogorejo/mri_brain_mra.png", caption: "Skrining Nyeri Kepala MRI Brain MRA Flyer" },
-        { src: "/assets/extracted/telogorejo/rehab_medik_anak.png", caption: "Promo Sensori Integrasi Anak Flyer" }
-      ],
+      heroMockup: "/assets/extracted/telogorejo/telogorejo_mobile_highlight.png",
+      heroMockupAlt: "SMC RS Telogorejo Maternity Feeds & Healthcare Marketing",
+      secondaryMockup: "/assets/extracted/telogorejo/rs_lantai_1_signage.png",
+      secondaryTitle: "Patient Communications, Brochures & Environmental Signage",
       description: "I handled the visual design and content planning for SMC RS Telogorejo's marketing channels, including health education videos, weekly social media content, and print assets.",
       focus: "My focus was on creating reliable, engaging, and professional visual communications that align with the high standards of a trusted healthcare institution.",
       challenge: "One of the main challenges was turning formal medical topics into high-interaction digital content. I addressed this by analyzing current social media trends, developing strategic content calendars, and utilizing dynamic video editing to effectively capture and retain the audience's attention.",
@@ -229,6 +201,14 @@ export const portfolioData = {
         { label: "Institution", value: "Top Hospital Semarang" },
         { label: "Channel Mix", value: "IG, YouTube, Print, OOH" },
         { label: "Execution", value: "Design + Video Direction" }
+      ],
+      deliverablesGallery: [
+        { src: "/assets/extracted/telogorejo/maternity_pricing_brochure.png", title: "Paket Persalinan Maternity Package", category: "Pricing Brochure" },
+        { src: "/assets/extracted/telogorejo/mcu_brosur_lipat.png", title: "Medical Check Up (MCU) Bi-fold Brochure", category: "Service Collateral" },
+        { src: "/assets/extracted/telogorejo/mri_brain_mra.png", title: "Skrining Nyeri Kepala MRI Brain MRA", category: "Diagnostic Promo" },
+        { src: "/assets/extracted/telogorejo/rehab_medik_anak.png", title: "Rehab Medik Anak (Sensori Integrasi)", category: "Pediatric Service" },
+        { src: "/assets/extracted/telogorejo/rs_lantai_1_signage.png", title: "Signage Informasi Rumah Sakit Lantai 1", category: "Wayfinding Print" },
+        { src: "/assets/extracted/telogorejo/cara_simpan_makanan.png", title: "Cara Tepat Penyimpanan Makanan", category: "Health Education" }
       ]
     },
     {
@@ -238,24 +218,10 @@ export const portfolioData = {
       category: "Political Campaign & Grassroots",
       period: "2023 – 2024",
       logo: "/assets/extracted/sedulur_herviano/ssh_mascot_logo.png",
-      slides: [
-        {
-          src: "/assets/12 - SSH 1.png",
-          caption: "Community Grassroots Engagement & Social Feeds",
-          type: "overview"
-        },
-        {
-          src: "/assets/13 - SSH 2.png",
-          caption: "Tebus Murah, Konsolidasi Akbar Stage & Event Collateral",
-          type: "print"
-        }
-      ],
-      extractedAssets: [
-        { src: "/assets/extracted/sedulur_herviano/posters/baliho_pilus_3x2.png", caption: "Baliho Akbar 3x2 Meter Gerak Cepat" },
-        { src: "/assets/extracted/sedulur_herviano/posters/flyer_konsolidasi_dan_panggung_hiburan.png", caption: "Panggung Hiburan Konsolidasi Akbar Flyer" },
-        { src: "/assets/extracted/sedulur_herviano/posters/panjat_pinang_semarang_revisi.png", caption: "Lomba Panjat Pinang Kemerdekaan Event Flyer" },
-        { src: "/assets/extracted/sedulur_herviano/posters/7_januari.png", caption: "Senam & Jalan Sehat Mass Community Flyer" }
-      ],
+      heroMockup: "/assets/extracted/sedulur_herviano/ssh_mobile_highlight.png",
+      heroMockupAlt: "Sedulur Herviano Grassroots Social Campaign",
+      secondaryMockup: "/assets/extracted/sedulur_herviano/posters/baliho_pilus_3x2.png",
+      secondaryTitle: "Mass Event Promotional Collateral & Large-Format Print",
       description: "I handled the visual design and field documentation for the Sedulur Saklawase Herviano political campaign, covering social media content, offline event promotions, and community engagement materials.",
       focus: "My focus was on building a strong, approachable, and community-driven visual presence to boost public visibility and grassroots support for the 2024 legislative election.",
       challenge: "One of the main challenges was translating political agendas into relatable everyday content. I addressed this by combining dynamic field photography with bold, action-oriented visual layouts, ensuring the campaign messages resonated strongly with local demographics across both digital and print platforms.",
@@ -269,6 +235,14 @@ export const portfolioData = {
         { label: "Scale", value: "Central Java Electorate" },
         { label: "Format", value: "Mass Print & Social Feeds" },
         { label: "Field Role", value: "Design & Photo Documentation" }
+      ],
+      deliverablesGallery: [
+        { src: "/assets/extracted/sedulur_herviano/posters/baliho_pilus_3x2.png", title: "Baliho Akbar 3x2m Indonesia Unggul", category: "Outdoor Billboard" },
+        { src: "/assets/extracted/sedulur_herviano/posters/flyer_konsolidasi_dan_panggung_hiburan.png", title: "Konsolidasi Akbar & Panggung Hiburan", category: "Concert Poster" },
+        { src: "/assets/extracted/sedulur_herviano/posters/panjat_pinang_semarang_revisi.png", title: "Lomba Panjat Pinang Kemerdekaan (10 Juta)", category: "Event Collateral" },
+        { src: "/assets/extracted/sedulur_herviano/posters/flyer_pengajian_8_feb.png", title: "Sholawat Kebangsaan Bersama Gus Ali", category: "Religious Gathering" },
+        { src: "/assets/extracted/sedulur_herviano/posters/7_januari.png", title: "Senam & Jalan Sehat Berhadiah Utama", category: "Community Mass Event" },
+        { src: "/assets/extracted/sedulur_herviano/posters/tebus_murah.png", title: "Tebus Murah Minyak Goreng & Gula 1 Kg", category: "Grassroots Voucher" }
       ]
     },
     {
@@ -278,24 +252,10 @@ export const portfolioData = {
       category: "F&B Brand Identity & Retail Packaging",
       period: "2021 – 2024",
       logo: "/assets/extracted/sambal_suster_ana/sambal_mascot_logo.png",
-      slides: [
-        {
-          src: "/assets/14 - Sambal Suster Ana 1.png",
-          caption: "Commercial Chili Jar 3D Render & Label Architecture",
-          type: "overview"
-        },
-        {
-          src: "/assets/15 - Sambal Suster Ana 2.png",
-          caption: "Mascot Character Illustration & Die-cut Label Flat Artwork",
-          type: "branding"
-        }
-      ],
-      extractedAssets: [
-        { src: "/assets/extracted/sambal_suster_ana/sambal_3d_jars.png", caption: "3D Product Render of Sambal Jars (Isolated)" },
-        { src: "/assets/extracted/sambal_suster_ana/sambal_flat_label.png", caption: "Commercial Label Flat Graphic Layout" },
-        { src: "/assets/extracted/sambal_suster_ana/sambal_round_sticker.png", caption: "Top Cap Round Seal Stamp Sticker" },
-        { src: "/assets/extracted/sambal_suster_ana/sambal_mascot_badge_large.png", caption: "Character Mascot Badge High-Res Logo" }
-      ],
+      heroMockup: "/assets/extracted/sambal_suster_ana/sambal_3d_jars.png",
+      heroMockupAlt: "Sambal Suster Ana 3D Product Jars Mockup",
+      secondaryMockup: "/assets/extracted/sambal_suster_ana/sambal_flat_label.png",
+      secondaryTitle: "Packaging Label Architecture, Die-Cuts & Mascot System",
       description: "I handled the brand identity and packaging design for Sambal Suster Ana, a local F&B business in Semarang specializing in premium homemade chili sauces.",
       focus: "My focus was on elevating a traditional homemade product into a commercial, market-ready brand without losing its authentic, local heritage appeal.",
       challenge: "The main challenge was creating packaging that stands out in a highly competitive retail market while effectively communicating the product's quality. I addressed this by developing a memorable mascot logo, clear typography, and a structured label layout that highlights the fresh ingredients, ensuring both visual impact and consumer trust.",
@@ -309,6 +269,12 @@ export const portfolioData = {
         { label: "Market", value: "Retail & Culinary Gift" },
         { label: "Deliverable", value: "Complete Brand Identity" },
         { label: "Origin", value: "Semarang, Indonesia" }
+      ],
+      deliverablesGallery: [
+        { src: "/assets/extracted/sambal_suster_ana/sambal_3d_jars.png", title: "3D Commercial Jar Product Render", category: "3D Packaging" },
+        { src: "/assets/extracted/sambal_suster_ana/sambal_flat_label.png", title: "Full Commercial Label Die-Cut Artwork", category: "Label Design" },
+        { src: "/assets/extracted/sambal_suster_ana/sambal_round_sticker.png", title: "Top-Cap Seal Stamp Sticker (Since 2021)", category: "Packaging Seal" },
+        { src: "/assets/extracted/sambal_suster_ana/sambal_mascot_badge_large.png", title: "Character Mascot Brand Emblem", category: "Vector Identity" }
       ]
     }
   ]

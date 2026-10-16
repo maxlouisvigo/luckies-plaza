@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   ZoomIn, 
   Layers, 
@@ -6,16 +6,15 @@ import {
   Lightbulb, 
   Maximize2,
   Sparkles,
-  Grid
+  ArrowUpRight
 } from 'lucide-react';
 
 export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-
-  // Combine slides and extracted assets for full lightbox navigation
-  const allInspectableAssets = [
-    ...project.slides,
-    ...(project.extractedAssets || []).map(a => ({ src: a.src, caption: a.caption }))
+  // Collect all inspectable assets for this project
+  const allInspectable = [
+    { src: project.heroMockup, caption: `${project.title} — ${project.heroMockupAlt || 'Digital Mockup'}` },
+    ...(project.secondaryMockup ? [{ src: project.secondaryMockup, caption: `${project.title} — ${project.secondaryTitle}` }] : []),
+    ...(project.deliverablesGallery || []).map(d => ({ src: d.src, caption: `${project.title} — ${d.title} (${d.category})` }))
   ];
 
   return (
@@ -24,65 +23,60 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
       data-section={project.title}
       className="relative py-28 px-6 md:px-12 bg-brand-orange text-white border-t border-white/10"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-7xl mx-auto w-full space-y-20">
         
-        {/* Project Header Bar with Brand Logo */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-12 pb-5 border-b border-white/15">
-          <div className="flex items-center space-x-3.5">
-            <span className="px-3 py-1 rounded-md bg-brand-umber text-white font-mono text-xs font-bold uppercase tracking-widest">
-              0{index + 1}
-            </span>
-
-            {/* Brand Logo from PSD */}
-            {project.logo && (
-              <div className="h-8 px-2 py-0.5 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0">
-                <img 
-                  src={project.logo} 
-                  alt={`${project.title} Logo`} 
-                  className="max-h-full max-w-[80px] object-contain drop-shadow"
-                />
-              </div>
-            )}
-
-            <span className="text-xs font-bold tracking-widest uppercase text-white/90">
-              {project.category}
-            </span>
-            <span className="text-white/40">•</span>
-            <span className="text-xs text-white/70">
-              {project.period}
-            </span>
-          </div>
-
-          <div className="text-xs text-white/80 italic font-serif">
-            {project.subtitle}
-          </div>
-        </div>
-
-        {/* Main Content Layout: Left Story / Right Interactive Mockup */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* ========================================================================= */}
+        {/* PART 1: HERO STAGE — NATIVE EDITORIAL STORY & TRANSPARENT DEVICE MOCKUP */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Strategic Storytelling (5 Cols) */}
-          <div className="lg:col-span-5 space-y-8">
+          {/* Left Column: Creative Direction Narrative (5 Cols) */}
+          <div className="lg:col-span-5 space-y-7">
             
-            {/* Title & Tagline */}
-            <div>
-              <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-sans">
-                {project.title}
-              </h3>
-              <p className="text-base md:text-lg font-serif italic text-white/90 mt-1">
-                {project.subtitle}
-              </p>
+            {/* Project Index & Category Pill */}
+            <div className="flex items-center space-x-3.5">
+              <span className="px-3 py-1 rounded-md bg-brand-umber text-white font-mono text-xs font-bold uppercase tracking-widest shadow-sm">
+                Case Study 0{index + 1}
+              </span>
+              <span className="text-xs font-bold tracking-widest uppercase text-white/90">
+                {project.category}
+              </span>
+              <span className="text-white/40">•</span>
+              <span className="text-xs text-white/70">
+                {project.period}
+              </span>
             </div>
 
-            {/* Scope / Role */}
-            <div className="space-y-2">
-              <p className="text-white/90 text-sm md:text-base leading-relaxed font-normal">
-                {project.description}
-              </p>
+            {/* Title with Brand Logo */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-4">
+                {project.logo && (
+                  <div className="p-2 rounded-xl bg-white/15 border border-white/20 shadow-md flex items-center justify-center shrink-0">
+                    <img 
+                      src={project.logo} 
+                      alt={`${project.title} Logo`} 
+                      className="h-10 w-auto object-contain drop-shadow"
+                    />
+                  </div>
+                )}
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-sans leading-none">
+                    {project.title}
+                  </h3>
+                  <p className="text-base md:text-lg font-serif italic text-white/90 mt-1">
+                    {project.subtitle}
+                  </p>
+                </div>
+              </div>
             </div>
+
+            {/* Scope / Role Description */}
+            <p className="text-white/90 text-sm md:text-base leading-relaxed font-normal">
+              {project.description}
+            </p>
 
             {/* Creative Focus */}
-            <div className="p-4 rounded-xl bg-white/10 border border-white/15 space-y-1.5">
+            <div className="p-4 rounded-xl bg-white/10 border border-white/15 space-y-1.5 shadow-sm">
               <div className="flex items-center space-x-2 text-white font-bold text-xs uppercase tracking-wider">
                 <Target className="w-4 h-4 text-white" />
                 <span>Creative Focus</span>
@@ -93,7 +87,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             </div>
 
             {/* Challenge & Strategic Solution */}
-            <div className="p-4 rounded-xl bg-black/15 border border-white/10 space-y-1.5">
+            <div className="p-4 rounded-xl bg-black/15 border border-white/10 space-y-1.5 shadow-sm">
               <div className="flex items-center space-x-2 text-white font-bold text-xs uppercase tracking-wider">
                 <Lightbulb className="w-4 h-4 text-white" />
                 <span>The Challenge & Strategic Solution</span>
@@ -103,17 +97,17 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
               </p>
             </div>
 
-            {/* Key Deliverables Pills */}
-            <div className="space-y-3">
+            {/* Key Deliverables Tags */}
+            <div className="space-y-2.5">
               <h4 className="text-xs font-bold text-white/70 uppercase tracking-widest flex items-center space-x-2">
                 <Layers className="w-3.5 h-3.5" />
-                <span>Key Deliverables</span>
+                <span>Core Deliverables</span>
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.deliverables.map((item) => (
                   <span 
                     key={item}
-                    className="text-xs px-3 py-1.5 rounded-lg bg-white/15 text-white border border-white/20 font-medium"
+                    className="text-xs px-3 py-1.5 rounded-lg bg-white/15 text-white border border-white/20 font-medium shadow-sm"
                   >
                     ✓ {item}
                   </span>
@@ -121,11 +115,11 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
               </div>
             </div>
 
-            {/* Stats / Highlights */}
+            {/* Stats */}
             {project.stats && (
               <div className="grid grid-cols-3 gap-3 pt-2">
                 {project.stats.map((st) => (
-                  <div key={st.label} className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
+                  <div key={st.label} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
                     <p className="text-xs font-bold text-white truncate">{st.value}</p>
                     <p className="text-[10px] text-white/60 uppercase tracking-wider mt-0.5 truncate">{st.label}</p>
                   </div>
@@ -135,109 +129,147 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
 
           </div>
 
-          {/* Right Column: Interactive Visual Showcase & Lightbox Preview (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Slide Navigation Tabs */}
-            <div className="flex items-center space-x-3">
-              {project.slides.map((s, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveSlideIndex(idx)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-2 ${
-                    activeSlideIndex === idx
-                      ? 'bg-white text-brand-orange shadow-md'
-                      : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
-                  }`}
-                >
-                  <span>Slide 0{idx + 1}</span>
-                  <span className="text-[10px] opacity-70">
-                    ({idx === 0 ? 'Digital & Campaign' : 'Print & Collateral'})
-                  </span>
-                </button>
-              ))}
-
-              <button
-                onClick={() => onOpenLightbox(allInspectableAssets, activeSlideIndex)}
-                className="ml-auto inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-black/20 hover:bg-black/40 text-white border border-white/20 transition-all"
-                title="Fullscreen inspection"
-              >
-                <Maximize2 className="w-3.5 h-3.5" />
-                <span>Fullscreen</span>
-              </button>
-            </div>
-
-            {/* Active Visual Canvas */}
+          {/* Right Column: Native Transparent Mockup (7 Cols) */}
+          <div className="lg:col-span-7 flex flex-col items-center justify-center">
             <div 
-              onClick={() => onOpenLightbox(allInspectableAssets, activeSlideIndex)}
-              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black/10 border border-white/20 cursor-pointer group"
+              onClick={() => onOpenLightbox(allInspectable, 0)}
+              className="relative w-full max-w-2xl cursor-pointer group flex flex-col items-center"
             >
-              <img 
-                src={project.slides[activeSlideIndex].src}
-                alt={project.slides[activeSlideIndex].caption}
-                className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]"
-              />
+              {/* Native Transparent Mockup directly on canvas */}
+              <div className="relative transform transition-all duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1">
+                <img 
+                  src={project.heroMockup} 
+                  alt={project.heroMockupAlt || project.title}
+                  className="w-full h-auto max-h-[550px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.35)]"
+                />
 
-              {/* Hover Overlay with Zoom Icon */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-                <div className="p-3.5 rounded-full bg-brand-orange text-white shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300 mb-2">
-                  <ZoomIn className="w-6 h-6" />
+                {/* Hover Click to Zoom Indicator */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="p-4 rounded-full bg-brand-umber text-white shadow-2xl transform scale-90 group-hover:scale-100 transition-transform flex items-center space-x-2 px-5 py-2.5 border border-white/30">
+                    <ZoomIn className="w-5 h-5" />
+                    <span className="text-xs font-bold uppercase tracking-wider">Inspect Fullscreen</span>
+                  </div>
                 </div>
-                <p className="text-white font-bold text-sm">
-                  Click to Inspect High-Resolution Slide
-                </p>
-                <p className="text-white/70 text-xs mt-1 max-w-md">
-                  {project.slides[activeSlideIndex].caption}
-                </p>
               </div>
 
-              {/* Bottom Caption Pill */}
-              <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg bg-black/60 backdrop-blur-md text-white text-xs flex items-center justify-between border border-white/10">
-                <span className="truncate pr-2 font-medium">
-                  {project.slides[activeSlideIndex].caption}
+              {/* Caption Tag */}
+              <p className="text-xs text-white/70 text-center mt-4 tracking-wide font-medium">
+                {project.heroMockupAlt || 'Click mockup to inspect in full resolution'}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ========================================================================= */}
+        {/* PART 2: DELIVERABLES STAGE — REAL PRINT, FLYERS, POSTERS & PACKAGING GRID */}
+        {/* ========================================================================= */}
+        {project.deliverablesGallery && project.deliverablesGallery.length > 0 && (
+          <div className="pt-12 border-t border-white/15 space-y-8">
+            
+            {/* Header for Deliverables */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
+              <div>
+                <span className="text-xs font-semibold tracking-widest uppercase text-white/70 block">
+                  Campaign Output & Production Assets
                 </span>
-                <span className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-white/80">
-                  Slide {activeSlideIndex + 1}/{project.slides.length}
-                </span>
+                <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1">
+                  {project.secondaryTitle || 'Individual Deliverables & Collateral'}
+                </h4>
               </div>
+
+              <span className="text-xs text-white/60">
+                Click any piece to inspect detail & typography
+              </span>
             </div>
 
-            {/* Extracted Individual Assets Strip (From PSD Layers) */}
-            {project.extractedAssets && project.extractedAssets.length > 0 && (
-              <div className="pt-2 space-y-2.5">
-                <div className="flex items-center justify-between text-xs text-white/75 px-1">
-                  <span className="font-semibold uppercase tracking-wider flex items-center space-x-1.5">
-                    <Grid className="w-3.5 h-3.5" />
-                    <span>Individual Deliverables (Extracted from PSD)</span>
-                  </span>
-                  <span className="text-[11px] text-white/50">Click to inspect</span>
+            {/* Split view: If there's a standing banner or large vertical mockup */}
+            {project.secondaryMockup ? (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                {/* Left Column: Standing Banner / Large Signage (4 Cols) */}
+                <div 
+                  onClick={() => onOpenLightbox(allInspectable, 1)}
+                  className="lg:col-span-4 rounded-2xl bg-black/10 border border-white/15 p-4 flex flex-col items-center justify-center cursor-pointer group hover:bg-black/20 transition-all"
+                >
+                  <img 
+                    src={project.secondaryMockup} 
+                    alt={project.secondaryTitle}
+                    className="w-full max-h-[480px] object-contain drop-shadow-xl transform group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                  <div className="mt-3 flex items-center space-x-1.5 text-xs text-white/80 font-semibold group-hover:text-white">
+                    <ZoomIn className="w-3.5 h-3.5" />
+                    <span>Rollup Standing Banner / Event Print</span>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-3">
-                  {project.extractedAssets.map((asset, aIdx) => (
-                    <div
-                      key={aIdx}
-                      onClick={() => onOpenLightbox(allInspectableAssets, project.slides.length + aIdx)}
-                      className="group relative rounded-xl overflow-hidden bg-black/20 border border-white/15 hover:border-white cursor-pointer transition-all p-2 flex flex-col items-center justify-center hover:bg-black/30"
-                      title={asset.caption}
+                {/* Right Column: Grid of Individual Posters/Carousels (8 Cols) */}
+                <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {project.deliverablesGallery.map((item, dIdx) => (
+                    <div 
+                      key={dIdx}
+                      onClick={() => onOpenLightbox(allInspectable, 2 + dIdx)}
+                      className="group rounded-2xl overflow-hidden bg-black/15 border border-white/15 hover:border-white/40 transition-all duration-300 p-3 flex flex-col justify-between cursor-pointer hover:bg-black/25 transform hover:-translate-y-1 shadow-md"
                     >
-                      <img 
-                        src={asset.src} 
-                        alt={asset.caption}
-                        className="max-h-20 w-auto object-contain transform group-hover:scale-105 transition-transform"
-                      />
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                        <ZoomIn className="w-4 h-4 text-white drop-shadow" />
+                      <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/20 flex items-center justify-center relative mb-3">
+                        <img 
+                          src={item.src} 
+                          alt={item.title}
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <ZoomIn className="w-5 h-5 text-white drop-shadow" />
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">
+                          {item.category}
+                        </span>
+                        <h5 className="text-xs md:text-sm font-bold text-white leading-snug line-clamp-2 mt-0.5 group-hover:text-brand-cream transition-colors">
+                          {item.title}
+                        </h5>
                       </div>
                     </div>
                   ))}
                 </div>
+
+              </div>
+            ) : (
+              /* Standard Full-Width Grid (for SMC RS Telogorejo, SSH, Sambal) */
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                {project.deliverablesGallery.map((item, dIdx) => (
+                  <div 
+                    key={dIdx}
+                    onClick={() => onOpenLightbox(allInspectable, 1 + dIdx)}
+                    className="group rounded-2xl overflow-hidden bg-black/15 border border-white/15 hover:border-white/40 transition-all duration-300 p-3 flex flex-col justify-between cursor-pointer hover:bg-black/25 transform hover:-translate-y-1 shadow-md"
+                  >
+                    <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/20 flex items-center justify-center relative mb-3">
+                      <img 
+                        src={item.src} 
+                        alt={item.title}
+                        className="w-full h-full object-contain p-1 transform group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <ZoomIn className="w-5 h-5 text-white drop-shadow" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">
+                        {item.category}
+                      </span>
+                      <h5 className="text-xs md:text-sm font-bold text-white leading-snug line-clamp-2 mt-0.5 group-hover:text-brand-cream transition-colors">
+                        {item.title}
+                      </h5>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
 
           </div>
-
-        </div>
+        )}
 
       </div>
     </section>

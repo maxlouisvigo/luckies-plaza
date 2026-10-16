@@ -38,11 +38,11 @@ export const AboutSection = () => {
     >
       <div className="max-w-7xl mx-auto w-full">
         
-        {/* Visual Hero Banner (Exact recreation of Page 2 Banner) */}
+        {/* Visual Hero Banner: Clean 4K crop of Mas Lui & characters */}
         <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl mb-14 bg-black/10 border border-white/20 group">
           <img 
-            src="/assets/02 - Intro.png" 
-            alt="Louis Vigo - Visual Specialist" 
+            src="/assets/extracted/intro/intro_banner_4k.png" 
+            alt="Louis Vigo - Visual Specialist & Art Direction" 
             className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.01]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />

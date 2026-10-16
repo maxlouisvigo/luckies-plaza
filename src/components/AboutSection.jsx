@@ -14,8 +14,11 @@ import {
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export const AboutSection = () => {
+export const AboutSection = ({ t = portfolioData }) => {
   const [copiedField, setCopiedField] = useState(null);
+
+  const profile = t?.profile || portfolioData.profile;
+  const about = t?.about || portfolioData.about;
 
   const copyToClipboard = (text, field) => {
     navigator.clipboard.writeText(text);
@@ -55,23 +58,23 @@ export const AboutSection = () => {
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-2">
               <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-white/15 text-white border border-white/20">
-                Creative Director & Visual Strategist
+                {about?.roleBadge || 'Creative Director & Visual Strategist'}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold tracking-tight text-white leading-tight">
-                Hello, My name is <span className="font-serif italic font-normal text-white">Lui!</span>
+                {about?.greeting || 'Hello, My name is'} <span className="font-serif italic font-normal text-white">{profile.nickname || 'Lui!'}</span>
               </h2>
             </div>
 
             <p className="text-white/90 text-base md:text-lg leading-relaxed font-normal text-justify md:text-left">
-              {portfolioData.profile.bio}
+              {profile.bio}
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <span className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-lg bg-black/20 text-white/90 border border-white/10">
-                📍 {portfolioData.profile.location}
+                📍 {profile.location}
               </span>
               <span className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-lg bg-white/20 text-white border border-white/20">
-                ✨ {portfolioData.profile.status}
+                ✨ {profile.status}
               </span>
             </div>
           </div>
@@ -79,18 +82,18 @@ export const AboutSection = () => {
           {/* Column 2: Core Expertise (3 Cols) */}
           <div className="lg:col-span-3 space-y-5">
             <h3 className="text-xl md:text-2xl font-bold tracking-wide text-brand-umber uppercase font-sans">
-              Expertise
+              {about?.expertiseTitle || 'Expertise'}
             </h3>
 
             <div className="space-y-3">
-              {portfolioData.profile.expertise.map((item, index) => (
+              {profile.expertise.map((item, index) => (
                 <div 
                   key={item.name}
                   className="p-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 transition-all duration-200 group"
                 >
                   <div className="flex items-center space-x-2.5">
                     <span className="p-1.5 rounded-lg bg-white/20 group-hover:bg-brand-umber transition-colors">
-                      {expertiseIcons[index]}
+                      {expertiseIcons[index % expertiseIcons.length]}
                     </span>
                     <h4 className="font-bold text-white text-base">
                       {item.name}
@@ -107,7 +110,7 @@ export const AboutSection = () => {
           {/* Column 3: Let's Get In Touch (3 Cols) */}
           <div className="lg:col-span-3 space-y-5">
             <h3 className="text-xl md:text-2xl font-bold tracking-wide text-brand-umber uppercase font-sans">
-              Let's Get In Touch
+              {about?.contactTitle || "Let's Get In Touch"}
             </h3>
 
             <div className="space-y-3.5">
@@ -118,19 +121,21 @@ export const AboutSection = () => {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/70 font-medium uppercase tracking-wider">Phone / WhatsApp</p>
+                    <p className="text-xs text-white/70 font-medium uppercase tracking-wider">
+                      {about?.phoneLabel || 'Phone / WhatsApp'}
+                    </p>
                     <a 
-                      href={portfolioData.profile.contact.whatsappUrl}
+                      href={profile.contact.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm font-semibold text-white hover:underline block"
                     >
-                      {portfolioData.profile.contact.phone}
+                      {profile.contact.phone}
                     </a>
                   </div>
                 </div>
                 <button
-                  onClick={() => copyToClipboard(portfolioData.profile.contact.phoneRaw, 'phone')}
+                  onClick={() => copyToClipboard(profile.contact.phoneRaw, 'phone')}
                   className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors"
                   title="Copy number"
                 >
@@ -145,17 +150,19 @@ export const AboutSection = () => {
                     <Mail className="w-4 h-4" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs text-white/70 font-medium uppercase tracking-wider">Email</p>
+                    <p className="text-xs text-white/70 font-medium uppercase tracking-wider">
+                      {about?.emailLabel || 'Email'}
+                    </p>
                     <a 
-                      href={`mailto:${portfolioData.profile.contact.email}`}
+                      href={`mailto:${profile.contact.email}`}
                       className="text-sm font-semibold text-white hover:underline break-all block"
                     >
-                      {portfolioData.profile.contact.email}
+                      {profile.contact.email}
                     </a>
                   </div>
                 </div>
                 <button
-                  onClick={() => copyToClipboard(portfolioData.profile.contact.email, 'email')}
+                  onClick={() => copyToClipboard(profile.contact.email, 'email')}
                   className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors shrink-0"
                   title="Copy email"
                 >
@@ -170,14 +177,16 @@ export const AboutSection = () => {
                     <Linkedin className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/70 font-medium uppercase tracking-wider">LinkedIn</p>
+                    <p className="text-xs text-white/70 font-medium uppercase tracking-wider">
+                      {about?.linkedinLabel || 'LinkedIn'}
+                    </p>
                     <a 
-                      href={portfolioData.profile.contact.linkedin}
+                      href={profile.contact.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm font-semibold text-white hover:underline flex items-center space-x-1"
                     >
-                      <span>{portfolioData.profile.contact.linkedinHandle}</span>
+                      <span>{profile.contact.linkedinHandle}</span>
                       <ArrowRight className="w-3 h-3 -rotate-45" />
                     </a>
                   </div>
@@ -188,12 +197,12 @@ export const AboutSection = () => {
             {/* Direct CTA */}
             <div className="pt-2">
               <a
-                href={portfolioData.profile.contact.whatsappUrl}
+                href={profile.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 px-4 rounded-xl bg-brand-umber hover:bg-brand-umber-dark text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-lg transition-all transform hover:-translate-y-0.5"
               >
-                <span>Hire / Start Collaboration</span>
+                <span>{about?.hireCta || 'Hire / Start Collaboration'}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>

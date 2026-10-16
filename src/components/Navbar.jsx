@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Download, MessageCircle, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Download, MessageCircle, Menu, X, Globe } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export const Navbar = ({ activeSection }) => {
+export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolioData }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -20,11 +20,45 @@ export const Navbar = ({ activeSection }) => {
   }, []);
 
   const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Curriculum Vitae', href: '#cv' },
-    { label: 'Featured Works', href: '#works' },
-    { label: 'Contact', href: '#contact' },
+    { label: t?.nav?.about || 'About', href: '#about' },
+    { label: t?.nav?.cv || 'Curriculum Vitae', href: '#cv' },
+    { label: t?.nav?.works || 'Featured Works', href: '#works' },
+    { label: t?.nav?.contact || 'Contact', href: '#contact' },
   ];
+
+  const profile = t?.profile || portfolioData.profile;
+
+  // Language Pill Switch
+  const LanguageToggle = ({ className = '' }) => (
+    <div className={`inline-flex items-center bg-black/25 backdrop-blur-md rounded-full p-0.5 border border-white/20 shadow-inner ${className}`}>
+      <button
+        type="button"
+        onClick={() => onToggleLang && onToggleLang('en')}
+        className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all duration-200 select-none ${
+          lang === 'en'
+            ? 'bg-white text-brand-orange shadow-md font-extrabold'
+            : 'text-white/80 hover:text-white hover:bg-white/10'
+        }`}
+        aria-label="Switch to English"
+        title="English"
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        onClick={() => onToggleLang && onToggleLang('id')}
+        className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all duration-200 select-none ${
+          lang === 'id'
+            ? 'bg-white text-brand-orange shadow-md font-extrabold'
+            : 'text-white/80 hover:text-white hover:bg-white/10'
+        }`}
+        aria-label="Ganti ke Bahasa Indonesia"
+        title="Bahasa Indonesia"
+      >
+        ID
+      </button>
+    </div>
+  );
 
   return (
     <>
@@ -48,7 +82,7 @@ export const Navbar = ({ activeSection }) => {
           {/* Left Title: Exactly "Visual Portfolio — [Section]" */}
           <div className="flex items-center space-x-3 text-white">
             <span className="font-semibold text-sm md:text-base tracking-wide flex items-center">
-              Visual Portfolio
+              <span>{t?.nav?.viewPdf || 'Visual Portfolio'}</span>
               <span className="mx-2.5 text-white/60 font-light">—</span>
               <span className="font-light tracking-wider capitalize text-white/90">
                 {activeSection || 'Cover'}
@@ -56,8 +90,8 @@ export const Navbar = ({ activeSection }) => {
             </span>
           </div>
 
-          {/* Right Header Navigation & Actions */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Right Header Navigation & Actions (Desktop) */}
+          <div className="hidden md:flex items-center space-x-7">
             <nav className="flex items-center space-x-6 text-sm font-medium">
               {navLinks.map((link) => (
                 <a
@@ -72,41 +106,44 @@ export const Navbar = ({ activeSection }) => {
             </nav>
 
             <div className="flex items-center space-x-3 border-l border-white/20 pl-6">
+              {/* Language Switcher Pill */}
+              <LanguageToggle />
+
               <a
-                href={portfolioData.profile.contact.cvPdf}
+                href={profile.contact.cvPdf}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-brand-orange border border-white/30 transition-all duration-200 shadow-sm"
                 title="Download CV (PDF)"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>CV (PDF)</span>
+                <span>{t?.nav?.downloadCv || 'CV (PDF)'}</span>
               </a>
 
               <a
-                href={portfolioData.profile.contact.whatsappUrl}
+                href={profile.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-[#5C2208] hover:bg-[#3D1504] text-white transition-all duration-200 shadow-sm"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
-                <span>Let's Talk</span>
+                <span>{t?.nav?.letsTalk || "Let's Talk"}</span>
               </a>
 
-              <span className="text-white font-bold text-sm tracking-wide ml-2">
-                Louis Vigo
+              <span className="text-white font-bold text-sm tracking-wide ml-1">
+                {profile.displayName || 'Louis Vigo'}
               </span>
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-3">
-            <span className="text-white font-bold text-sm">
-              Louis Vigo
-            </span>
+          {/* Mobile Right Controls: Language Pill + Name + Hamburger Button */}
+          <div className="md:hidden flex items-center space-x-2.5">
+            {/* Quick Language Switcher on Mobile Top Bar */}
+            <LanguageToggle />
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-white hover:bg-white/10 rounded-lg transition-colors"
+              className="p-1.5 text-white hover:bg-white/10 rounded-lg transition-colors ml-1"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -114,9 +151,9 @@ export const Navbar = ({ activeSection }) => {
           </div>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#F05A22] border-b border-white/20 px-6 py-5 shadow-2xl">
+          <div className="md:hidden bg-[#F05A22] border-b border-white/20 px-6 py-5 shadow-2xl animate-fade-in">
             <nav className="flex flex-col space-y-4 text-base font-medium">
               {navLinks.map((link) => (
                 <a
@@ -128,24 +165,33 @@ export const Navbar = ({ activeSection }) => {
                   {link.label}
                 </a>
               ))}
-              <div className="pt-4 border-t border-white/20 flex flex-col space-y-2.5">
+              
+              <div className="pt-4 border-t border-white/20 flex flex-col space-y-3">
+                <div className="flex items-center justify-between py-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white/80">
+                    Language / Bahasa
+                  </span>
+                  <LanguageToggle />
+                </div>
+
                 <a
-                  href={portfolioData.profile.contact.cvPdf}
+                  href={profile.contact.cvPdf}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-white text-brand-orange font-bold text-sm shadow"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Download Curriculum Vitae</span>
+                  <span>{t?.cv?.downloadButton || 'Download CV (PDF)'}</span>
                 </a>
+                
                 <a
-                  href={portfolioData.profile.contact.whatsappUrl}
+                  href={profile.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-[#5C2208] text-white font-bold text-sm shadow"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Chat WhatsApp</span>
+                  <span>{t?.contact?.chatWhatsapp || 'Chat via WhatsApp'}</span>
                 </a>
               </div>
             </nav>

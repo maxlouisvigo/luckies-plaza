@@ -2,7 +2,10 @@ import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export const CoverSection = () => {
+export const CoverSection = ({ t = portfolioData }) => {
+  const profile = t?.profile || portfolioData.profile;
+  const cover = t?.cover || portfolioData.cover;
+
   return (
     <section 
       id="cover" 
@@ -15,7 +18,7 @@ export const CoverSection = () => {
       {/* Top Header: Full Name in Editorial Serif */}
       <div className="pt-16 md:pt-20 z-10">
         <p className="text-white/95 text-xl md:text-3xl font-serif tracking-wider font-normal">
-          {portfolioData.profile.fullName}
+          {profile.fullName}
         </p>
       </div>
 
@@ -31,14 +34,14 @@ export const CoverSection = () => {
       {/* Bottom Subtitle & Scroll CTA */}
       <div className="pb-8 z-10 flex flex-col items-center space-y-5">
         <p className="text-white/95 text-2xl md:text-4xl font-serif italic tracking-wider font-light">
-          {portfolioData.profile.subtagline}
+          {profile.subtagline}
         </p>
 
         <a 
           href="#about"
           className="group inline-flex items-center space-x-2 text-white/80 hover:text-white text-xs md:text-sm tracking-widest uppercase transition-all duration-300 pt-2"
         >
-          <span>Scroll to Explore</span>
+          <span>{cover?.scroll || 'Scroll to Explore'}</span>
           <ChevronDown className="w-4 h-4 animate-bounce group-hover:translate-y-1 transition-transform" />
         </a>
       </div>

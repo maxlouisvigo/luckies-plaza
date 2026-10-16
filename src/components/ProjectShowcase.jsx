@@ -9,7 +9,11 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 
-export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
+import { portfolioData } from '../data/portfolioData';
+
+export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLightbox }) => {
+  const p = t?.project || portfolioData.project;
+
   // Collect all inspectable assets for this project
   const allInspectable = [
     { src: project.heroMockup, caption: `${project.title} — ${project.heroMockupAlt || 'Digital Mockup'}` },
@@ -36,7 +40,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             {/* Project Index & Category Pill */}
             <div className="flex items-center space-x-3.5">
               <span className="px-3 py-1 rounded-md bg-brand-umber text-white font-mono text-xs font-bold uppercase tracking-widest shadow-sm">
-                Case Study 0{index + 1}
+                {p?.caseStudyLabel || 'Case Study'} 0{index + 1}
               </span>
               <span className="text-xs font-bold tracking-widest uppercase text-white/90">
                 {project.category}
@@ -79,7 +83,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             <div className="p-4 rounded-xl bg-white/10 border border-white/15 space-y-1.5 shadow-sm">
               <div className="flex items-center space-x-2 text-white font-bold text-xs uppercase tracking-wider">
                 <Target className="w-4 h-4 text-white" />
-                <span>Creative Focus</span>
+                <span>{p?.creativeFocusTitle || 'Creative Focus'}</span>
               </div>
               <p className="text-xs md:text-sm text-white/90 leading-relaxed">
                 {project.focus}
@@ -90,7 +94,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             <div className="p-4 rounded-xl bg-black/15 border border-white/10 space-y-1.5 shadow-sm">
               <div className="flex items-center space-x-2 text-white font-bold text-xs uppercase tracking-wider">
                 <Lightbulb className="w-4 h-4 text-white" />
-                <span>The Challenge & Strategic Solution</span>
+                <span>{p?.challengeTitle || 'The Challenge & Strategic Solution'}</span>
               </div>
               <p className="text-xs md:text-sm text-white/80 leading-relaxed">
                 {project.challenge}
@@ -101,7 +105,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             <div className="space-y-2.5">
               <h4 className="text-xs font-bold text-white/70 uppercase tracking-widest flex items-center space-x-2">
                 <Layers className="w-3.5 h-3.5" />
-                <span>Core Deliverables</span>
+                <span>{p?.coreDeliverablesTitle || 'Core Deliverables'}</span>
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.deliverables.map((item) => (
@@ -151,14 +155,16 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <div className="p-3.5 rounded-full bg-brand-umber text-white shadow-2xl transform scale-90 group-hover:scale-100 transition-transform flex items-center space-x-2 px-5 py-2.5 border border-white/30 backdrop-blur-md">
                     <ZoomIn className="w-4 h-4" />
-                    <span className="text-xs font-bold uppercase tracking-wider">Inspect Fullscreen</span>
+                    <span className="text-xs font-bold uppercase tracking-wider">
+                      {p?.inspectFullscreen || 'Inspect Fullscreen'}
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Caption Tag */}
               <p className="text-xs text-white/70 text-center mt-3 tracking-wide font-medium">
-                {project.heroMockupAlt || 'Click mockup to inspect in full resolution'}
+                {project.heroMockupAlt || p?.clickMockupHint || 'Click mockup to inspect in full resolution'}
               </p>
             </div>
           </div>
@@ -175,7 +181,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
               <div>
                 <span className="text-xs font-semibold tracking-widest uppercase text-white/70 block">
-                  Campaign Output & Production Assets
+                  {p?.productionTitle || 'Campaign Output & Production Assets'}
                 </span>
                 <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1">
                   {project.secondaryTitle || 'Individual Deliverables & Collateral'}
@@ -183,7 +189,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
               </div>
 
               <span className="text-xs text-white/60">
-                Click any piece to inspect detail & typography
+                {p?.clickToInspect || 'Click any piece to inspect detail & typography'}
               </span>
             </div>
 
@@ -203,7 +209,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
                   />
                   <div className="mt-3 flex items-center space-x-1.5 text-xs text-white/80 font-semibold group-hover:text-white">
                     <ZoomIn className="w-3.5 h-3.5" />
-                    <span>Rollup Standing Banner / Event Print</span>
+                    <span>{p?.rollupBanner || 'Rollup Standing Banner / Event Print'}</span>
                   </div>
                 </div>
 

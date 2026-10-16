@@ -12,7 +12,14 @@ import {
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export const CVSection = () => {
+export const CVSection = ({ t = portfolioData }) => {
+  const profile = t?.profile || portfolioData.profile;
+  const cv = t?.cv || portfolioData.cv;
+  const education = t?.education || portfolioData.education;
+  const softwareCompetences = t?.softwareCompetences || portfolioData.softwareCompetences;
+  const languages = t?.languages || portfolioData.languages;
+  const workExperiences = t?.workExperiences || portfolioData.workExperiences;
+
   return (
     <section 
       id="cv" 
@@ -25,22 +32,22 @@ export const CVSection = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div>
             <span className="text-xs font-semibold tracking-widest uppercase text-white/70">
-              Credentials & Track Record
+              {cv?.badge || 'Credentials & Track Record'}
             </span>
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-1">
-              Curriculum Vitae
+              {cv?.sectionTitle || 'Curriculum Vitae'}
             </h2>
           </div>
 
           <div className="flex items-center space-x-3">
             <a
-              href={portfolioData.profile.contact.cvPdf}
+              href={profile.contact.cvPdf}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white text-brand-orange font-bold text-sm shadow-md hover:bg-brand-cream hover:shadow-lg transition-all transform hover:-translate-y-0.5"
             >
               <Download className="w-4 h-4" />
-              <span>Download Official CV (PDF)</span>
+              <span>{cv?.downloadButton || 'Download Official CV (PDF)'}</span>
             </a>
           </div>
         </div>
@@ -56,12 +63,12 @@ export const CVSection = () => {
               <div className="flex items-center space-x-2.5 border-b border-white/20 pb-3">
                 <GraduationCap className="w-5 h-5 text-white" />
                 <h3 className="text-xl md:text-2xl font-bold tracking-wide uppercase text-white font-sans">
-                  Education
+                  {cv?.educationTitle || 'Education'}
                 </h3>
               </div>
 
               <div className="space-y-5">
-                {portfolioData.education.map((edu) => (
+                {education.map((edu) => (
                   <div 
                     key={edu.degree}
                     className="p-4 rounded-xl bg-white/10 border border-white/15 hover:bg-white/15 transition-all"
@@ -88,12 +95,12 @@ export const CVSection = () => {
               <div className="flex items-center space-x-2.5 border-b border-white/20 pb-3">
                 <Cpu className="w-5 h-5 text-white" />
                 <h3 className="text-xl md:text-2xl font-bold tracking-wide uppercase text-white font-sans">
-                  Software Competences
+                  {cv?.softwareTitle || 'Software Competences'}
                 </h3>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5">
-                {portfolioData.softwareCompetences.map((tool) => (
+                {softwareCompetences.map((tool) => (
                   <div 
                     key={tool.name}
                     className="p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 transition-all flex flex-col justify-between"
@@ -114,18 +121,18 @@ export const CVSection = () => {
               <div className="flex items-center space-x-2.5 border-b border-white/20 pb-3">
                 <Languages className="w-5 h-5 text-white" />
                 <h3 className="text-xl md:text-2xl font-bold tracking-wide uppercase text-white font-sans">
-                  Languages
+                  {cv?.languagesTitle || 'Languages'}
                 </h3>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                {portfolioData.languages.map((lang) => (
+                {languages.map((langItem) => (
                   <div 
-                    key={lang.name}
+                    key={langItem.name}
                     className="p-3.5 rounded-xl bg-white/10 border border-white/15"
                   >
-                    <p className="font-bold text-sm text-white">{lang.name}</p>
-                    <p className="text-xs text-white/80 mt-0.5">{lang.level}</p>
+                    <p className="font-bold text-sm text-white">{langItem.name}</p>
+                    <p className="text-xs text-white/80 mt-0.5">{langItem.level}</p>
                   </div>
                 ))}
               </div>
@@ -138,12 +145,12 @@ export const CVSection = () => {
             <div className="flex items-center space-x-2.5 border-b border-white/20 pb-3">
               <Briefcase className="w-5 h-5 text-white" />
               <h3 className="text-xl md:text-2xl font-bold tracking-wide uppercase text-white font-sans">
-                Work Experiences
+                {cv?.experienceTitle || 'Work Experiences'}
               </h3>
             </div>
 
             <div className="space-y-6">
-              {portfolioData.workExperiences.map((exp, index) => (
+              {workExperiences.map((exp, index) => (
                 <div 
                   key={index}
                   className="flex items-start gap-4 md:gap-5 group"
@@ -155,7 +162,7 @@ export const CVSection = () => {
                       <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     </div>
                     {/* Connecting Vertical Line */}
-                    {index !== portfolioData.workExperiences.length - 1 && (
+                    {index !== workExperiences.length - 1 && (
                       <div className="w-[2px] bg-white/25 grow my-1" />
                     )}
                   </div>

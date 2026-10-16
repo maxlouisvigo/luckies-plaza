@@ -28,10 +28,10 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
         {/* ========================================================================= */}
         {/* PART 1: HERO STAGE — NATIVE EDITORIAL STORY & TRANSPARENT DEVICE MOCKUP */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center lg:items-stretch">
           
           {/* Left Column: Creative Direction Narrative (5 Cols) */}
-          <div className="lg:col-span-5 space-y-7">
+          <div className="lg:col-span-5 space-y-7 flex flex-col justify-center">
             
             {/* Project Index & Category Pill */}
             <div className="flex items-center space-x-3.5">
@@ -133,23 +133,23 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
 
           </div>
 
-          {/* Right Column: Native Transparent Mockup (7 Cols) */}
-          <div className="lg:col-span-7 flex flex-col items-center justify-center">
+          {/* Right Column: Heroic Transparent Mockup filling height */}
+          <div className="lg:col-span-7 flex flex-col items-center justify-center self-stretch my-auto">
             <div 
               onClick={() => onOpenLightbox(allInspectable, 0)}
-              className="relative w-full max-w-2xl cursor-pointer group flex flex-col items-center"
+              className="relative w-full h-full min-h-[420px] md:min-h-[550px] lg:min-h-[680px] xl:min-h-[750px] cursor-pointer group flex flex-col items-center justify-center"
             >
-              {/* Native Transparent Mockup directly on canvas */}
-              <div className="relative transform transition-all duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1">
+              {/* Massive Transparent Mockup matching text column */}
+              <div className="relative w-full h-full flex items-center justify-center transform transition-all duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1">
                 <img 
                   src={project.heroMockup} 
                   alt={project.heroMockupAlt || project.title}
-                  className="w-full h-auto max-h-[550px] object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.35)]"
+                  className="w-full h-auto max-h-[650px] md:max-h-[750px] xl:max-h-[850px] lg:scale-105 xl:scale-110 object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,0.45)]"
                 />
 
                 {/* Hover Click to Zoom Indicator */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="p-4 rounded-full bg-brand-umber text-white shadow-2xl transform scale-90 group-hover:scale-100 transition-transform flex items-center space-x-2 px-5 py-2.5 border border-white/30">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="p-4 rounded-full bg-brand-umber text-white shadow-2xl transform scale-90 group-hover:scale-100 transition-transform flex items-center space-x-2 px-6 py-3 border border-white/30 backdrop-blur-md">
                     <ZoomIn className="w-5 h-5" />
                     <span className="text-xs font-bold uppercase tracking-wider">Inspect Fullscreen</span>
                   </div>

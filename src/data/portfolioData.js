@@ -9,6 +9,9 @@ export const portfolioData = {
     location: "Semarang / Yogyakarta, Indonesia",
     status: "Open for Opportunities / Relocate / Remote",
     bio: "I'm a Visual Specialist and Communication Expert with 7+ years of experience translating complex corporate goals into high-impact visual solutions. From executive B2B pitch decks to end-to-end event art direction, I blend a marketer's strategy with advanced design and AI workflows. I don't just make things look good — I craft strategic visuals that communicate clearly and drive real results.",
+    cutoutImage: "/assets/extracted/intro/lui_cutout.png",
+    introBanner: "/assets/extracted/intro/intro_banner_composite.png",
+    robotBackdrop: "/assets/extracted/intro/robot_backdrop.png",
     expertise: [
       { name: "Design", desc: "Branding, layout hierarchy, and production-grade art direction." },
       { name: "Concept & Ideation", desc: "Translating abstract briefs into resonant creative concepts." },
@@ -114,6 +117,7 @@ export const portfolioData = {
       subtitle: "Social Media and Print Design",
       category: "Wellness & Physical Health",
       period: "2025 – Present",
+      logo: "/assets/extracted/harmoni_diri/hadir_logo.png",
       slides: [
         {
           src: "/assets/05 - Hadir 1.png",
@@ -125,6 +129,12 @@ export const portfolioData = {
           caption: "Nationwide Clinical Anatomy Course Posters & Standing Banners",
           type: "print"
         }
+      ],
+      extractedAssets: [
+        { src: "/assets/extracted/harmoni_diri/posters/scoliosis_surabaya_1.png", caption: "Scoliosis Surabaya Course Flyer" },
+        { src: "/assets/extracted/harmoni_diri/posters/tsk_semarang_soft.png", caption: "TSK Semarang Anatomy Workshop Flyer" },
+        { src: "/assets/extracted/harmoni_diri/posters/fungsi_sendi_5.png", caption: "Biomekanika & Fungsi Sendi Educational Asset" },
+        { src: "/assets/extracted/harmoni_diri/posters/gerakan_benar_bisa_jadi_salah.png", caption: "Movement Misconception Educational Post" }
       ],
       description: "I handle the end-to-end visual design for Harmoni Diri's (HADIR) social media content, encompassing educational movement posts, wellness campaigns, and nationwide workshop promotions (including Jakarta, Surabaya, Bali, and Semarang).",
       focus: "My focus is on establishing a clean, premium, and consistent visual identity that perfectly aligns with the brand's core values in wellness management.",
@@ -147,6 +157,7 @@ export const portfolioData = {
       subtitle: "Social Media Posts & Campaigns",
       category: "Mental Health & Psychology",
       period: "2025 – Present",
+      logo: "/assets/extracted/school_of_parenting/sop_logo.png",
       slides: [
         {
           src: "/assets/08 - School of Parenting 1.png",
@@ -158,6 +169,12 @@ export const portfolioData = {
           caption: "2025 Mental Health Wrapped & Corporate Wellness (MHCU) Assets",
           type: "gallery"
         }
+      ],
+      extractedAssets: [
+        { src: "/assets/extracted/school_of_parenting/carousels/produktif_takut_diam_1.png", caption: "Burnout & Overworking Awareness" },
+        { src: "/assets/extracted/school_of_parenting/carousels/5_sinyal_tim.png", caption: "5 Sinyal Tim Nggak Baik-Baik Aja" },
+        { src: "/assets/extracted/school_of_parenting/carousels/s1.png", caption: "2025 Mental Health Wrapped (Office Edition)" },
+        { src: "/assets/extracted/school_of_parenting/carousels/untungnya_2.png", caption: "Dua Orang Sama-Sama Capek Educational Post" }
       ],
       description: "I handle the visual design for School of Parenting's social media content, including mental health services, psychological assessments, and therapy campaigns.",
       focus: "My focus is on creating designs that are empathetic, professional, and suited to build trust with individuals, families, and corporate clients.",
@@ -180,6 +197,7 @@ export const portfolioData = {
       subtitle: "Social Media and Print Design",
       category: "Hospital & Healthcare",
       period: "2023",
+      logo: "/assets/extracted/telogorejo/telogorejo_logo.png",
       slides: [
         {
           src: "/assets/10 - Telogorejo 1.png",
@@ -191,6 +209,12 @@ export const portfolioData = {
           caption: "Maternity Packages, Medical Check-Up & Pediatric Rehab Print Assets",
           type: "print"
         }
+      ],
+      extractedAssets: [
+        { src: "/assets/extracted/telogorejo/maternity_pricing_brochure.png", caption: "Maternity Package Multi-tier Pricing Brochure" },
+        { src: "/assets/extracted/telogorejo/mcu_brosur_lipat.png", caption: "MCU Bi-fold Detailed Service Brochure" },
+        { src: "/assets/extracted/telogorejo/mri_brain_mra.png", caption: "Skrining Nyeri Kepala MRI Brain MRA Flyer" },
+        { src: "/assets/extracted/telogorejo/rehab_medik_anak.png", caption: "Promo Sensori Integrasi Anak Flyer" }
       ],
       description: "I handled the visual design and content planning for SMC RS Telogorejo's marketing channels, including health education videos, weekly social media content, and print assets.",
       focus: "My focus was on creating reliable, engaging, and professional visual communications that align with the high standards of a trusted healthcare institution.",
@@ -213,6 +237,7 @@ export const portfolioData = {
       subtitle: "Social Media and Print Design",
       category: "Political Campaign & Grassroots",
       period: "2023 – 2024",
+      logo: "/assets/extracted/sedulur_herviano/ssh_mascot_logo.png",
       slides: [
         {
           src: "/assets/12 - SSH 1.png",
@@ -224,6 +249,12 @@ export const portfolioData = {
           caption: "Tebus Murah, Konsolidasi Akbar Stage & Event Collateral",
           type: "print"
         }
+      ],
+      extractedAssets: [
+        { src: "/assets/extracted/sedulur_herviano/posters/baliho_pilus_3x2.png", caption: "Baliho Akbar 3x2 Meter Gerak Cepat" },
+        { src: "/assets/extracted/sedulur_herviano/posters/flyer_konsolidasi_dan_panggung_hiburan.png", caption: "Panggung Hiburan Konsolidasi Akbar Flyer" },
+        { src: "/assets/extracted/sedulur_herviano/posters/panjat_pinang_semarang_revisi.png", caption: "Lomba Panjat Pinang Kemerdekaan Event Flyer" },
+        { src: "/assets/extracted/sedulur_herviano/posters/7_januari.png", caption: "Senam & Jalan Sehat Mass Community Flyer" }
       ],
       description: "I handled the visual design and field documentation for the Sedulur Saklawase Herviano political campaign, covering social media content, offline event promotions, and community engagement materials.",
       focus: "My focus was on building a strong, approachable, and community-driven visual presence to boost public visibility and grassroots support for the 2024 legislative election.",
@@ -246,6 +277,7 @@ export const portfolioData = {
       subtitle: "Product Design & Packaging",
       category: "F&B Brand Identity & Retail Packaging",
       period: "2021 – 2024",
+      logo: "/assets/extracted/sambal_suster_ana/sambal_mascot_logo.png",
       slides: [
         {
           src: "/assets/14 - Sambal Suster Ana 1.png",
@@ -257,6 +289,12 @@ export const portfolioData = {
           caption: "Mascot Character Illustration & Die-cut Label Flat Artwork",
           type: "branding"
         }
+      ],
+      extractedAssets: [
+        { src: "/assets/extracted/sambal_suster_ana/sambal_3d_jars.png", caption: "3D Product Render of Sambal Jars (Isolated)" },
+        { src: "/assets/extracted/sambal_suster_ana/sambal_flat_label.png", caption: "Commercial Label Flat Graphic Layout" },
+        { src: "/assets/extracted/sambal_suster_ana/sambal_round_sticker.png", caption: "Top Cap Round Seal Stamp Sticker" },
+        { src: "/assets/extracted/sambal_suster_ana/sambal_mascot_badge_large.png", caption: "Character Mascot Badge High-Res Logo" }
       ],
       description: "I handled the brand identity and packaging design for Sambal Suster Ana, a local F&B business in Semarang specializing in premium homemade chili sauces.",
       focus: "My focus was on elevating a traditional homemade product into a commercial, market-ready brand without losing its authentic, local heritage appeal.",

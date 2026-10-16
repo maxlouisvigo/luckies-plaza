@@ -4,14 +4,19 @@ import {
   Layers, 
   Target, 
   Lightbulb, 
-  CheckCircle, 
-  ExternalLink,
-  ChevronRight,
-  Maximize2
+  Maximize2,
+  Sparkles,
+  Grid
 } from 'lucide-react';
 
 export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  // Combine slides and extracted assets for full lightbox navigation
+  const allInspectableAssets = [
+    ...project.slides,
+    ...(project.extractedAssets || []).map(a => ({ src: a.src, caption: a.caption }))
+  ];
 
   return (
     <section 
@@ -21,13 +26,25 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
     >
       <div className="max-w-7xl mx-auto w-full">
         
-        {/* Project Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-12 pb-4 border-b border-white/15">
-          <div className="flex items-center space-x-3">
+        {/* Project Header Bar with Brand Logo */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-12 pb-5 border-b border-white/15">
+          <div className="flex items-center space-x-3.5">
             <span className="px-3 py-1 rounded-md bg-brand-umber text-white font-mono text-xs font-bold uppercase tracking-widest">
               0{index + 1}
             </span>
-            <span className="text-xs font-bold tracking-widest uppercase text-white/80">
+
+            {/* Brand Logo from PSD */}
+            {project.logo && (
+              <div className="h-8 px-2 py-0.5 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0">
+                <img 
+                  src={project.logo} 
+                  alt={`${project.title} Logo`} 
+                  className="max-h-full max-w-[80px] object-contain drop-shadow"
+                />
+              </div>
+            )}
+
+            <span className="text-xs font-bold tracking-widest uppercase text-white/90">
               {project.category}
             </span>
             <span className="text-white/40">•</span>
@@ -36,7 +53,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
             </span>
           </div>
 
-          <div className="text-xs text-white/70 italic font-serif">
+          <div className="text-xs text-white/80 italic font-serif">
             {project.subtitle}
           </div>
         </div>
@@ -119,7 +136,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
           </div>
 
           {/* Right Column: Interactive Visual Showcase & Lightbox Preview (7 Cols) */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="lg:col-span-7 space-y-6">
             
             {/* Slide Navigation Tabs */}
             <div className="flex items-center space-x-3">
@@ -135,24 +152,24 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
                 >
                   <span>Slide 0{idx + 1}</span>
                   <span className="text-[10px] opacity-70">
-                    ({idx === 0 ? 'Digital & Strategy' : 'Print & Collateral'})
+                    ({idx === 0 ? 'Digital & Campaign' : 'Print & Collateral'})
                   </span>
                 </button>
               ))}
 
               <button
-                onClick={() => onOpenLightbox(project.slides, activeSlideIndex)}
+                onClick={() => onOpenLightbox(allInspectableAssets, activeSlideIndex)}
                 className="ml-auto inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-black/20 hover:bg-black/40 text-white border border-white/20 transition-all"
                 title="Fullscreen inspection"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
-                <span>Inspect Fullscreen</span>
+                <span>Fullscreen</span>
               </button>
             </div>
 
             {/* Active Visual Canvas */}
             <div 
-              onClick={() => onOpenLightbox(project.slides, activeSlideIndex)}
+              onClick={() => onOpenLightbox(allInspectableAssets, activeSlideIndex)}
               className="relative rounded-2xl overflow-hidden shadow-2xl bg-black/10 border border-white/20 cursor-pointer group"
             >
               <img 
@@ -185,31 +202,38 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
               </div>
             </div>
 
-            {/* Alternate Slide Preview Thumbnails */}
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              {project.slides.map((s, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setActiveSlideIndex(idx)}
-                  className={`relative rounded-xl overflow-hidden border-2 cursor-pointer transition-all ${
-                    activeSlideIndex === idx 
-                      ? 'border-white shadow-lg ring-2 ring-white/30' 
-                      : 'border-white/20 opacity-60 hover:opacity-100'
-                  }`}
-                >
-                  <img 
-                    src={s.src} 
-                    alt={s.caption} 
-                    className="w-full h-28 md:h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-2">
-                    <p className="text-[11px] font-bold text-white truncate">
-                      {idx === 0 ? 'Digital & Campaign' : 'Print & Collateral'}
-                    </p>
-                  </div>
+            {/* Extracted Individual Assets Strip (From PSD Layers) */}
+            {project.extractedAssets && project.extractedAssets.length > 0 && (
+              <div className="pt-2 space-y-2.5">
+                <div className="flex items-center justify-between text-xs text-white/75 px-1">
+                  <span className="font-semibold uppercase tracking-wider flex items-center space-x-1.5">
+                    <Grid className="w-3.5 h-3.5" />
+                    <span>Individual Deliverables (Extracted from PSD)</span>
+                  </span>
+                  <span className="text-[11px] text-white/50">Click to inspect</span>
                 </div>
-              ))}
-            </div>
+
+                <div className="grid grid-cols-4 gap-3">
+                  {project.extractedAssets.map((asset, aIdx) => (
+                    <div
+                      key={aIdx}
+                      onClick={() => onOpenLightbox(allInspectableAssets, project.slides.length + aIdx)}
+                      className="group relative rounded-xl overflow-hidden bg-black/20 border border-white/15 hover:border-white cursor-pointer transition-all p-2 flex flex-col items-center justify-center hover:bg-black/30"
+                      title={asset.caption}
+                    >
+                      <img 
+                        src={asset.src} 
+                        alt={asset.caption}
+                        className="max-h-20 w-auto object-contain transform group-hover:scale-105 transition-transform"
+                      />
+                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <ZoomIn className="w-4 h-4 text-white drop-shadow" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
           </div>
 

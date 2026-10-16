@@ -8,6 +8,7 @@ import { ProjectShowcase } from './components/ProjectShowcase';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
+import { MarqueeTicker } from './components/MarqueeTicker';
 import { portfolioTranslations, portfolioData } from './data/portfolioData';
 
 export function App() {
@@ -88,6 +89,9 @@ export function App() {
       {/* Page 1: Cover */}
       <CoverSection t={t} />
 
+      {/* Kinetic Infinite Marquee 1 */}
+      <MarqueeTicker lang={lang} />
+
       {/* Page 2: About / Intro */}
       <AboutSection t={t} />
 
@@ -109,6 +113,9 @@ export function App() {
           />
         ))}
       </div>
+
+      {/* Kinetic Infinite Marquee 2 (Reverse Flow) */}
+      <MarqueeTicker lang={lang} reverse={true} />
 
       {/* Page 15: Thank You & Contact */}
       <ContactSection t={t} />

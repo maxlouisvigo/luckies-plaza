@@ -82,7 +82,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
           {/* Left Title: Exactly "Visual Portfolio — [Section]" */}
           <div className="flex items-center space-x-3 text-white">
             <span className="font-semibold text-sm md:text-base tracking-wide flex items-center">
-              <span>{t?.nav?.viewPdf || 'Visual Portfolio'}</span>
+              <span>{(t?.nav?.viewPdf || 'Visual Portfolio').replace(/\s*—\s*$/, '')}</span>
               <span className="mx-2.5 text-white/60 font-light">—</span>
               <span className="font-light tracking-wider capitalize text-white/90">
                 {activeSection || 'Cover'}

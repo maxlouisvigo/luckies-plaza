@@ -7,7 +7,7 @@ export const portfolioTranslations = {
       contact: "Contact",
       downloadCv: "CV (PDF)",
       letsTalk: "Let's Talk",
-      viewPdf: "Visual Portfolio —"
+      viewPdf: "Visual Portfolio"
     },
     cover: {
       tagline: "Branding — Social Media — Print Media",
@@ -348,7 +348,7 @@ export const portfolioTranslations = {
       contact: "Kontak",
       downloadCv: "CV (PDF)",
       letsTalk: "Ngobrol Yuk",
-      viewPdf: "Visual Portfolio —"
+      viewPdf: "Visual Portfolio"
     },
     cover: {
       tagline: "Branding — Media Sosial — Media Cetak",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const CoverSection = () => {
@@ -7,32 +7,30 @@ export const CoverSection = () => {
     <section 
       id="cover" 
       data-section="Cover"
-      className="relative min-h-screen flex flex-col justify-between items-center px-6 py-12 md:py-16 text-center overflow-hidden bg-brand-orange"
+      className="relative min-h-screen flex flex-col justify-between items-center px-6 py-12 md:py-16 text-center bg-brand-orange text-white overflow-hidden"
     >
       {/* Background subtle cross-stitch texture */}
-      <div className="absolute inset-0 stitch-bg opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 stitch-bg opacity-35 pointer-events-none" />
 
-      {/* Top Header: Full Name */}
-      <div className="pt-16 md:pt-20 z-10 animate-fade-in">
-        <p className="text-white/95 text-lg md:text-2xl font-serif tracking-wide font-normal">
+      {/* Top Header: Full Name in Editorial Serif */}
+      <div className="pt-16 md:pt-20 z-10">
+        <p className="text-white/95 text-xl md:text-3xl font-serif tracking-wider font-normal">
           {portfolioData.profile.fullName}
         </p>
       </div>
 
-      {/* Centerpiece: The Iconic Cross-Stitch Portfolio Graphic */}
-      <div className="relative my-auto py-8 z-10 max-w-5xl w-full flex flex-col items-center justify-center">
-        <div className="relative w-full px-4 group">
-          <img 
-            src="/assets/extracted/intro/portfolio_title_crop.png" 
-            alt="Louis Vigo Portfolio 2026" 
-            className="w-full h-auto object-contain drop-shadow-xl transition-transform duration-700 hover:scale-[1.02]"
-          />
-        </div>
+      {/* Centerpiece: The ONE-PIECE Cross-Stitch "Portfolio" Artwork Directly on Canvas */}
+      <div className="my-auto py-8 z-10 w-full max-w-6xl px-4 flex items-center justify-center">
+        <img 
+          src="/assets/extracted/intro/portfolio_title_transparent.png" 
+          alt="Portfolio - Louis Vigo" 
+          className="w-full h-auto max-h-[500px] object-contain drop-shadow-lg transform hover:scale-[1.01] transition-transform duration-500 select-none"
+        />
       </div>
 
-      {/* Bottom Subtitle & Scroll Invitation */}
+      {/* Bottom Subtitle & Scroll CTA */}
       <div className="pb-8 z-10 flex flex-col items-center space-y-5">
-        <p className="text-white/95 text-xl md:text-3xl font-serif italic tracking-wider font-light">
+        <p className="text-white/95 text-2xl md:text-4xl font-serif italic tracking-wider font-light">
           {portfolioData.profile.subtagline}
         </p>
 

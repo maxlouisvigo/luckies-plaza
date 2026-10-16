@@ -115,13 +115,17 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
               </div>
             </div>
 
-            {/* Stats */}
+            {/* Stats: Fully responsive and NEVER truncated */}
             {project.stats && (
-              <div className="grid grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 {project.stats.map((st) => (
-                  <div key={st.label} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
-                    <p className="text-xs font-bold text-white truncate">{st.value}</p>
-                    <p className="text-[10px] text-white/60 uppercase tracking-wider mt-0.5 truncate">{st.label}</p>
+                  <div key={st.label} className="p-3.5 rounded-xl bg-white/5 border border-white/10 text-center flex flex-col justify-center">
+                    <p className="text-xs md:text-sm font-bold text-white leading-snug break-words">
+                      {st.value}
+                    </p>
+                    <p className="text-[10px] text-white/70 uppercase tracking-wider mt-1 leading-tight break-words">
+                      {st.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -226,7 +230,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
                         <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">
                           {item.category}
                         </span>
-                        <h5 className="text-xs md:text-sm font-bold text-white leading-snug line-clamp-2 mt-0.5 group-hover:text-brand-cream transition-colors">
+                        <h5 className="text-xs md:text-sm font-bold text-white leading-snug mt-1 group-hover:text-brand-cream transition-colors break-words">
                           {item.title}
                         </h5>
                       </div>
@@ -259,7 +263,7 @@ export const ProjectShowcase = ({ project, index, onOpenLightbox }) => {
                       <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">
                         {item.category}
                       </span>
-                      <h5 className="text-xs md:text-sm font-bold text-white leading-snug line-clamp-2 mt-0.5 group-hover:text-brand-cream transition-colors">
+                      <h5 className="text-xs md:text-sm font-bold text-white leading-snug mt-1 group-hover:text-brand-cream transition-colors break-words">
                         {item.title}
                       </h5>
                     </div>

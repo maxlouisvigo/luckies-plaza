@@ -34,7 +34,7 @@ export const LightboxModal = ({
             Slide {currentIndex + 1} of {slides.length}
           </span>
           <span className="text-white/40">•</span>
-          <span className="text-xs md:text-sm font-medium text-white/90 truncate max-w-xs md:max-w-md">
+          <span className="text-xs md:text-sm font-medium text-white/90 max-w-sm md:max-w-xl break-words">
             {currentSlide.caption || 'Project Showcase'}
           </span>
         </div>

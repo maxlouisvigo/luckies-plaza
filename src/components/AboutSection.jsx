@@ -144,11 +144,11 @@ export const AboutSection = () => {
                   <div className="p-2 rounded-lg bg-white/20 text-white shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <div className="truncate">
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs text-white/70 font-medium uppercase tracking-wider">Email</p>
                     <a 
                       href={`mailto:${portfolioData.profile.contact.email}`}
-                      className="text-sm font-semibold text-white hover:underline truncate block"
+                      className="text-sm font-semibold text-white hover:underline break-all block"
                     >
                       {portfolioData.profile.contact.email}
                     </a>

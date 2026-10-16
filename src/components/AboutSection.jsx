@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { GlassReveal } from './GlassReveal';
 
 export const AboutSection = ({ t = portfolioData }) => {
   const [copiedField, setCopiedField] = useState(null);
@@ -41,21 +42,23 @@ export const AboutSection = ({ t = portfolioData }) => {
     >
       <div className="max-w-7xl mx-auto w-full">
         
-        {/* Visual Hero Banner: Clean 4K crop of Mas Lui & characters */}
-        <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl mb-14 bg-black/10 border border-white/20 group">
-          <img 
-            src="/assets/extracted/intro/intro_banner_4k.png" 
-            alt="Louis Vigo - Visual Specialist & Art Direction" 
-            className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.01]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-        </div>
+        {/* Visual Hero Banner: Clean 4K crop of Mas Lui & characters with Frosted Glass Entrance */}
+        <GlassReveal delay={0.05} yOffset={20}>
+          <div className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl mb-14 bg-black/10 border border-white/20 group">
+            <img 
+              src="/assets/extracted/intro/intro_banner_4k.png" 
+              alt="Louis Vigo - Visual Specialist & Art Direction" 
+              className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.01]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </GlassReveal>
 
         {/* Content Section: 3-Column Layout exactly like Page 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
           {/* Column 1: Main Introduction (6 Cols) */}
-          <div className="lg:col-span-6 space-y-6">
+          <GlassReveal delay={0.15} className="lg:col-span-6 space-y-6">
             <div className="space-y-2">
               <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-white/15 text-white border border-white/20">
                 {about?.roleBadge || 'Creative Director & Visual Strategist'}
@@ -77,10 +80,10 @@ export const AboutSection = ({ t = portfolioData }) => {
                 ✨ {profile.status}
               </span>
             </div>
-          </div>
+          </GlassReveal>
 
           {/* Column 2: Core Expertise (3 Cols) */}
-          <div className="lg:col-span-3 space-y-5">
+          <GlassReveal delay={0.25} className="lg:col-span-3 space-y-5">
             <h3 className="text-xl md:text-2xl font-bold tracking-wide text-brand-umber uppercase font-sans">
               {about?.expertiseTitle || 'Expertise'}
             </h3>
@@ -105,10 +108,10 @@ export const AboutSection = ({ t = portfolioData }) => {
                 </div>
               ))}
             </div>
-          </div>
+          </GlassReveal>
 
           {/* Column 3: Let's Get In Touch (3 Cols) */}
-          <div className="lg:col-span-3 space-y-5">
+          <GlassReveal delay={0.35} className="lg:col-span-3 space-y-5">
             <h3 className="text-xl md:text-2xl font-bold tracking-wide text-brand-umber uppercase font-sans">
               {about?.contactTitle || "Let's Get In Touch"}
             </h3>
@@ -206,7 +209,7 @@ export const AboutSection = ({ t = portfolioData }) => {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
-          </div>
+          </GlassReveal>
 
         </div>
 

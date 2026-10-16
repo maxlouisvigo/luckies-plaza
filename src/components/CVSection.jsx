@@ -11,6 +11,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { GlassReveal } from './GlassReveal';
 
 export const CVSection = ({ t = portfolioData }) => {
   const profile = t?.profile || portfolioData.profile;
@@ -28,35 +29,37 @@ export const CVSection = ({ t = portfolioData }) => {
     >
       <div className="max-w-7xl mx-auto w-full">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div>
-            <span className="text-xs font-semibold tracking-widest uppercase text-white/70">
-              {cv?.badge || 'Credentials & Track Record'}
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-1">
-              {cv?.sectionTitle || 'Curriculum Vitae'}
-            </h2>
-          </div>
+        {/* Section Header with Frosted Glass Entrance */}
+        <GlassReveal delay={0.05} yOffset={20}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+            <div>
+              <span className="text-xs font-semibold tracking-widest uppercase text-white/70">
+                {cv?.badge || 'Credentials & Track Record'}
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-1">
+                {cv?.sectionTitle || 'Curriculum Vitae'}
+              </h2>
+            </div>
 
-          <div className="flex items-center space-x-3">
-            <a
-              href={profile.contact.cvPdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white text-brand-orange font-bold text-sm shadow-md hover:bg-brand-cream hover:shadow-lg transition-all transform hover:-translate-y-0.5"
-            >
-              <Download className="w-4 h-4" />
-              <span>{cv?.downloadButton || 'Download Official CV (PDF)'}</span>
-            </a>
+            <div className="flex items-center space-x-3">
+              <a
+                href={profile.contact.cvPdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white text-brand-orange font-bold text-sm shadow-md hover:bg-brand-cream hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+              >
+                <Download className="w-4 h-4" />
+                <span>{cv?.downloadButton || 'Download Official CV (PDF)'}</span>
+              </a>
+            </div>
           </div>
-        </div>
+        </GlassReveal>
 
         {/* 2-Column Grid recreating Page 3 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Education, Software Competences, Languages (5 Cols) */}
-          <div className="lg:col-span-5 space-y-12">
+          <GlassReveal delay={0.15} className="lg:col-span-5 space-y-12">
             
             {/* 1. Education */}
             <div className="space-y-6">
@@ -138,10 +141,10 @@ export const CVSection = ({ t = portfolioData }) => {
               </div>
             </div>
 
-          </div>
+          </GlassReveal>
 
-          {/* Right Column: Work Experiences Timeline (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Right Column: Work Experiences Timeline with Frosted Glass Entrance (7 Cols) */}
+          <GlassReveal delay={0.25} className="lg:col-span-7 space-y-6">
             <div className="flex items-center space-x-2.5 border-b border-white/20 pb-3">
               <Briefcase className="w-5 h-5 text-white" />
               <h3 className="text-xl md:text-2xl font-bold tracking-wide uppercase text-white font-sans">
@@ -193,7 +196,7 @@ export const CVSection = ({ t = portfolioData }) => {
                 </div>
               ))}
             </div>
-          </div>
+          </GlassReveal>
 
         </div>
 

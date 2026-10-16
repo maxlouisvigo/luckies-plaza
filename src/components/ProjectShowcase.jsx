@@ -12,6 +12,7 @@ import {
 
 import { portfolioData } from '../data/portfolioData';
 import { TiltMockup } from './TiltMockup';
+import { GlassReveal } from './GlassReveal';
 
 export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLightbox }) => {
   const p = t?.project || portfolioData.project;
@@ -64,7 +65,8 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
         {/* ========================================================================= */}
         {/* PART 1: HERO STAGE — NATIVE EDITORIAL STORY & 3D TILT DEVICE MOCKUP */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <GlassReveal delay={0.06} yOffset={24}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Column: Creative Direction Narrative (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
@@ -189,90 +191,161 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
           </div>
 
         </div>
+        </GlassReveal>
 
         {/* ========================================================================= */}
         {/* PART 2: DELIVERABLES STAGE — REAL PRINT, FLYERS, POSTERS & PACKAGING */}
         {/* ========================================================================= */}
         {project.deliverablesGallery && project.deliverablesGallery.length > 0 && (
-          <div className="pt-12 border-t border-white/15 space-y-6">
-            
-            {/* Header for Deliverables */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div>
-                <span className="text-xs font-semibold tracking-widest uppercase text-white/70 block">
-                  {p?.productionTitle || 'Campaign Output & Production Assets'}
-                </span>
-                <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1">
-                  {project.secondaryTitle || 'Individual Deliverables & Collateral'}
-                </h4>
-              </div>
+          <GlassReveal delay={0.12} yOffset={24}>
+            <div className="pt-12 border-t border-white/15 space-y-6">
+              
+              {/* Header for Deliverables */}
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                  <span className="text-xs font-semibold tracking-widest uppercase text-white/70 block">
+                    {p?.productionTitle || 'Campaign Output & Production Assets'}
+                  </span>
+                  <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1">
+                    {project.secondaryTitle || 'Individual Deliverables & Collateral'}
+                  </h4>
+                </div>
 
-              {/* Controls: Category Filter Tabs & Carousel Navigation */}
-              <div className="flex flex-wrap items-center gap-2">
-                {/* Category Filter Chips */}
-                <div className="flex items-center flex-wrap gap-1.5 p-1 rounded-xl bg-black/20 border border-white/15">
-                  {categories.map((cat) => (
+                {/* Controls: Category Filter Tabs & Carousel Navigation */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {/* Category Filter Chips */}
+                  <div className="flex items-center flex-wrap gap-1.5 p-1 rounded-xl bg-black/20 border border-white/15">
+                    {categories.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setSelectedCategory(cat)}
+                        className={`px-3 py-1 text-xs rounded-lg font-semibold transition-all duration-200 capitalize ${
+                          selectedCategory === cat
+                            ? 'bg-white text-brand-orange shadow font-bold'
+                            : 'text-white/80 hover:text-white hover:bg-white/10'
+                        }`}
+                      >
+                        {cat === 'all' 
+                          ? `${t?.cv?.languages ? (t.nav.about === 'Profil' ? 'Semua' : 'All') : 'All'} (${project.deliverablesGallery.length})` 
+                          : cat}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Mobile Carousel Arrow Controls */}
+                  <div className="flex md:hidden items-center space-x-1 pl-1">
                     <button
-                      key={cat}
-                      onClick={() => setSelectedCategory(cat)}
-                      className={`px-3 py-1 text-xs rounded-lg font-semibold transition-all duration-200 capitalize ${
-                        selectedCategory === cat
-                          ? 'bg-white text-brand-orange shadow font-bold'
-                          : 'text-white/80 hover:text-white hover:bg-white/10'
-                      }`}
+                      onClick={() => scrollCarousel('left')}
+                      className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all"
+                      title="Previous item"
+                      aria-label="Previous item"
                     >
-                      {cat === 'all' 
-                        ? `${t?.cv?.languages ? (t.nav.about === 'Profil' ? 'Semua' : 'All') : 'All'} (${project.deliverablesGallery.length})` 
-                        : cat}
+                      <ChevronLeft className="w-4 h-4" />
                     </button>
-                  ))}
-                </div>
-
-                {/* Mobile Carousel Arrow Controls */}
-                <div className="flex md:hidden items-center space-x-1 pl-1">
-                  <button
-                    onClick={() => scrollCarousel('left')}
-                    className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all"
-                    title="Previous item"
-                    aria-label="Previous item"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => scrollCarousel('right')}
-                    className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all"
-                    title="Next item"
-                    aria-label="Next item"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Split view: If there's a standing banner or large vertical mockup */}
-            {project.secondaryMockup ? (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                {/* Left Column: Standing Banner / Large Signage with 3D Tilt (4 Cols) */}
-                <div className="lg:col-span-4 rounded-2xl bg-black/10 border border-white/15 p-4 flex flex-col items-center justify-center">
-                  <TiltMockup
-                    src={project.secondaryMockup}
-                    alt={project.secondaryTitle}
-                    onClick={() => onOpenLightbox(allInspectable, 1)}
-                    badgeText={p?.inspectFullscreen || 'Inspect Fullscreen'}
-                    maxTilt={8}
-                    imgClassName="max-h-[480px] drop-shadow-xl"
-                  />
-                  <div className="mt-3 flex items-center space-x-1.5 text-xs text-white/80 font-semibold">
-                    <ZoomIn className="w-3.5 h-3.5" />
-                    <span>{p?.rollupBanner || 'Rollup Standing Banner / Event Print'}</span>
+                    <button
+                      onClick={() => scrollCarousel('right')}
+                      className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all"
+                      title="Next item"
+                      aria-label="Next item"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
+              </div>
 
-                {/* Right Column: Grid on Desktop, Smooth Touch Swipe Carousel on Mobile (8 Cols) */}
-                <div className="lg:col-span-8">
-                  {/* Mobile Touch Swipeable Track (Visible on < md) */}
+              {/* Split view: If there's a standing banner or large vertical mockup */}
+              {project.secondaryMockup ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  
+                  {/* Left Column: Standing Banner / Large Signage with 3D Tilt (4 Cols) */}
+                  <div className="lg:col-span-4 rounded-2xl bg-black/10 border border-white/15 p-4 flex flex-col items-center justify-center">
+                    <TiltMockup
+                      src={project.secondaryMockup}
+                      alt={project.secondaryTitle}
+                      onClick={() => onOpenLightbox(allInspectable, 1)}
+                      badgeText={p?.inspectFullscreen || 'Inspect Fullscreen'}
+                      maxTilt={8}
+                      imgClassName="max-h-[480px] drop-shadow-xl"
+                    />
+                    <div className="mt-3 flex items-center space-x-1.5 text-xs text-white/80 font-semibold">
+                      <ZoomIn className="w-3.5 h-3.5" />
+                      <span>{p?.rollupBanner || 'Rollup Standing Banner / Event Print'}</span>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Grid on Desktop, Smooth Touch Swipe Carousel on Mobile (8 Cols) */}
+                  <div className="lg:col-span-8">
+                    {/* Mobile Touch Swipeable Track (Visible on < md) */}
+                    <div 
+                      ref={carouselRef}
+                      className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-4 pt-1 px-1"
+                    >
+                      {filteredGallery.map((item, dIdx) => (
+                        <div 
+                          key={dIdx}
+                          onClick={() => handleOpenLightboxForItem(item.src)}
+                          className="w-[72vw] max-w-[280px] shrink-0 snap-center rounded-2xl overflow-hidden bg-black/20 border border-white/20 p-3 flex flex-col justify-between cursor-pointer active:scale-95 transition-all shadow-lg"
+                        >
+                          <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/30 flex items-center justify-center relative mb-3">
+                            <img 
+                              src={item.src} 
+                              alt={item.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-white backdrop-blur-sm">
+                              <ZoomIn className="w-3.5 h-3.5" />
+                            </div>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-white/70 block">
+                              {item.category}
+                            </span>
+                            <h5 className="text-xs font-bold text-white leading-snug mt-1 break-words">
+                              {item.title}
+                            </h5>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Desktop Grid Layout (Visible on >= md) */}
+                    <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-4">
+                      {filteredGallery.map((item, dIdx) => (
+                        <div 
+                          key={dIdx}
+                          onClick={() => handleOpenLightboxForItem(item.src)}
+                          className="group rounded-2xl overflow-hidden bg-black/15 border border-white/15 hover:border-white/40 transition-all duration-300 p-3 flex flex-col justify-between cursor-pointer hover:bg-black/25 transform hover:-translate-y-1 shadow-md"
+                        >
+                          <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/20 flex items-center justify-center relative mb-3">
+                            <img 
+                              src={item.src} 
+                              alt={item.title}
+                              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <ZoomIn className="w-5 h-5 text-white drop-shadow" />
+                            </div>
+                          </div>
+
+                          <div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">
+                              {item.category}
+                            </span>
+                            <h5 className="text-xs md:text-sm font-bold text-white leading-snug mt-1 group-hover:text-brand-cream transition-colors break-words">
+                              {item.title}
+                            </h5>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              ) : (
+                /* Standard Projects (RS Telogorejo, SSH, Sambal) */
+                <div>
+                  {/* Mobile Touch Swipeable Track */}
                   <div 
                     ref={carouselRef}
                     className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-4 pt-1 px-1"
@@ -287,7 +360,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                           <img 
                             src={item.src} 
                             alt={item.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain p-2"
                           />
                           <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-white backdrop-blur-sm">
                             <ZoomIn className="w-3.5 h-3.5" />
@@ -305,8 +378,8 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                     ))}
                   </div>
 
-                  {/* Desktop Grid Layout (Visible on >= md) */}
-                  <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {/* Desktop Grid Layout */}
+                  <div className="hidden md:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                     {filteredGallery.map((item, dIdx) => (
                       <div 
                         key={dIdx}
@@ -317,7 +390,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                           <img 
                             src={item.src} 
                             alt={item.title}
-                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-full object-contain p-1 transform group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <ZoomIn className="w-5 h-5 text-white drop-shadow" />
@@ -336,78 +409,10 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                     ))}
                   </div>
                 </div>
+              )}
 
-              </div>
-            ) : (
-              /* Standard Projects (RS Telogorejo, SSH, Sambal) */
-              <div>
-                {/* Mobile Touch Swipeable Track */}
-                <div 
-                  ref={carouselRef}
-                  className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-4 pt-1 px-1"
-                >
-                  {filteredGallery.map((item, dIdx) => (
-                    <div 
-                      key={dIdx}
-                      onClick={() => handleOpenLightboxForItem(item.src)}
-                      className="w-[72vw] max-w-[280px] shrink-0 snap-center rounded-2xl overflow-hidden bg-black/20 border border-white/20 p-3 flex flex-col justify-between cursor-pointer active:scale-95 transition-all shadow-lg"
-                    >
-                      <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/30 flex items-center justify-center relative mb-3">
-                        <img 
-                          src={item.src} 
-                          alt={item.title}
-                          className="w-full h-full object-contain p-2"
-                        />
-                        <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-white backdrop-blur-sm">
-                          <ZoomIn className="w-3.5 h-3.5" />
-                        </div>
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-white/70 block">
-                          {item.category}
-                        </span>
-                        <h5 className="text-xs font-bold text-white leading-snug mt-1 break-words">
-                          {item.title}
-                        </h5>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Desktop Grid Layout */}
-                <div className="hidden md:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {filteredGallery.map((item, dIdx) => (
-                    <div 
-                      key={dIdx}
-                      onClick={() => handleOpenLightboxForItem(item.src)}
-                      className="group rounded-2xl overflow-hidden bg-black/15 border border-white/15 hover:border-white/40 transition-all duration-300 p-3 flex flex-col justify-between cursor-pointer hover:bg-black/25 transform hover:-translate-y-1 shadow-md"
-                    >
-                      <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/20 flex items-center justify-center relative mb-3">
-                        <img 
-                          src={item.src} 
-                          alt={item.title}
-                          className="w-full h-full object-contain p-1 transform group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <ZoomIn className="w-5 h-5 text-white drop-shadow" />
-                        </div>
-                      </div>
-
-                      <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">
-                          {item.category}
-                        </span>
-                        <h5 className="text-xs md:text-sm font-bold text-white leading-snug mt-1 group-hover:text-brand-cream transition-colors break-words">
-                          {item.title}
-                        </h5>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-          </div>
+            </div>
+          </GlassReveal>
         )}
 
       </div>

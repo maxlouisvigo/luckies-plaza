@@ -226,7 +226,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                         }`}
                       >
                         {cat === 'all' 
-                          ? `${t?.cv?.languages ? (t.nav.about === 'Profil' ? 'Semua' : 'All') : 'All'} (${project.deliverablesGallery.length})` 
+                          ? `${p?.allCategories || (t?.nav?.about === 'Tentang' ? 'Semua' : 'All')} (${project.deliverablesGallery.length})` 
                           : cat}
                       </button>
                     ))}

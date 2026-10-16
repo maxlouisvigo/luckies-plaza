@@ -47,7 +47,8 @@ export const portfolioTranslations = {
       clickToInspect: "Click any piece to inspect detail & typography",
       inspectFullscreen: "Inspect Fullscreen",
       rollupBanner: "Rollup Standing Banner / Event Print",
-      clickMockupHint: "Click mockup to inspect in full resolution"
+      clickMockupHint: "Click mockup to inspect in full resolution",
+      allCategories: "All"
     },
     contact: {
       badge: "Available for New Projects & Full-Time Roles",
@@ -339,69 +340,70 @@ export const portfolioTranslations = {
     ]
   },
 
-  // INDONESIAN TRANSLATION (NATURAL & PROFESSIONAL)
+  // INDONESIAN TRANSLATION (NATURAL, PROFESSIONAL & CREATIVE-SAVVY)
   id: {
     nav: {
-      about: "Profil",
-      cv: "Riwayat Hidup",
+      about: "Tentang",
+      cv: "Pengalaman & CV",
       works: "Karya Pilihan",
       contact: "Kontak",
-      downloadCv: "CV (PDF)",
-      letsTalk: "Ngobrol Yuk",
+      downloadCv: "Download CV",
+      letsTalk: "Ajak Ngobrol",
       viewPdf: "Visual Portfolio"
     },
     cover: {
-      tagline: "Branding — Media Sosial — Media Cetak",
-      scroll: "Gulir untuk Menjelajah"
+      tagline: "Branding — Media Sosial — Desain Cetak",
+      scroll: "Scroll untuk Melihat"
     },
     about: {
-      sectionTitle: "Profil",
+      sectionTitle: "Tentang Saya",
       roleBadge: "Creative Director & Visual Strategist",
-      greeting: "Halo, Nama saya",
-      expertiseTitle: "Keahlian Utama",
-      contactTitle: "Mari Terhubung",
-      phoneLabel: "Telepon / WhatsApp",
+      greeting: "Halo, saya",
+      expertiseTitle: "Spesialisasi",
+      contactTitle: "Kontak & Diskusi",
+      phoneLabel: "WhatsApp / Telepon",
       emailLabel: "Email",
       linkedinLabel: "LinkedIn",
-      hireCta: "Ajak Kolaborasi / Rekrut"
+      hireCta: "Mulai Diskusi Proyek"
     },
     cv: {
-      sectionTitle: "Riwayat Hidup",
-      badge: "Kredensial & Rekam Jejak",
-      downloadButton: "Unduh CV Resmi (PDF)",
+      sectionTitle: "Pengalaman & Rekam Jejak",
+      badge: "Karier & Rekam Jejak",
+      downloadButton: "Download CV (PDF)",
       educationTitle: "Pendidikan",
-      softwareTitle: "Kompetensi Software",
+      softwareTitle: "Software & Tools",
       languagesTitle: "Bahasa",
       experienceTitle: "Pengalaman Kerja"
     },
     contents: {
       sectionTitle: "Daftar Isi",
-      badge: "Daftar Karya & Studi Kasus Pilihan",
-      caseStudyPrefix: "Studi Kasus"
+      badge: "Studi Kasus & Proyek Pilihan",
+      caseStudyPrefix: "Proyek"
     },
     project: {
       caseStudyLabel: "Studi Kasus",
       creativeFocusTitle: "Fokus Kreatif",
-      challengeTitle: "Tantangan & Solusi Strategis",
+      challengeTitle: "Tantangan & Solusi Desain",
       coreDeliverablesTitle: "Deliverables Utama",
-      productionTitle: "Hasil Kampanye & Materi Produksi",
-      clickToInspect: "Klik gambar mana pun untuk melihat detail & tipografi",
-      inspectFullscreen: "Lihat Layar Penuh",
-      rollupBanner: "Rollup Standing Banner / Cetak Event",
-      clickMockupHint: "Klik mockup untuk melihat resolusi penuh"
+      productionTitle: "Galeri Karya & Hasil Produksi",
+      clickToInspect: "Klik gambar untuk melihat detail resolusi penuh",
+      inspectFullscreen: "Lihat Fullscreen",
+      rollupBanner: "Standing Rollup Banner / Event Cetak",
+      clickMockupHint: "Klik mockup untuk lihat detail resolusi penuh",
+      allCategories: "Semua"
     },
     contact: {
-      badge: "Terbuka untuk Proyek Baru & Posisi Penuh Waktu",
+      badge: "Terbuka untuk Proyek Baru & Peluang Kolaborasi",
       thankYou: "Terima Kasih!",
-      workTogether: "Mari Berkolaborasi Bersama",
+      workTogether: "Tertarik Kolaborasi Bareng?",
       chatWhatsapp: "Chat via WhatsApp",
       sendEmail: "Kirim Email",
-      downloadPortfolio: "Unduh Portfolio 2026 (PDF)",
-      downloadCv: "Unduh Riwayat Hidup (PDF)"
+      downloadPortfolio: "Download Portfolio (PDF)",
+      downloadCv: "Download CV (PDF)"
     },
     footer: {
       rights: "Hak Cipta Dilindungi.",
-      subtitle: "Dirancang dengan Keahlian Visual & Dibangun untuk Komunikasi Berdampak Nyata.",
+      subtitle: "Dirancang dengan ketelitian visual dan fokus pada komunikasi yang berdampak.",
       backToTop: "Kembali ke Atas"
     },
     profile: {
@@ -409,17 +411,17 @@ export const portfolioTranslations = {
       displayName: "Louis Vigo",
       nickname: "Lui",
       tagline: "Spesialis Visual & Ahli Komunikasi Kreatif",
-      subtagline: "Branding — Media Sosial — Media Cetak",
+      subtagline: "Branding — Media Sosial — Desain Cetak",
       experienceYears: "7+ Tahun",
       location: "Semarang / Yogyakarta, Indonesia",
-      status: "Terbuka untuk Peluang / Relokasi / Remote",
-      bio: "Saya seorang Visual Specialist dan Communication Expert dengan pengalaman 7+ tahun menerjemahkan tujuan korporat yang kompleks menjadi solusi visual berdaya dampak tinggi. Mulai dari executive B2B pitch deck hingga art direction event berskala nasional, saya memadukan strategi marketer dengan standar desain tingkat lanjut dan alur kerja AI modern. Saya tidak sekadar membuat visual terlihat bagus — saya merancang strategi visual yang berkomunikasi secara jelas dan menghasilkan dampak nyata bagi bisnis.",
+      status: "Terbuka untuk Kolaborasi / Remote & On-site",
+      bio: "Selama 7+ tahun berkarier sebagai Visual Specialist, fokus saya adalah menjembatani pesan brand dan kebutuhan bisnis lewat desain yang terarah. Mulai dari pitch deck B2B, identitas kampanye event nasional, hingga konten digital berinteraksi tinggi, setiap karya dibangun dengan riset audiens, tipografi yang matang, dan eksekusi visual yang solid. Desain yang baik bukan cuma enak dilihat, tapi harus mampu menyampaikan pesan dengan jelas dan menggerakkan audiens.",
       introBanner: "/assets/extracted/intro/intro_banner_4k.png",
       expertise: [
-        { name: "Desain", desc: "Branding, hierarki tata letak, dan art direction standar produksi tinggi." },
-        { name: "Konsep & Ideasi", desc: "Menerjemahkan brief abstrak menjadi konsep kreatif yang beresonansi kuat." },
-        { name: "Key Visual", desc: "Jangkar visual berdampak tinggi untuk peluncuran kampanye lintas platform." },
-        { name: "Komunikasi Visual", desc: "Arsitektur informasi strategis yang mendorong aksi nyata audiens." }
+        { name: "Art Direction & Branding", desc: "Membangun identitas visual yang konsisten, mulai dari logo, tone warna, hingga panduan aplikasi brand." },
+        { name: "Konsep & Ideasi Kreatif", desc: "Mengembangkan gagasan dari brief mentah menjadi konsep visual yang relevan dengan target audiens." },
+        { name: "Key Visual & Kampanye", desc: "Merancang visual utama sebagai acuan seragam untuk promosi digital, cetak, dan event." },
+        { name: "Komunikasi Visual & Layout", desc: "Menyusun hierarki informasi agar pesan mudah dipahami dan mengarahkan perhatian pembaca." }
       ],
       contact: {
         phone: "0822 2702 2464",
@@ -439,30 +441,30 @@ export const portfolioTranslations = {
         period: "2020 – 2024",
         institution: "Universitas Katolik Soegijapranata",
         degree: "Sarjana Desain (S.Ds)",
-        highlight: "Konsentrasi Desain Komunikasi Visual (DKV), Art Direction Event & Branding Strategis"
+        highlight: "Konsentrasi Desain Komunikasi Visual (DKV), fokus pada branding, tipografi, dan art direction."
       },
       {
         period: "2017 – 2020",
         institution: "SMK Negeri 7 Yogyakarta",
         degree: "Multimedia",
-        highlight: "Pelatihan dasar Desain Grafis, Produksi Video & Storytelling Audio-Visual"
+        highlight: "Dasar desain grafis, produksi video, dan storytelling audio-visual."
       }
     ],
     softwareCompetences: [
       { name: "Adobe Illustrator", category: "Vektor & Branding", level: 95 },
-      { name: "Adobe Photoshop", category: "Raster & Manipulasi Foto", level: 95 },
-      { name: "Adobe Premiere Pro", category: "Produksi & Editing Video", level: 90 },
-      { name: "Adobe After Effects", category: "Motion Graphics & VFX", level: 85 },
+      { name: "Adobe Photoshop", category: "Digital Imaging & Manipulasi Foto", level: 95 },
+      { name: "Adobe Premiere Pro", category: "Editing Video & Post-Production", level: 90 },
+      { name: "Adobe After Effects", category: "Motion Graphics & Animasi", level: 85 },
       { name: "Adobe Lightroom", category: "Color Grading & Foto", level: 90 },
       { name: "Figma", category: "UI/UX & Design Systems", level: 85 },
-      { name: "CapCut", category: "Video Cepat Media Sosial", level: 95 },
-      { name: "Canva", category: "Prototyping Cepat & Templating", level: 95 },
-      { name: "Gemini AI", category: "Generative AI & Strategi Konten", level: 95 },
-      { name: "Google Flow", category: "Produktivitas & Orkestrasi", level: 90 }
+      { name: "CapCut", category: "Editing Konten Media Sosial", level: 95 },
+      { name: "Canva", category: "Prototyping Cepat & Template", level: 95 },
+      { name: "Gemini AI", category: "Generative AI & Eksplorasi Visual", level: 95 },
+      { name: "Google Flow", category: "Manajemen Alur Kerja Kreatif", level: 90 }
     ],
     languages: [
       { name: "Bahasa Indonesia", level: "Penutur Asli (Native)", badge: "Native" },
-      { name: "Bahasa Inggris", level: "Kefasihan Profesional", badge: "Profesional" }
+      { name: "Bahasa Inggris", level: "Kemampuan Kerja Profesional", badge: "Profesional" }
     ],
     workExperiences: [
       {
@@ -470,49 +472,49 @@ export const portfolioTranslations = {
         company: "School of Parenting & Harmoni Diri",
         role: "Partnership & Event Marketing",
         location: "Semarang & Nasional",
-        description: "Memimpin pemasaran event kreatif, materi kemitraan wellness B2B, identitas visual workshop, serta kampanye media sosial di berbagai kota besar Indonesia."
+        description: "Mengembangkan materi visual kemitraan B2B, key visual workshop nasional (Jakarta, Surabaya, Semarang, Bali), dan strategi konten edukasi media sosial yang interaktif."
       },
       {
         period: "2024 – 2025",
         company: "Lavender Medicare Indonesia",
-        role: "Desain Grafis & Media Sosial",
+        role: "Graphic Designer & Social Media",
         location: "Indonesia",
-        description: "Mengarahkan identitas visual korporat, kampanye layanan kesehatan berkonversi tinggi, materi cetak promosi, dan touchpoint digital."
+        description: "Merancang materi promosi layanan kesehatan, desain cetak brosur, materi edukasi pasien, serta aset visual untuk kampanye digital."
       },
       {
         period: "2024",
         company: "Bimbingan Belajar Pacu Prestasi",
-        role: "Desain Grafis & Media Sosial",
+        role: "Graphic Designer & Social Media",
         location: "Yogyakarta",
-        description: "Membangun konten media sosial edukasi yang menarik, materi akuisisi siswa, dan branding event yang menyasar Gen Z serta orang tua."
+        description: "Membuat materi promosi penerimaan siswa baru, konten edukasi interaktif untuk media sosial, dan materi branding event akademik."
       },
       {
         period: "2023 – 2024",
         company: "Kampanye Politik (Sedulur Herviano)",
-        role: "Desain Grafis & Media Sosial",
+        role: "Graphic Designer & Social Media",
         location: "Jawa Tengah",
-        description: "Menangani komunikasi visual terpadu, dokumentasi foto lapangan, merchandise, serta materi kampanye akar rumput untuk Pemilu Legislatif 2024."
+        description: "Merancang materi kampanye luar ruang (baliho, spanduk, backdrop panggung), merchandise, serta dokumentasi fotografi kegiatan warga di Jawa Tengah."
       },
       {
         period: "2023",
         company: "SMC RS Telogorejo",
-        role: "Desain Grafis & Magang Digital Marketing",
+        role: "Graphic Designer & Digital Marketing Intern",
         location: "Semarang",
-        description: "Merumuskan konten promosi kesehatan, materi video edukasi pasien, brosur layanan persalinan (Maternity), dan signage rumah sakit."
+        description: "Menyusun materi edukasi kesehatan, brosur paket persalinan maternity, video promosi layanan, dan desain signage informasi rumah sakit."
       },
       {
         period: "2019",
         company: "Kalopsia Photo & Lokacinema",
-        role: "Magang Fotografer & Videografer",
+        role: "Fotografer & Videografer Intern",
         location: "Yogyakarta",
-        description: "Mengambil fotografi studio komersial, video sinematik event, alur kerja editing video, dan color grading."
+        description: "Menangani sesi fotografi studio komersial, dokumentasi video event, serta proses editing dan grading pascaproduksi."
       }
     ],
     projects: [
       {
         id: "harmoni-diri",
         title: "Harmoni Diri",
-        subtitle: "Desain Media Sosial dan Media Cetak",
+        subtitle: "Desain Media Sosial & Media Cetak",
         category: "Kebugaran & Kesehatan Fisik",
         period: "2025 – Sekarang",
         logo: "/assets/extracted/harmoni_diri/hadir_logo.png",
@@ -520,19 +522,19 @@ export const portfolioTranslations = {
         heroMockupAlt: "Showcase Aplikasi & Feeds Harmoni Diri",
         secondaryMockup: "/assets/extracted/harmoni_diri/hadir_standing_banner.png",
         secondaryTitle: "Materi Cetak Workshop Nasional & Kursus Klinis",
-        description: "Saya menangani desain visual menyeluruh (end-to-end) untuk konten media sosial Harmoni Diri (HADIR), mencakup konten edukasi gerakan anatomi, kampanye wellness, serta promosi workshop nasional (termasuk Jakarta, Surabaya, Bali, dan Semarang).",
-        focus: "Fokus utama saya adalah membangun identitas visual yang bersih, premium, dan konsisten yang selaras sempurna dengan nilai-nilai utama brand dalam manajemen kebugaran holistik.",
-        challenge: "Tantangan utamanya adalah menerjemahkan konsep anatomi dan pergerakan tubuh yang kompleks—yang dikurasi bersama para ahli—menjadi materi visual, postingan media sosial, serta antarmuka UI/UX yang memikat. Saya menjawab tantangan ini lewat hierarki konten strategis dan tipografi yang kuat, sehingga informasi medis teknis menjadi sangat mudah dicerna oleh audiens awam.",
+        description: "Menangani seluruh kebutuhan visual Harmoni Diri (HADIR), mulai dari materi edukasi anatomi gerak, kampanye media sosial, hingga materi promosi workshop offline di 4 kota besar (Jakarta, Surabaya, Semarang, dan Bali).",
+        focus: "Membangun identitas visual yang bersih, rapi, dan konsisten agar materi edukasi kesehatan anatomi terlihat profesional dan mudah dipahami masyarakat luas.",
+        challenge: "Materi anatomi klinis memiliki istilah teknis yang rumit. Tantangannya adalah menyederhanakan data medis tersebut ke dalam poster dan carousel visual yang jelas tanpa mengurangi akurasi informasinya.",
         deliverables: [
           "Standing Banner Workshop Nasional",
           "Poster Kursus Anatomi Klinis 50 Jam",
-          "Carousel Media Sosial & Brief Motion",
-          "Tata Letak Presentasi Web & UI/UX"
+          "Carousel Media Sosial & Motion",
+          "Desain Presentasi Web & UI/UX"
         ],
         stats: [
           { label: "Cakupan Workshop", value: "4 Kota Besar" },
-          { label: "Disiplin Ilmu", value: "Anatomi & Gerak" },
-          { label: "Hasil Kerja", value: "Digital + Cetak" }
+          { label: "Kategori", value: "Kebugaran & Anatomi" },
+          { label: "Format Output", value: "Digital & Cetak" }
         ],
         deliverablesGallery: [
           { src: "/assets/extracted/harmoni_diri/posters/scoliosis_surabaya_1.png", title: "Terapi Skoliosis Tipe C & S (Surabaya)", category: "Poster Klinis" },
@@ -553,20 +555,20 @@ export const portfolioTranslations = {
         heroMockup: "/assets/extracted/school_of_parenting/sop_mobile_highlight.png",
         heroMockupAlt: "Feeds Edukasi Psikologi Viral School of Parenting",
         secondaryMockup: "/assets/extracted/school_of_parenting/sop_phone_hand.png",
-        secondaryTitle: "Corporate Wellness (MHCU) & Visual Berinteraksi Tinggi",
-        description: "Saya memimpin desain visual konten media sosial School of Parenting, meliputi layanan kesehatan mental, asesmen psikologi, dan kampanye terapi klinis.",
-        focus: "Fokus saya adalah menciptakan visual yang empatik, profesional, dan mampu membangun rasa percaya (trust) bagi individu, keluarga, maupun klien korporat B2B.",
-        challenge: "Tantangan terbesarnya adalah menyajikan informasi psikologis klinis secara lugas, hangat, dan tanpa menghakimi (non-judgmental). Saya mengeksekusi ini lewat tata letak bersih, tipografi humanis, dan konsistensi branding agar pesan terasa merangkul dan suportif.",
+        secondaryTitle: "Corporate Wellness (MHCU) & Visual Interaktif",
+        description: "Menangani perancangan visual konten media sosial School of Parenting, berfokus pada topik kesehatan mental, parenting, dan layanan asesmen psikologi baik untuk keluarga maupun korporat (B2B).",
+        focus: "Menciptakan gaya visual yang hangat, empatik, dan membangun rasa percaya, sehingga audiens merasa nyaman saat membaca isu psikologi yang sensitif.",
+        challenge: "Isu kesehatan mental butuh pendekatan yang hati-hati agar tidak terkesan menggurui. Solusinya adalah penggunaan tipografi humanis, kombinasi warna yang menenangkan, dan struktur informasi bertahap yang ramah pembaca.",
         deliverables: [
-          "Carousel Edukasi Keterlibatan Tinggi",
+          "Carousel Edukasi Interaktif",
           "Deck B2B Corporate MHCU",
           "Kampanye Visual 'Mental Health Wrapped'",
           "Materi Promosi Terapi & Asesmen"
         ],
         stats: [
-          { label: "Kepercayaan Klien", value: "B2C & B2B Korporat" },
-          { label: "Pendekatan", value: "Hangat & Non-Judgmental" },
-          { label: "Interaksi", value: "22K+ Likes / Post" }
+          { label: "Segmen Audiens", value: "Keluarga & Korporat B2B" },
+          { label: "Pendekatan Visual", value: "Hangat & Empatis" },
+          { label: "Interaksi Tertinggi", value: "22K+ Likes / Post" }
         ],
         deliverablesGallery: [
           { src: "/assets/extracted/school_of_parenting/carousels/produktif_takut_diam_1.png", title: "Punya Jabatan Bagus, Tapi Feeling Empty", category: "Kesehatan Mental" },
@@ -580,27 +582,27 @@ export const portfolioTranslations = {
       {
         id: "smc-rs-telogorejo",
         title: "SMC RS Telogorejo",
-        subtitle: "Desain Media Sosial dan Media Cetak",
+        subtitle: "Desain Media Sosial & Media Cetak",
         category: "Rumah Sakit & Layanan Kesehatan",
         period: "2023",
         logo: "/assets/extracted/telogorejo/telogorejo_logo.png",
         heroMockup: "/assets/extracted/telogorejo/telogorejo_mobile_highlight.png",
         heroMockupAlt: "Feeds Paket Persalinan & Pemasaran Rumah Sakit",
         secondaryMockup: "/assets/extracted/telogorejo/rs_lantai_1_signage.png",
-        secondaryTitle: "Komunikasi Pasien, Brosur Layanan & Signage Fasilitas",
-        description: "Saya mengelola perancangan visual dan perencanaan konten saluran pemasaran SMC RS Telogorejo, mencakup video edukasi kesehatan, konten media sosial mingguan, dan materi cetak rumah sakit.",
-        focus: "Fokus saya adalah menciptakan komunikasi visual yang kredibel, memikat, dan profesional sesuai standar tinggi institusi layanan kesehatan terpercaya.",
-        challenge: "Tantangan utamanya adalah mengubah topik medis yang formal menjadi konten digital berinteraksi tinggi. Saya menyelesaikannya dengan menganalisis tren media sosial, menyusun kalender konten terarah, dan menerapkan teknik video editing dinamis untuk mengunci retensi audiens.",
+        secondaryTitle: "Komunikasi Pasien, Brosur Layanan & Signage Rumah Sakit",
+        description: "Merancang materi komunikasi visual promosi dan informasi medis SMC RS Telogorejo, meliputi konten edukasi dokter, brosur paket layanan, serta materi cetak lingkungan rumah sakit.",
+        focus: "Menjaga keseimbangan antara citra medis yang kredibel dan tampilan informasi yang komunikatif bagi pasien dan keluarga.",
+        challenge: "Informasi layanan spesialis dan teknologi medis sering kali terasa kaku bagi calon pasien. Tantangan ini dijawab lewat tata letak brosur yang rapi, infografis ringkas, dan video reels edukatif bersama dokter spesialis.",
         deliverables: [
           "Brosur Paket Bersalin (Maternity Package)",
-          "Kampanye Pemasaran Skrining MRI Brain MRA",
-          "Promosi Layanan Rehab Sensori Anak",
+          "Promosi Layanan Skrining MRI Brain MRA",
+          "Promosi Layanan Rehab Medik Anak",
           "Standing Signage & Papan Arah Fasilitas"
         ],
         stats: [
-          { label: "Institusi", value: "RS Terkemuka Semarang" },
-          { label: "Bauran Media", value: "IG, YouTube, Cetak, OOH" },
-          { label: "Eksekusi", value: "Desain + Direct Video" }
+          { label: "Institusi", value: "SMC RS Telogorejo" },
+          { label: "Media Promosi", value: "Instagram, YouTube & Cetak" },
+          { label: "Lingkup Kerja", value: "Desain Grafis & Video" }
         ],
         deliverablesGallery: [
           { src: "/assets/extracted/telogorejo/maternity_pricing_brochure.png", title: "Brosur Paket Persalinan Maternity", category: "Brosur Harga" },
@@ -614,17 +616,17 @@ export const portfolioTranslations = {
       {
         id: "sedulur-herviano",
         title: "Sedulur Herviano",
-        subtitle: "Desain Media Sosial dan Media Cetak",
-        category: "Kampanye Politik & Akar Rumput",
+        subtitle: "Desain Media Sosial & Media Cetak",
+        category: "Kampanye Politik & Sosial Warga",
         period: "2023 – 2024",
         logo: "/assets/extracted/sedulur_herviano/ssh_mascot_logo.png",
         heroMockup: "/assets/extracted/sedulur_herviano/ssh_mobile_highlight.png",
         heroMockupAlt: "Kampanye Media Sosial Kerakyatan Sedulur Herviano",
         secondaryMockup: "/assets/extracted/sedulur_herviano/posters/baliho_pilus_3x2.png",
-        secondaryTitle: "Materi Promosi Event Massal & Cetak Ukuran Besar",
-        description: "Saya menangani perancangan visual dan dokumentasi lapangan untuk kampanye politik Sedulur Saklawase Herviano, mencakup konten digital media sosial, promosi kegiatan offline, serta materi keterlibatan warga di akar rumput.",
-        focus: "Fokus saya adalah membangun kehadiran visual yang kuat, ramah, dan membumi untuk memperluas jangkauan publik dan simpati akar rumput pada Pemilu Legislatif 2024.",
-        challenge: "Tantangan utamanya adalah mengemas agenda politik formal menjadi konten keseharian yang dekat dengan warga. Saya menggabungkan fotografi lapangan yang dinamis dengan tata visual berani dan berorientasi aksi, memastikan pesan kampanye menyentuh demografi lokal secara konsisten di ranah digital maupun cetak.",
+        secondaryTitle: "Materi Promosi Event Warga & Cetak Skala Besar",
+        description: "Mengelola kebutuhan desain visual dan dokumentasi lapangan untuk kampanye sosial-kemasyarakatan Sedulur Saklawase Herviano di berbagai wilayah Jawa Tengah.",
+        focus: "Menampilkan visual yang ramah, dekat dengan masyarakat akar rumput, dan mudah dikenali di ruang publik.",
+        challenge: "Materi kampanye harus terbaca jelas dalam hitungan detik di jalan raya maupun di tengah keramaian acara warga. Solusinya adalah tipografi berukuran kontras, palet warna tegas, dan foto kegiatan warga yang otentik.",
         deliverables: [
           "Spanduk & Banner Tebus Murah Sembako",
           "Backdrop Panggung Konsolidasi Akbar",
@@ -632,14 +634,14 @@ export const portfolioTranslations = {
           "Poster Promosi Panjat Pinang Kemerdekaan"
         ],
         stats: [
-          { label: "Skala Jangkauan", value: "Dapil Jawa Tengah" },
-          { label: "Format", value: "Cetak Massal & Feeds" },
+          { label: "Wilayah Kegiatan", value: "Jawa Tengah" },
+          { label: "Media Produksi", value: "Baliho, Spanduk & Feeds" },
           { label: "Peran Lapangan", value: "Desain & Dokumentasi" }
         ],
         deliverablesGallery: [
           { src: "/assets/extracted/sedulur_herviano/posters/baliho_pilus_3x2.png", title: "Baliho Akbar 3x2m Indonesia Unggul", category: "Billboard Luar Ruang" },
           { src: "/assets/extracted/sedulur_herviano/posters/flyer_konsolidasi_dan_panggung_hiburan.png", title: "Konsolidasi Akbar & Panggung Hiburan", category: "Poster Konser" },
-          { src: "/assets/extracted/sedulur_herviano/posters/panjat_pinang_semarang_revisi.png", title: "Lomba Panjat Pinang Kemerdekaan (10 Juta)", category: "Materi Lomba" },
+          { src: "/assets/extracted/sedulur_herviano/posters/panjat_pinang_semarang_revisi.png", title: "Lomba Panjat Pinang Kemerdekaan", category: "Materi Lomba" },
           { src: "/assets/extracted/sedulur_herviano/posters/flyer_pengajian_8_feb.png", title: "Sholawat Kebangsaan Bersama Gus Ali", category: "Kegiatan Religi" },
           { src: "/assets/extracted/sedulur_herviano/posters/7_januari.png", title: "Senam & Jalan Sehat Berhadiah Utama", category: "Kegiatan Massal" },
           { src: "/assets/extracted/sedulur_herviano/posters/tebus_murah.png", title: "Tebus Murah Minyak Goreng & Gula 1 Kg", category: "Voucher Sembako" }
@@ -648,32 +650,32 @@ export const portfolioTranslations = {
       {
         id: "sambal-suster-ana",
         title: "Sambal Suster Ana",
-        subtitle: "Desain Produk & Kemasan",
-        category: "Identitas Brand F&B & Kemasan Ritel",
+        subtitle: "Desain Kemasan & Identitas Brand",
+        category: "Branding F&B & Kemasan Produk",
         period: "2021 – 2024",
         logo: "/assets/extracted/sambal_suster_ana/sambal_mascot_logo.png",
         heroMockup: "/assets/extracted/sambal_suster_ana/sambal_3d_jars.png",
         heroMockupAlt: "Render 3D Kemasan Toples Sambal Suster Ana",
         secondaryMockup: "/assets/extracted/sambal_suster_ana/sambal_flat_label.png",
-        secondaryTitle: "Arsitektur Label Kemasan, Pola Die-Cut & Maskot",
-        description: "Saya merancang identitas brand dan desain kemasan untuk Sambal Suster Ana, usaha kuliner lokal Semarang yang memproduksi sambal rumahan premium.",
-        focus: "Fokus saya adalah mengangkat produk rumahan tradisional menjadi brand komersial yang siap bersaing di pasar modern tanpa kehilangan cita rasa otentik dan nilai warisan lokalnya.",
-        challenge: "Tantangan utamanya adalah menciptakan kemasan yang mencolok di rak ritel yang padat sembari mengomunikasikan kualitas produk secara meyakinkan. Saya meresponsnya lewat logo maskot yang khas dan mudah diingat, tipografi tegas, serta tata letak label terstruktur yang menonjolkan kesegaran bahan baku.",
+        secondaryTitle: "Desain Label Kemasan, Pola Potong & Maskot",
+        description: "Merancang identitas visual dan kemasan produk Sambal Suster Ana, UMKM kuliner asal Semarang yang memproduksi sambal khas rumahan dengan bahan premium.",
+        focus: "Meningkatkan daya tarik produk lokal agar tampil menonjol di rak ritel modern dan toko oleh-oleh tanpa meninggalkan kesan cita rasa rumahan yang otentik.",
+        challenge: "Pasar produk sambal sangat kompetitif di Semarang. Kemasan harus langsung memikat mata pembeli dan memuat informasi legalitas/komposisi secara rapi dalam area toples yang terbatas. Solusinya adalah ilustrasi maskot yang ikonik, stiker segel higienis, dan tata letak label yang informatif.",
         deliverables: [
-          "Karakter Maskot Kustom & Badge Logo",
-          "Tata Letak Label Toples (Nutrisi, Komposisi, Barcode)",
-          "Sticker Segel Bulat Tutup Kemasan",
-          "Render Mockup 3D Komersial Berkualitas Tinggi"
+          "Ilustrasi Maskot & Badge Logo",
+          "Desain Label Toples (Informasi Nilai Gizi, Komposisi, Barcode)",
+          "Stiker Segel Tutup Kemasan",
+          "Render Mockup 3D untuk Promosi Komersial"
         ],
         stats: [
-          { label: "Target Pasar", value: "Ritel & Oleh-oleh Kuliner" },
-          { label: "Lingkup Kerja", value: "Identitas Brand Penuh" },
-          { label: "Asal Kota", value: "Semarang, Indonesia" }
+          { label: "Target Pasar", value: "Ritel & Oleh-Oleh" },
+          { label: "Lingkup Proyek", value: "Branding & Kemasan 3D" },
+          { label: "Basis Produk", value: "Semarang, Indonesia" }
         ],
         deliverablesGallery: [
           { src: "/assets/extracted/sambal_suster_ana/sambal_3d_jars.png", title: "Render 3D Produk Toples Komersial", category: "Kemasan 3D" },
           { src: "/assets/extracted/sambal_suster_ana/sambal_flat_label.png", title: "Artwork Datar Pola Potong Label Ritel", category: "Desain Label" },
-          { src: "/assets/extracted/sambal_suster_ana/sambal_round_sticker.png", title: "Sticker Segel Tutup Bulat (Since 2021)", category: "Segel Kemasan" },
+          { src: "/assets/extracted/sambal_suster_ana/sambal_round_sticker.png", title: "Stiker Segel Tutup Bulat (Since 2021)", category: "Segel Kemasan" },
           { src: "/assets/extracted/sambal_suster_ana/sambal_mascot_badge_large.png", title: "Emblem Logo Karakter Maskot", category: "Identitas Vektor" }
         ]
       }

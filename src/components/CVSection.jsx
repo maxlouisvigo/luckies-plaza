@@ -142,19 +142,26 @@ export const CVSection = () => {
               </h3>
             </div>
 
-            <div className="relative pl-6 md:pl-8 space-y-8 before:absolute before:left-2 md:before:left-3 before:top-3 before:bottom-3 before:w-[2px] before:bg-white/25">
+            <div className="space-y-6">
               {portfolioData.workExperiences.map((exp, index) => (
                 <div 
                   key={index}
-                  className="relative group"
+                  className="flex items-start gap-4 md:gap-5 group"
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute -left-6 md:-left-8 top-1.5 w-4 h-4 md:w-6 md:h-6 rounded-full bg-brand-orange border-2 border-white flex items-center justify-center transform -translate-x-1/2 group-hover:scale-110 transition-transform shadow">
-                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white" />
+                  {/* Timeline Column: Guaranteed 100% Coaxial Alignment */}
+                  <div className="flex flex-col items-center self-stretch shrink-0 w-6">
+                    {/* Concentric Timeline Dot */}
+                    <div className="w-5 h-5 rounded-full bg-brand-orange border-2 border-white flex items-center justify-center shadow-md group-hover:scale-125 transition-transform duration-200 mt-2 shrink-0 z-10">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    </div>
+                    {/* Connecting Vertical Line */}
+                    {index !== portfolioData.workExperiences.length - 1 && (
+                      <div className="w-[2px] bg-white/25 grow my-1" />
+                    )}
                   </div>
 
                   {/* Experience Card */}
-                  <div className="p-5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition-all shadow-sm">
+                  <div className="grow p-5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 transition-all shadow-sm">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
                       <span className="px-2.5 py-0.5 rounded-md bg-white/20 text-white font-bold text-xs">
                         {exp.period}

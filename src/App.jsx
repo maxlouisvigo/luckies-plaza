@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
 import { MarqueeTicker } from './components/MarqueeTicker';
+import { MobileFloatingDock } from './components/MobileFloatingDock';
 import { portfolioTranslations, portfolioData } from './data/portfolioData';
 
 export function App() {
@@ -130,6 +131,14 @@ export function App() {
         currentIndex={lightbox.currentIndex}
         onClose={closeLightbox}
         onNavigate={navigateLightbox}
+      />
+
+      {/* Floating Glass Island / Dock for Mobile View */}
+      <MobileFloatingDock
+        activeSection={activeSection}
+        lang={lang}
+        onToggleLang={setLang}
+        t={t}
       />
     </div>
   );

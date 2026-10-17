@@ -279,34 +279,54 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                     {/* Mobile Touch Swipeable Track (Visible on < md) */}
                     <div 
                       ref={carouselRef}
-                      className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-4 pt-1 px-1"
+                      className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-2 pt-1 px-1"
                     >
                       {filteredGallery.map((item, dIdx) => (
                         <div 
                           key={dIdx}
                           onClick={() => handleOpenLightboxForItem(item.src)}
-                          className="w-[72vw] max-w-[280px] shrink-0 snap-center rounded-2xl overflow-hidden bg-black/20 border border-white/20 p-3 flex flex-col justify-between cursor-pointer active:scale-95 transition-all shadow-lg"
+                          className="w-[74vw] max-w-[290px] shrink-0 snap-center rounded-2xl overflow-hidden bg-gradient-to-b from-white/15 to-black/35 backdrop-blur-md border border-white/25 p-3 flex flex-col justify-between cursor-pointer active:scale-95 transition-all shadow-xl group"
                         >
-                          <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/30 flex items-center justify-center relative mb-3">
+                          {/* Card Header: Index & Category Pill */}
+                          <div className="flex items-center justify-between mb-2.5 px-0.5">
+                            <span className="font-serif italic text-brand-cream text-xs font-semibold">
+                              #{String(dIdx + 1).padStart(2, '0')}
+                            </span>
+                            <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                              {item.category}
+                            </span>
+                          </div>
+
+                          <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/40 flex items-center justify-center relative mb-3 border border-white/10">
                             <img 
                               src={item.src} 
                               alt={item.title}
                               className="w-full h-full object-cover"
                             />
-                            <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-white backdrop-blur-sm">
+                            <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/70 text-white backdrop-blur-sm border border-white/20 shadow">
                               <ZoomIn className="w-3.5 h-3.5" />
                             </div>
                           </div>
+
                           <div>
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-white/70 block">
-                              {item.category}
-                            </span>
-                            <h5 className="text-xs font-bold text-white leading-snug mt-1 break-words">
+                            <h5 className="text-xs font-bold text-white leading-snug line-clamp-2 break-words">
                               {item.title}
                             </h5>
                           </div>
                         </div>
                       ))}
+                    </div>
+
+                    {/* Mobile Swipe Lookbook Navigation Indicator */}
+                    <div className="flex md:hidden items-center justify-between text-xs text-white/70 pt-2 px-1">
+                      <span className="flex items-center space-x-1.5 font-mono text-[11px]">
+                        <span className="text-brand-cream animate-pulse">✦</span>
+                        <span>{t?.nav?.about === 'Tentang' ? 'Geser untuk eksplor karya' : 'Swipe to explore all'}</span>
+                        <span className="text-white/40">({filteredGallery.length})</span>
+                      </span>
+                      <span className="text-[11px] text-white/50 font-mono">
+                        {t?.nav?.about === 'Tentang' ? 'Tap perbesar ↗' : 'Tap to expand ↗'}
+                      </span>
                     </div>
 
                     {/* Desktop Grid Layout (Visible on >= md) */}
@@ -348,34 +368,54 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                   {/* Mobile Touch Swipeable Track */}
                   <div 
                     ref={carouselRef}
-                    className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-4 pt-1 px-1"
+                    className="flex md:hidden overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-3.5 pb-2 pt-1 px-1"
                   >
                     {filteredGallery.map((item, dIdx) => (
                       <div 
                         key={dIdx}
                         onClick={() => handleOpenLightboxForItem(item.src)}
-                        className="w-[72vw] max-w-[280px] shrink-0 snap-center rounded-2xl overflow-hidden bg-black/20 border border-white/20 p-3 flex flex-col justify-between cursor-pointer active:scale-95 transition-all shadow-lg"
+                        className="w-[74vw] max-w-[290px] shrink-0 snap-center rounded-2xl overflow-hidden bg-gradient-to-b from-white/15 to-black/35 backdrop-blur-md border border-white/25 p-3 flex flex-col justify-between cursor-pointer active:scale-95 transition-all shadow-xl group"
                       >
-                        <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/30 flex items-center justify-center relative mb-3">
+                        {/* Card Header: Index & Category Pill */}
+                        <div className="flex items-center justify-between mb-2.5 px-0.5">
+                          <span className="font-serif italic text-brand-cream text-xs font-semibold">
+                            #{String(dIdx + 1).padStart(2, '0')}
+                          </span>
+                          <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                            {item.category}
+                          </span>
+                        </div>
+
+                        <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-black/40 flex items-center justify-center relative mb-3 border border-white/10">
                           <img 
                             src={item.src} 
                             alt={item.title}
                             className="w-full h-full object-contain p-2"
                           />
-                          <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-white backdrop-blur-sm">
+                          <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/70 text-white backdrop-blur-sm border border-white/20 shadow">
                             <ZoomIn className="w-3.5 h-3.5" />
                           </div>
                         </div>
+
                         <div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-white/70 block">
-                            {item.category}
-                          </span>
-                          <h5 className="text-xs font-bold text-white leading-snug mt-1 break-words">
+                          <h5 className="text-xs font-bold text-white leading-snug line-clamp-2 break-words">
                             {item.title}
                           </h5>
                         </div>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Mobile Swipe Lookbook Navigation Indicator */}
+                  <div className="flex md:hidden items-center justify-between text-xs text-white/70 pt-2 px-1">
+                    <span className="flex items-center space-x-1.5 font-mono text-[11px]">
+                      <span className="text-brand-cream animate-pulse">✦</span>
+                      <span>{t?.nav?.about === 'Tentang' ? 'Geser untuk eksplor karya' : 'Swipe to explore all'}</span>
+                      <span className="text-white/40">({filteredGallery.length})</span>
+                    </span>
+                    <span className="text-[11px] text-white/50 font-mono">
+                      {t?.nav?.about === 'Tentang' ? 'Tap perbesar ↗' : 'Tap to expand ↗'}
+                    </span>
                   </div>
 
                   {/* Desktop Grid Layout */}

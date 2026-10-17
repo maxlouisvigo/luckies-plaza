@@ -13,7 +13,6 @@ import { CVModal } from './components/CVModal';
 import { CustomCursor } from './components/CustomCursor';
 import { MarqueeTicker } from './components/MarqueeTicker';
 import { MobileFloatingDock } from './components/MobileFloatingDock';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { Analytics } from '@vercel/analytics/react';
 import { portfolioTranslations, portfolioData } from './data/portfolioData';
 
@@ -34,9 +33,6 @@ export function App() {
     slides: [],
     currentIndex: 0
   });
-
-  // Enable momentum-damped smooth scrolling on desktop mousewheels
-  useSmoothScroll();
 
   const [isFading, setIsFading] = useState(false);
 

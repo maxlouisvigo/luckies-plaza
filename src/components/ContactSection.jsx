@@ -150,7 +150,7 @@ export const ContactSection = ({ lang = 'en', t = portfolioData }) => {
             <div className="p-2 rounded-full bg-white/10 group-hover:bg-white/20">
               <Phone className="w-4 h-4" />
             </div>
-            <span className="font-semibold tracking-wider font-mono text-base">
+            <span className="font-bold tracking-wide font-sans text-base">
               {profile.contact.phone}
             </span>
           </a>
@@ -185,7 +185,7 @@ export const ContactSection = ({ lang = 'en', t = portfolioData }) => {
             <div className="p-2 rounded-full bg-white/10 group-hover:bg-white/20">
               <Mail className="w-4 h-4" />
             </div>
-            <span className="font-semibold tracking-wider font-mono text-sm">
+            <span className="font-semibold tracking-wide font-sans text-sm">
               {profile.contact.email}
             </span>
           </a>

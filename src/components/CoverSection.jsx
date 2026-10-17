@@ -28,7 +28,7 @@ export const CoverSection = ({ t = portfolioData }) => {
               d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"
               fill="none"
             />
-            <text className="fill-white font-mono text-[9px] uppercase tracking-[0.24em] font-bold">
+            <text className="fill-white font-sans text-[8.5px] uppercase tracking-[0.24em] font-extrabold">
               <textPath href="#stampCirclePath" startOffset="0%">
                 ✦ LOUIS VIGO ✦ VISUAL SPECIALIST ✦ EST. 2026 ✦
               </textPath>
@@ -40,7 +40,7 @@ export const CoverSection = ({ t = portfolioData }) => {
             <span className="font-serif italic text-lg sm:text-xl font-normal text-brand-cream leading-none">
               LV
             </span>
-            <span className="text-[8px] tracking-widest uppercase text-white/70 font-mono mt-0.5">
+            <span className="text-[8px] tracking-widest uppercase text-white/80 font-sans font-bold mt-0.5">
               DKV
             </span>
           </div>

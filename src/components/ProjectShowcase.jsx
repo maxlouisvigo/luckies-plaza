@@ -61,7 +61,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
             
             {/* Project Index & Category Pill */}
             <div className="flex items-center space-x-3.5">
-              <span className="px-3 py-1 rounded-md bg-brand-umber text-white font-mono text-xs font-bold uppercase tracking-widest shadow-sm">
+              <span className="px-3 py-1 rounded-md bg-brand-umber text-white font-sans text-xs font-extrabold uppercase tracking-widest shadow-sm">
                 {p?.caseStudyLabel || 'Case Study'} 0{index + 1}
               </span>
               <span className="text-xs font-bold tracking-widest uppercase text-white/90">
@@ -258,7 +258,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                             <span className="font-serif italic text-brand-cream text-xs font-semibold">
                               #{String(dIdx + 1).padStart(2, '0')}
                             </span>
-                            <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                            <span className="text-[9px] font-sans font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
                               {item.category}
                             </span>
                           </div>
@@ -285,12 +285,12 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
 
                     {/* Mobile Swipe Lookbook Navigation Indicator */}
                     <div className="flex md:hidden items-center justify-between text-xs text-white/70 pt-2 px-1">
-                      <span className="flex items-center space-x-1.5 font-mono text-[11px]">
+                      <span className="flex items-center space-x-1.5 font-sans font-medium text-[11px]">
                         <span className="text-brand-cream animate-pulse">✦</span>
                         <span>{t?.nav?.about === 'Tentang' ? 'Geser untuk eksplor karya' : 'Swipe to explore all'}</span>
                         <span className="text-white/40">({filteredGallery.length})</span>
                       </span>
-                      <span className="text-[11px] text-white/50 font-mono">
+                      <span className="text-[11px] text-white/60 font-sans font-semibold">
                         {t?.nav?.about === 'Tentang' ? 'Tap perbesar ↗' : 'Tap to expand ↗'}
                       </span>
                     </div>
@@ -347,7 +347,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                           <span className="font-serif italic text-brand-cream text-xs font-semibold">
                             #{String(dIdx + 1).padStart(2, '0')}
                           </span>
-                          <span className="text-[9px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                          <span className="text-[9px] font-sans font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
                             {item.category}
                           </span>
                         </div>
@@ -374,12 +374,12 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
 
                   {/* Mobile Swipe Lookbook Navigation Indicator */}
                   <div className="flex md:hidden items-center justify-between text-xs text-white/70 pt-2 px-1">
-                    <span className="flex items-center space-x-1.5 font-mono text-[11px]">
+                    <span className="flex items-center space-x-1.5 font-sans font-medium text-[11px]">
                       <span className="text-brand-cream animate-pulse">✦</span>
                       <span>{t?.nav?.about === 'Tentang' ? 'Geser untuk eksplor karya' : 'Swipe to explore all'}</span>
                       <span className="text-white/40">({filteredGallery.length})</span>
                     </span>
-                    <span className="text-[11px] text-white/50 font-mono">
+                    <span className="text-[11px] text-white/60 font-sans font-semibold">
                       {t?.nav?.about === 'Tentang' ? 'Tap perbesar ↗' : 'Tap to expand ↗'}
                     </span>
                   </div>

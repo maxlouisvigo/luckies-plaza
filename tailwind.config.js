@@ -21,7 +21,8 @@ export default {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-        cursive: ['"Caveat"', 'cursive']
+        cursive: ['"Caveat"', 'cursive'],
+        mono: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif']
       },
       boxShadow: {
         'brand': '0 20px 40px -15px rgba(240, 90, 34, 0.25)',

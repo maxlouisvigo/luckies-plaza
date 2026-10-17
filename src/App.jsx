@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion, useAnimationControls } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { CoverSection } from './components/CoverSection';
 import { AboutSection } from './components/AboutSection';
@@ -38,32 +38,20 @@ export function App() {
   // Enable momentum-damped smooth scrolling on desktop mousewheels
   useSmoothScroll();
 
-  const contentControls = useAnimationControls();
+  const [isFading, setIsFading] = useState(false);
 
-  // Kinetic smooth slide-in & tactile spring bounce on language switch
+  // Silky smooth soft crossfade dissolve on language switch (Zero physical jumping/bounce)
   const handleToggleLang = (newLang) => {
     if (newLang === lang) return;
-
-    // 1. Instantly cue micro-dip and soft dissolve
-    contentControls.set({ y: 14, opacity: 0.65 });
+    setIsFading(true);
 
     setTimeout(() => {
-      // 2. Swap text in-place (no unmount, scroll stays 100% locked)
       setLang(newLang);
       setToastMessage(newLang === 'en' ? 'Switched to English 🌐' : 'Beralih ke Bahasa Indonesia 🇮🇩');
-
-      // 3. Smooth slide-in with satisfying tactile spring bounce!
-      requestAnimationFrame(() => {
-        contentControls.start({
-          y: 0,
-          opacity: 1,
-          transition: {
-            y: { type: 'spring', stiffness: 320, damping: 20, mass: 0.75 },
-            opacity: { duration: 0.22, ease: 'easeOut' }
-          }
-        });
-      });
-    }, 70);
+      setTimeout(() => {
+        setIsFading(false);
+      }, 50);
+    }, 120);
   };
 
   // Auto-dismiss micro-toast
@@ -138,11 +126,8 @@ export function App() {
         t={t} 
       />
 
-      {/* Main Content with Kinetic Spring Slide-In & Tactile Bounce on Language Switch */}
-      <motion.main
-        animate={contentControls}
-        className="transform-gpu will-change-transform"
-      >
+      {/* Main Content with Silky Calm Dissolve Crossfade (Zero Screen Bounce/Jerking) */}
+      <main className={`transition-opacity duration-300 ease-in-out ${isFading ? 'opacity-30' : 'opacity-100'}`}>
         {/* Page 1: Cover */}
         <CoverSection t={t} />
 
@@ -179,7 +164,7 @@ export function App() {
 
         {/* Footer */}
         <Footer t={t} />
-      </motion.main>
+      </main>
 
       {/* Fullscreen High-Resolution Slide Inspection Modal */}
       <LightboxModal

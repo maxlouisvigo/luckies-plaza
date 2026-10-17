@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useAnimationControls } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { CoverSection } from './components/CoverSection';
 import { AboutSection } from './components/AboutSection';
@@ -26,7 +26,6 @@ export function App() {
     }
   });
 
-  const [langChanging, setLangChanging] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
   const [activeSection, setActiveSection] = useState('Cover');
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
@@ -39,18 +38,32 @@ export function App() {
   // Enable momentum-damped smooth scrolling on desktop mousewheels
   useSmoothScroll();
 
-  // Smooth language switch handler with soft dissolve fade & tactile toast
+  const contentControls = useAnimationControls();
+
+  // Kinetic smooth slide-in & tactile spring bounce on language switch
   const handleToggleLang = (newLang) => {
     if (newLang === lang) return;
-    setLangChanging(true);
+
+    // 1. Instantly cue micro-dip and soft dissolve
+    contentControls.set({ y: 14, opacity: 0.65 });
 
     setTimeout(() => {
+      // 2. Swap text in-place (no unmount, scroll stays 100% locked)
       setLang(newLang);
       setToastMessage(newLang === 'en' ? 'Switched to English 🌐' : 'Beralih ke Bahasa Indonesia 🇮🇩');
-      setTimeout(() => {
-        setLangChanging(false);
-      }, 50);
-    }, 90);
+
+      // 3. Smooth slide-in with satisfying tactile spring bounce!
+      requestAnimationFrame(() => {
+        contentControls.start({
+          y: 0,
+          opacity: 1,
+          transition: {
+            y: { type: 'spring', stiffness: 320, damping: 20, mass: 0.75 },
+            opacity: { duration: 0.22, ease: 'easeOut' }
+          }
+        });
+      });
+    }, 70);
   };
 
   // Auto-dismiss micro-toast
@@ -125,8 +138,11 @@ export function App() {
         t={t} 
       />
 
-      {/* Main Content with Smooth Soft Crossfade on Language Change */}
-      <main className={`transition-opacity duration-200 ease-out ${langChanging ? 'opacity-85' : 'opacity-100'}`}>
+      {/* Main Content with Kinetic Spring Slide-In & Tactile Bounce on Language Switch */}
+      <motion.main
+        animate={contentControls}
+        className="transform-gpu will-change-transform"
+      >
         {/* Page 1: Cover */}
         <CoverSection t={t} />
 
@@ -163,7 +179,7 @@ export function App() {
 
         {/* Footer */}
         <Footer t={t} />
-      </main>
+      </motion.main>
 
       {/* Fullscreen High-Resolution Slide Inspection Modal */}
       <LightboxModal

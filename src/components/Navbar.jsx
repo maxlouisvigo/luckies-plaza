@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Download, MessageCircle, Menu, X, Globe } from 'lucide-react';
+import { Download, MessageCircle, Mail, Menu, X, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
 export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolioData }) => {
@@ -28,34 +29,48 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
 
   const profile = t?.profile || portfolioData.profile;
 
-  // Language Pill Switch
-  const LanguageToggle = ({ className = '' }) => (
-    <div className={`inline-flex items-center bg-black/25 backdrop-blur-md rounded-full p-0.5 border border-white/20 shadow-inner ${className}`}>
+  // Language Pill Switch with Kinetic Spring Sliding Motion
+  const LanguageToggle = ({ className = '', idPrefix = 'desktop' }) => (
+    <div className={`relative inline-flex items-center bg-black/25 backdrop-blur-md rounded-full p-0.5 border border-white/20 shadow-inner ${className}`}>
       <button
         type="button"
         onClick={() => onToggleLang && onToggleLang('en')}
-        className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all duration-200 select-none ${
+        className={`relative z-10 px-2.5 py-1 text-xs font-bold rounded-full transition-colors duration-200 select-none ${
           lang === 'en'
-            ? 'bg-white text-brand-orange shadow-md font-extrabold'
-            : 'text-white/80 hover:text-white hover:bg-white/10'
+            ? 'text-brand-orange font-extrabold'
+            : 'text-white/80 hover:text-white'
         }`}
         aria-label="Switch to English"
         title="English"
       >
-        EN
+        {lang === 'en' && (
+          <motion.div
+            layoutId={`${idPrefix}-activeLangPill`}
+            className="absolute inset-0 bg-white rounded-full shadow-md"
+            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+          />
+        )}
+        <span className="relative z-10">EN</span>
       </button>
       <button
         type="button"
         onClick={() => onToggleLang && onToggleLang('id')}
-        className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all duration-200 select-none ${
+        className={`relative z-10 px-2.5 py-1 text-xs font-bold rounded-full transition-colors duration-200 select-none ${
           lang === 'id'
-            ? 'bg-white text-brand-orange shadow-md font-extrabold'
-            : 'text-white/80 hover:text-white hover:bg-white/10'
+            ? 'text-brand-orange font-extrabold'
+            : 'text-white/80 hover:text-white'
         }`}
         aria-label="Ganti ke Bahasa Indonesia"
         title="Bahasa Indonesia"
       >
-        ID
+        {lang === 'id' && (
+          <motion.div
+            layoutId={`${idPrefix}-activeLangPill`}
+            className="absolute inset-0 bg-white rounded-full shadow-md"
+            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+          />
+        )}
+        <span className="relative z-10">ID</span>
       </button>
     </div>
   );
@@ -107,7 +122,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
 
             <div className="flex items-center space-x-3 border-l border-white/20 pl-6">
               {/* Language Switcher Pill */}
-              <LanguageToggle />
+              <LanguageToggle idPrefix="nav-desktop" />
 
               <a
                 href={profile.contact.cvPdf}
@@ -121,13 +136,22 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
               </a>
 
               <a
-                href={profile.contact.whatsappUrl}
-                target="_blank"
+                href={lang === 'id' ? profile.contact.whatsappUrl : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}
+                target={lang === 'id' ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-[#5C2208] hover:bg-[#3D1504] text-white transition-all duration-200 shadow-sm"
               >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>{t?.nav?.letsTalk || "Let's Talk"}</span>
+                {lang === 'id' ? (
+                  <>
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>{t?.nav?.letsTalk || "Ajak Ngobrol"}</span>
+                  </>
+                ) : (
+                  <>
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>{t?.nav?.letsTalk || "Let's Talk"}</span>
+                  </>
+                )}
               </a>
 
               <span className="text-white font-bold text-sm tracking-wide ml-1">
@@ -139,7 +163,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
           {/* Mobile Right Controls: Language Pill + Name + Hamburger Button */}
           <div className="md:hidden flex items-center space-x-2.5">
             {/* Quick Language Switcher on Mobile Top Bar */}
-            <LanguageToggle />
+            <LanguageToggle idPrefix="nav-mobile-top" />
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -171,7 +195,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
                   <span className="text-xs font-semibold uppercase tracking-wider text-white/80">
                     Language / Bahasa
                   </span>
-                  <LanguageToggle />
+                  <LanguageToggle idPrefix="nav-mobile-drawer" />
                 </div>
 
                 <a
@@ -185,13 +209,22 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
                 </a>
                 
                 <a
-                  href={profile.contact.whatsappUrl}
-                  target="_blank"
+                  href={lang === 'id' ? profile.contact.whatsappUrl : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}
+                  target={lang === 'id' ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-[#5C2208] text-white font-bold text-sm shadow"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>{t?.contact?.chatWhatsapp || 'Chat via WhatsApp'}</span>
+                  {lang === 'id' ? (
+                    <>
+                      <MessageCircle className="w-4 h-4" />
+                      <span>{t?.contact?.chatWhatsapp || 'Chat via WhatsApp'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="w-4 h-4" />
+                      <span>{t?.contact?.sendEmail || 'Send Direct Email'}</span>
+                    </>
+                  )}
                 </a>
               </div>
             </nav>

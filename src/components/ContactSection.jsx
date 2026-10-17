@@ -13,7 +13,7 @@ import confetti from 'canvas-confetti';
 import { portfolioData } from '../data/portfolioData';
 import { GlassReveal } from './GlassReveal';
 
-export const ContactSection = ({ t = portfolioData }) => {
+export const ContactSection = ({ lang = 'en', t = portfolioData }) => {
   const profile = t?.profile || portfolioData.profile;
   const contact = t?.contact || portfolioData.contact;
 
@@ -25,6 +25,8 @@ export const ContactSection = ({ t = portfolioData }) => {
       colors: ['#F05A22', '#FFFFFF', '#5C2208', '#FFD166']
     });
   };
+
+  const isId = lang === 'id';
 
   return (
     <section 
@@ -54,27 +56,62 @@ export const ContactSection = ({ t = portfolioData }) => {
             {contact?.workTogether || "Let's Work Together"}
           </p>
 
-          {/* Action Buttons */}
+          {/* Action Buttons: Differentiated CTA Priority based on Audience */}
           <div className="flex flex-wrap items-center justify-center gap-4 mt-12">
-            <a
-              href={profile.contact.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={triggerConfetti}
-              className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-full bg-brand-umber hover:bg-brand-umber-dark text-white font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <MessageCircle className="w-5 h-5" />
-              <span>{contact?.chatWhatsapp || 'Chat via WhatsApp'}</span>
-            </a>
+            {isId ? (
+              <>
+                {/* ID Primary: WhatsApp */}
+                <a
+                  href={profile.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={triggerConfetti}
+                  className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-full bg-brand-umber hover:bg-brand-umber-dark text-white font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 hover:shadow-2xl relative group"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
+                  <MessageCircle className="w-5 h-5 fill-white/20" />
+                  <span>{contact?.chatWhatsapp || 'Chat via WhatsApp'}</span>
+                </a>
 
-            <a
-              href={`mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio&body=Halo%20Louis%20Vigo%2C%0A%0ASaya%20tertarik%20untuk%20berdiskusi%20mengenai%20project...`}
-              className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-full bg-white text-brand-orange hover:bg-brand-cream font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 hover:shadow-2xl"
-            >
-              <Mail className="w-5 h-5" />
-              <span>{contact?.sendEmail || 'Send Email'}</span>
-            </a>
+                {/* ID Secondary: Email */}
+                <a
+                  href={`mailto:${profile.contact.email}?subject=Diskusi%20Proyek%20via%20Portfolio&body=Halo%20Mas%20Lui%2C%0A%0ASaya%20tertarik%20untuk%20berdiskusi%20mengenai%20project...`}
+                  className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-full bg-white text-brand-orange hover:bg-brand-cream font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>{contact?.sendEmail || 'Kirim Email Resmi'}</span>
+                </a>
+              </>
+            ) : (
+              <>
+                {/* EN Primary: Direct Email (Corporate / Global standard) */}
+                <a
+                  href={`mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio&body=Hi%20Louis%20Vigo%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss...`}
+                  onClick={triggerConfetti}
+                  className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-full bg-white text-brand-orange hover:bg-brand-cream font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>{contact?.sendEmail || 'Send Direct Email'}</span>
+                </a>
+
+                {/* EN Secondary: Direct WhatsApp */}
+                <a
+                  href={profile.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-full bg-brand-umber hover:bg-brand-umber-dark text-white font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 hover:shadow-2xl"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  <span>{contact?.chatWhatsapp || 'Direct WhatsApp'}</span>
+                </a>
+              </>
+            )}
           </div>
+
+          {/* Micro-hint for Audience */}
+          <p className="text-xs text-white/70 mt-3 font-medium tracking-wide">
+            {isId ? '• Respon cepat untuk diskusi proyek & kerja sama •' : '• Best for RFPs, Creative Briefs & Remote Opportunities •'}
+          </p>
 
           {/* Direct Download Portfolio & CV */}
           <div className="flex flex-wrap items-center justify-center gap-3 mt-6">

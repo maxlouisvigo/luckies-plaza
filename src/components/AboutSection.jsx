@@ -10,12 +10,13 @@ import {
   Layers, 
   Palette, 
   Megaphone,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { GlassReveal } from './GlassReveal';
 
-export const AboutSection = ({ t = portfolioData }) => {
+export const AboutSection = ({ lang = 'en', t = portfolioData }) => {
   const [copiedField, setCopiedField] = useState(null);
 
   const profile = t?.profile || portfolioData.profile;
@@ -200,13 +201,26 @@ export const AboutSection = ({ t = portfolioData }) => {
             {/* Direct CTA */}
             <div className="pt-2">
               <a
-                href={profile.contact.whatsappUrl}
-                target="_blank"
+                href={lang === 'id' 
+                  ? profile.contact.whatsappUrl 
+                  : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`
+                }
+                target={lang === 'id' ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="w-full py-3 px-4 rounded-xl bg-brand-umber hover:bg-brand-umber-dark text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-lg transition-all transform hover:-translate-y-0.5"
               >
-                <span>{about?.hireCta || 'Hire / Start Collaboration'}</span>
-                <ArrowRight className="w-4 h-4" />
+                {lang === 'id' ? (
+                  <>
+                    <MessageCircle className="w-4 h-4" />
+                    <span>{about?.hireCta || 'Mulai Diskusi Proyek'}</span>
+                  </>
+                ) : (
+                  <>
+                    <Mail className="w-4 h-4" />
+                    <span>{about?.hireCta || 'Send Project Brief'}</span>
+                  </>
+                )}
+                <ArrowRight className="w-4 h-4 ml-0.5" />
               </a>
             </div>
           </GlassReveal>

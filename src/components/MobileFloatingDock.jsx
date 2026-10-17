@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Download, ArrowUp, Globe } from 'lucide-react';
+import { MessageCircle, Mail, Download, ArrowUp, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
 export const MobileFloatingDock = ({ 
@@ -54,15 +55,43 @@ export const MobileFloatingDock = ({
 
         {/* Right Action Buttons */}
         <div className="flex items-center space-x-2 shrink-0">
-          {/* Quick Language Toggle */}
-          <button
-            onClick={() => onToggleLang(lang === 'en' ? 'id' : 'en')}
-            className="flex items-center space-x-1 px-2 py-1 rounded-full bg-white/10 text-white text-[10px] font-bold uppercase tracking-wider border border-white/15 active:scale-95 transition-all"
-            title="Switch Language"
-          >
-            <Globe className="w-3 h-3 text-white/70" />
-            <span>{lang.toUpperCase()}</span>
-          </button>
+          {/* Dual Pill Language Toggle with Sliding Animation */}
+          <div className="relative inline-flex items-center bg-black/40 backdrop-blur-md rounded-full p-0.5 border border-white/20 shadow-inner">
+            <button
+              type="button"
+              onClick={() => onToggleLang && onToggleLang('en')}
+              className={`relative z-10 px-2 py-0.5 text-[10px] font-bold rounded-full transition-colors duration-200 select-none ${
+                lang === 'en' ? 'text-[#3D1504] font-extrabold' : 'text-white/75 hover:text-white'
+              }`}
+              title="English"
+            >
+              {lang === 'en' && (
+                <motion.div
+                  layoutId="dock-activeLangPill"
+                  className="absolute inset-0 bg-white rounded-full shadow-sm"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                />
+              )}
+              <span className="relative z-10">EN</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onToggleLang && onToggleLang('id')}
+              className={`relative z-10 px-2 py-0.5 text-[10px] font-bold rounded-full transition-colors duration-200 select-none ${
+                lang === 'id' ? 'text-[#3D1504] font-extrabold' : 'text-white/75 hover:text-white'
+              }`}
+              title="Bahasa Indonesia"
+            >
+              {lang === 'id' && (
+                <motion.div
+                  layoutId="dock-activeLangPill"
+                  className="absolute inset-0 bg-white rounded-full shadow-sm"
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                />
+              )}
+              <span className="relative z-10">ID</span>
+            </button>
+          </div>
 
           {/* Quick CV Download */}
           <a
@@ -76,16 +105,28 @@ export const MobileFloatingDock = ({
             <Download className="w-3.5 h-3.5" />
           </a>
 
-          {/* Quick WhatsApp Chat Button */}
-          <a
-            href={profile.contact.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-1 px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs shadow-md transition-all active:scale-95"
-          >
-            <MessageCircle className="w-3.5 h-3.5 fill-white" />
-            <span>Chat</span>
-          </a>
+          {/* Action CTA based on language priority */}
+          {lang === 'id' ? (
+            <a
+              href={profile.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs shadow-md transition-all active:scale-95"
+              title="Chat WhatsApp"
+            >
+              <MessageCircle className="w-3.5 h-3.5 fill-white" />
+              <span>Chat WA</span>
+            </a>
+          ) : (
+            <a
+              href={`mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-full bg-white hover:bg-white/90 text-[#3D1504] font-bold text-xs shadow-md transition-all active:scale-95"
+              title="Send Direct Email"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#3D1504]" />
+              <span>Email</span>
+            </a>
+          )}
         </div>
 
       </div>

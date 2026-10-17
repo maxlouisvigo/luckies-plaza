@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { CoverSection } from './components/CoverSection';
 import { AboutSection } from './components/AboutSection';
@@ -21,12 +22,37 @@ export function App() {
     }
   });
 
+  const [langChanging, setLangChanging] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
   const [activeSection, setActiveSection] = useState('Cover');
   const [lightbox, setLightbox] = useState({
     isOpen: false,
     slides: [],
     currentIndex: 0
   });
+
+  // Smooth language switch handler with soft dissolve fade & tactile toast
+  const handleToggleLang = (newLang) => {
+    if (newLang === lang) return;
+    setLangChanging(true);
+
+    setTimeout(() => {
+      setLang(newLang);
+      setToastMessage(newLang === 'en' ? 'Switched to English 🌐' : 'Beralih ke Bahasa Indonesia 🇮🇩');
+      setTimeout(() => {
+        setLangChanging(false);
+      }, 50);
+    }, 90);
+  };
+
+  // Auto-dismiss micro-toast
+  useEffect(() => {
+    if (!toastMessage) return;
+    const timer = setTimeout(() => {
+      setToastMessage(null);
+    }, 2200);
+    return () => clearTimeout(timer);
+  }, [toastMessage]);
 
   // Sync lang to localStorage and document tag
   useEffect(() => {
@@ -83,46 +109,49 @@ export function App() {
       <Navbar 
         activeSection={activeSection} 
         lang={lang} 
-        onToggleLang={setLang} 
+        onToggleLang={handleToggleLang} 
         t={t} 
       />
 
-      {/* Page 1: Cover */}
-      <CoverSection t={t} />
+      {/* Main Content with Smooth Soft Crossfade on Language Change */}
+      <main className={`transition-opacity duration-200 ease-out ${langChanging ? 'opacity-85' : 'opacity-100'}`}>
+        {/* Page 1: Cover */}
+        <CoverSection t={t} />
 
-      {/* Kinetic Infinite Marquee 1 */}
-      <MarqueeTicker lang={lang} />
+        {/* Kinetic Infinite Marquee 1 */}
+        <MarqueeTicker lang={lang} />
 
-      {/* Page 2: About / Intro */}
-      <AboutSection t={t} />
+        {/* Page 2: About / Intro */}
+        <AboutSection lang={lang} t={t} />
 
-      {/* Page 3: Curriculum Vitae */}
-      <CVSection t={t} />
+        {/* Page 3: Curriculum Vitae */}
+        <CVSection t={t} />
 
-      {/* Page 4: Contents Navigation */}
-      <ContentsNav t={t} />
+        {/* Page 4: Contents Navigation */}
+        <ContentsNav t={t} />
 
-      {/* Featured Projects / Case Studies */}
-      <div id="projects-container">
-        {t.projects.map((project, index) => (
-          <ProjectShowcase
-            key={project.id}
-            project={project}
-            index={index}
-            t={t}
-            onOpenLightbox={openLightbox}
-          />
-        ))}
-      </div>
+        {/* Featured Projects / Case Studies */}
+        <div id="projects-container">
+          {t.projects.map((project, index) => (
+            <ProjectShowcase
+              key={project.id}
+              project={project}
+              index={index}
+              t={t}
+              onOpenLightbox={openLightbox}
+            />
+          ))}
+        </div>
 
-      {/* Kinetic Infinite Marquee 2 (Reverse Flow) */}
-      <MarqueeTicker lang={lang} reverse={true} />
+        {/* Kinetic Infinite Marquee 2 (Reverse Flow) */}
+        <MarqueeTicker lang={lang} reverse={true} />
 
-      {/* Page 15: Thank You & Contact */}
-      <ContactSection t={t} />
+        {/* Page 15: Thank You & Contact */}
+        <ContactSection lang={lang} t={t} />
 
-      {/* Footer */}
-      <Footer t={t} />
+        {/* Footer */}
+        <Footer t={t} />
+      </main>
 
       {/* Fullscreen High-Resolution Slide Inspection Modal */}
       <LightboxModal
@@ -137,9 +166,27 @@ export function App() {
       <MobileFloatingDock
         activeSection={activeSection}
         lang={lang}
-        onToggleLang={setLang}
+        onToggleLang={handleToggleLang}
         t={t}
       />
+
+      {/* Floating Micro-Toast for Tactile Feedback on Language Switch */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 450, damping: 30 }}
+            className="fixed bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
+          >
+            <div className="px-4 py-2 rounded-full bg-[#3D1504]/90 backdrop-blur-xl border border-white/25 text-white text-xs font-bold tracking-wide shadow-[0_15px_30px_rgba(0,0,0,0.4)] flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+              <span>{toastMessage}</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

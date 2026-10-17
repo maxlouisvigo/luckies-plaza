@@ -5,6 +5,7 @@ import {
   Cpu, 
   Languages, 
   Download, 
+  Eye,
   ExternalLink,
   Calendar,
   Building,
@@ -13,7 +14,7 @@ import {
 import { portfolioData } from '../data/portfolioData';
 import { GlassReveal } from './GlassReveal';
 
-export const CVSection = ({ t = portfolioData }) => {
+export const CVSection = ({ t = portfolioData, onOpenCV }) => {
   const profile = t?.profile || portfolioData.profile;
   const cv = t?.cv || portfolioData.cv;
   const education = t?.education || portfolioData.education;
@@ -41,15 +42,24 @@ export const CVSection = ({ t = portfolioData }) => {
               </h2>
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={onOpenCV}
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white text-brand-orange font-bold text-sm shadow-md hover:bg-brand-cream hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              >
+                <Eye className="w-4 h-4" />
+                <span>{cv?.previewButton || 'Lihat CV (Slide / PDF)'}</span>
+              </button>
+
               <a
                 href={profile.contact.cvPdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-white text-brand-orange font-bold text-sm shadow-md hover:bg-brand-cream hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+                download="CV_Maximilianus_Louis_Vigo.pdf"
+                className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/25 transition-all transform hover:-translate-y-0.5"
+                title="Download Official PDF"
               >
                 <Download className="w-4 h-4" />
-                <span>{cv?.downloadButton || 'Download Official CV (PDF)'}</span>
+                <span>PDF</span>
               </a>
             </div>
           </div>

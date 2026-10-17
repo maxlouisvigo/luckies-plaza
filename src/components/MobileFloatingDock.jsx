@@ -7,6 +7,7 @@ export const MobileFloatingDock = ({
   activeSection = 'Cover', 
   lang = 'en', 
   onToggleLang, 
+  onOpenCV,
   t = portfolioData 
 }) => {
   const [visible, setVisible] = useState(false);
@@ -93,17 +94,16 @@ export const MobileFloatingDock = ({
             </button>
           </div>
 
-          {/* Quick CV Download */}
-          <a
-            href={profile.contact.cvPdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-1.5 rounded-full bg-white/15 text-white hover:bg-white/25 transition-all active:scale-95"
-            title="Download CV (PDF)"
-            aria-label="Download CV"
+          {/* Quick CV Preview & Download */}
+          <button
+            type="button"
+            onClick={onOpenCV}
+            className="p-1.5 rounded-full bg-white/15 text-white hover:bg-white/25 transition-all active:scale-95 cursor-pointer"
+            title="Preview & Download CV"
+            aria-label="Preview and Download CV"
           >
             <Download className="w-3.5 h-3.5" />
-          </a>
+          </button>
 
           {/* Action CTA based on language priority */}
           {lang === 'id' ? (

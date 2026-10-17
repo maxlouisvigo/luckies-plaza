@@ -13,7 +13,7 @@ import confetti from 'canvas-confetti';
 import { portfolioData } from '../data/portfolioData';
 import { GlassReveal } from './GlassReveal';
 
-export const ContactSection = ({ lang = 'en', t = portfolioData }) => {
+export const ContactSection = ({ lang = 'en', t = portfolioData, onOpenCV }) => {
   const profile = t?.profile || portfolioData.profile;
   const contact = t?.contact || portfolioData.contact;
 
@@ -124,14 +124,14 @@ export const ContactSection = ({ lang = 'en', t = portfolioData }) => {
               <span>{contact?.downloadPortfolio || 'Download 2026 Portfolio (PDF)'}</span>
             </a>
 
-            <a
-              href={profile.contact.cvPdf}
-              download
-              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-black/20 hover:bg-black/30 text-white text-xs font-semibold border border-white/20 transition-all"
+            <button
+              type="button"
+              onClick={onOpenCV}
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-black/20 hover:bg-black/30 text-white text-xs font-semibold border border-white/20 transition-all cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>{contact?.downloadCv || 'Download Curriculum Vitae (PDF)'}</span>
-            </a>
+              <span>{contact?.downloadCv || (isId ? 'Lihat / Unduh CV (PDF)' : 'Preview & Download CV (PDF)')}</span>
+            </button>
           </div>
         </div>
       </GlassReveal>

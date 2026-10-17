@@ -3,7 +3,7 @@ import { Download, MessageCircle, Mail, Menu, X, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
-export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolioData }) => {
+export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t = portfolioData }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -124,16 +124,15 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
               {/* Language Switcher Pill */}
               <LanguageToggle idPrefix="nav-desktop" />
 
-              <a
-                href={profile.contact.cvPdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-brand-orange border border-white/30 transition-all duration-200 shadow-sm"
-                title="Download CV (PDF)"
+              <button
+                type="button"
+                onClick={onOpenCV}
+                className="flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-brand-orange border border-white/30 transition-all duration-200 shadow-sm cursor-pointer"
+                title="Preview & Download CV"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>{t?.nav?.downloadCv || 'CV (PDF)'}</span>
-              </a>
+              </button>
 
               <a
                 href={lang === 'id' ? profile.contact.whatsappUrl : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}
@@ -198,15 +197,17 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, t = portfolio
                   <LanguageToggle idPrefix="nav-mobile-drawer" />
                 </div>
 
-                <a
-                  href={profile.contact.cvPdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-white text-brand-orange font-bold text-sm shadow"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenCV) onOpenCV();
+                  }}
+                  className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-white text-brand-orange font-bold text-sm shadow cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
-                  <span>{t?.cv?.downloadButton || 'Download CV (PDF)'}</span>
-                </a>
+                  <span>{t?.cv?.downloadButton || 'Lihat / Unduh CV (PDF)'}</span>
+                </button>
                 
                 <a
                   href={lang === 'id' ? profile.contact.whatsappUrl : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}

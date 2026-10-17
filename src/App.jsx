@@ -9,8 +9,11 @@ import { ProjectShowcase } from './components/ProjectShowcase';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
+import { CVModal } from './components/CVModal';
+import { CustomCursor } from './components/CustomCursor';
 import { MarqueeTicker } from './components/MarqueeTicker';
 import { MobileFloatingDock } from './components/MobileFloatingDock';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { portfolioTranslations, portfolioData } from './data/portfolioData';
 
 export function App() {
@@ -25,11 +28,15 @@ export function App() {
   const [langChanging, setLangChanging] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
   const [activeSection, setActiveSection] = useState('Cover');
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const [lightbox, setLightbox] = useState({
     isOpen: false,
     slides: [],
     currentIndex: 0
   });
+
+  // Enable momentum-damped smooth scrolling on desktop mousewheels
+  useSmoothScroll();
 
   // Smooth language switch handler with soft dissolve fade & tactile toast
   const handleToggleLang = (newLang) => {
@@ -105,11 +112,15 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-brand-orange text-white overflow-x-hidden">
+      {/* Interactive Magnetic & Ambient Halo Cursor (Desktop Only) */}
+      <CustomCursor />
+
       {/* Sticky Top Header */}
       <Navbar 
         activeSection={activeSection} 
         lang={lang} 
         onToggleLang={handleToggleLang} 
+        onOpenCV={() => setIsCVModalOpen(true)}
         t={t} 
       />
 
@@ -125,7 +136,7 @@ export function App() {
         <AboutSection lang={lang} t={t} />
 
         {/* Page 3: Curriculum Vitae */}
-        <CVSection t={t} />
+        <CVSection t={t} onOpenCV={() => setIsCVModalOpen(true)} />
 
         {/* Page 4: Contents Navigation */}
         <ContentsNav t={t} />
@@ -147,7 +158,7 @@ export function App() {
         <MarqueeTicker lang={lang} reverse={true} />
 
         {/* Page 15: Thank You & Contact */}
-        <ContactSection lang={lang} t={t} />
+        <ContactSection lang={lang} t={t} onOpenCV={() => setIsCVModalOpen(true)} />
 
         {/* Footer */}
         <Footer t={t} />
@@ -162,11 +173,20 @@ export function App() {
         onNavigate={navigateLightbox}
       />
 
+      {/* In-Web Curriculum Vitae Inspection & Download Modal */}
+      <CVModal
+        isOpen={isCVModalOpen}
+        onClose={() => setIsCVModalOpen(false)}
+        lang={lang}
+        t={t}
+      />
+
       {/* Floating Glass Island / Dock for Mobile View */}
       <MobileFloatingDock
         activeSection={activeSection}
         lang={lang}
         onToggleLang={handleToggleLang}
+        onOpenCV={() => setIsCVModalOpen(true)}
         t={t}
       />
 

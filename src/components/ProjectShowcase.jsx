@@ -17,7 +17,6 @@ import { GlassReveal } from './GlassReveal';
 export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLightbox }) => {
   const p = t?.project || portfolioData.project;
   const carouselRef = useRef(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Collect all inspectable assets for this project
   const allInspectable = useMemo(() => [
@@ -26,19 +25,8 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
     ...(project.deliverablesGallery || []).map(d => ({ src: d.src, caption: `${project.title} — ${d.title} (${d.category})` }))
   ], [project]);
 
-  // Extract unique categories for filter chips
-  const categories = useMemo(() => {
-    if (!project.deliverablesGallery) return [];
-    const unique = Array.from(new Set(project.deliverablesGallery.map(d => d.category)));
-    return ['all', ...unique];
-  }, [project.deliverablesGallery]);
-
-  // Filter deliverables according to selected filter
-  const filteredGallery = useMemo(() => {
-    if (!project.deliverablesGallery) return [];
-    if (selectedCategory === 'all') return project.deliverablesGallery;
-    return project.deliverablesGallery.filter(d => d.category === selectedCategory);
-  }, [project.deliverablesGallery, selectedCategory]);
+  // Deliverables gallery
+  const filteredGallery = useMemo(() => project.deliverablesGallery || [], [project.deliverablesGallery]);
 
   const handleOpenLightboxForItem = (itemSrc) => {
     const idx = allInspectable.findIndex(i => i.src === itemSrc);
@@ -201,7 +189,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
             <div className="pt-12 border-t border-white/15 space-y-6">
               
               {/* Header for Deliverables */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="flex items-end justify-between gap-4">
                 <div>
                   <span className="text-xs font-semibold tracking-widest uppercase text-white/70 block">
                     {p?.productionTitle || 'Campaign Output & Production Assets'}
@@ -211,46 +199,24 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
                   </h4>
                 </div>
 
-                {/* Controls: Category Filter Tabs & Carousel Navigation */}
-                <div className="flex flex-wrap items-center gap-2">
-                  {/* Category Filter Chips */}
-                  <div className="flex items-center flex-wrap gap-1.5 p-1 rounded-xl bg-black/20 border border-white/15">
-                    {categories.map((cat) => (
-                      <button
-                        key={cat}
-                        onClick={() => setSelectedCategory(cat)}
-                        className={`px-3 py-1 text-xs rounded-lg font-semibold transition-all duration-200 capitalize ${
-                          selectedCategory === cat
-                            ? 'bg-white text-brand-orange shadow font-bold'
-                            : 'text-white/80 hover:text-white hover:bg-white/10'
-                        }`}
-                      >
-                        {cat === 'all' 
-                          ? `${p?.allCategories || (t?.nav?.about === 'Tentang' ? 'Semua' : 'All')} (${project.deliverablesGallery.length})` 
-                          : cat}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Mobile Carousel Arrow Controls */}
-                  <div className="flex md:hidden items-center space-x-1 pl-1">
-                    <button
-                      onClick={() => scrollCarousel('left')}
-                      className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all"
-                      title="Previous item"
-                      aria-label="Previous item"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel('right')}
-                      className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all"
-                      title="Next item"
-                      aria-label="Next item"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
+                {/* Mobile Carousel Arrow Controls */}
+                <div className="flex md:hidden items-center space-x-1.5 shrink-0">
+                  <button
+                    onClick={() => scrollCarousel('left')}
+                    className="p-2 rounded-xl bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all shadow-sm"
+                    title="Previous item"
+                    aria-label="Previous item"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => scrollCarousel('right')}
+                    className="p-2 rounded-xl bg-black/30 hover:bg-black/50 text-white border border-white/20 active:scale-95 transition-all shadow-sm"
+                    title="Next item"
+                    aria-label="Next item"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
 

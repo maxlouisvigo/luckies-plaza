@@ -20,17 +20,17 @@ export const CoverSection = ({ t = portfolioData }) => {
         <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center">
           {/* Rotating Text Ring */}
           <svg 
-            className="w-full h-full animate-spin-slow opacity-80" 
+            className="w-full h-full animate-spin-slow opacity-85" 
             viewBox="0 0 120 120"
           >
             <path
               id="stampCirclePath"
-              d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"
+              d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"
               fill="none"
             />
-            <text className="fill-white font-sans text-[8.5px] uppercase tracking-[0.24em] font-extrabold">
+            <text className="fill-white font-sans text-[7.5px] uppercase tracking-[0.16em] font-extrabold">
               <textPath href="#stampCirclePath" startOffset="0%">
-                ✦ LOUIS VIGO ✦ VISUAL SPECIALIST ✦ EST. 2026 ✦
+                ✦ LOUIS VIGO ✦ VISUAL SPECIALIST ✦ PORTFOLIO 2026 ✦
               </textPath>
             </text>
           </svg>

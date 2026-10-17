@@ -14,6 +14,7 @@ import { CustomCursor } from './components/CustomCursor';
 import { MarqueeTicker } from './components/MarqueeTicker';
 import { MobileFloatingDock } from './components/MobileFloatingDock';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { Analytics } from '@vercel/analytics/react';
 import { portfolioTranslations, portfolioData } from './data/portfolioData';
 
 export function App() {
@@ -207,6 +208,9 @@ export function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Official Vercel Web Analytics Sensor */}
+      <Analytics />
     </div>
   );
 }

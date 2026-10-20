@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://louisvigo-portfolio.vercel.app/sitemap.xml
+Sitemap: https://louisvigo.com/sitemap.xml

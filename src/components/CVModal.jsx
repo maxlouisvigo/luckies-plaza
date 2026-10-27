@@ -32,7 +32,6 @@ export const CVModal = ({
   const profile = t?.profile || portfolioData.profile;
   const cv = t?.cv || portfolioData.cv;
 
-  // Handle ESC key to dismiss
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
@@ -97,7 +96,7 @@ export const CVModal = ({
               </div>
               <div>
                 <h3 className="font-extrabold text-base md:text-lg leading-tight tracking-tight text-white">
-                  {lang === 'id' ? 'Curriculum Vitae — Louis Vigo' : 'Curriculum Vitae — Louis Vigo'}
+                  Curriculum Vitae: Louis Vigo
                 </h3>
                 <p className="text-xs text-white/70">
                   {lang === 'id' ? 'Visual Specialist & Communication Strategist' : 'Visual Specialist & Communication Strategist'}

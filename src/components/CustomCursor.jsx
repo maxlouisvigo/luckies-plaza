@@ -14,16 +14,13 @@ export const CustomCursor = () => {
   const [isPressed, setIsPressed] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(true);
 
-  // Raw cursor position motion values
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // Fast responsive spring for the center anchor dot
   const dotSpringConfig = { stiffness: 900, damping: 45, mass: 0.1 };
   const dotX = useSpring(mouseX, dotSpringConfig);
   const dotY = useSpring(mouseY, dotSpringConfig);
 
-  // Buttery, trailing halo spring physics
   const haloSpringConfig = { stiffness: 280, damping: 26, mass: 0.5 };
   const haloX = useSpring(mouseX, haloSpringConfig);
   const haloY = useSpring(mouseY, haloSpringConfig);
@@ -31,7 +28,6 @@ export const CustomCursor = () => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Check if device supports hover/fine pointer
     const mediaQuery = window.matchMedia('(pointer: fine)');
     setIsTouchDevice(!mediaQuery.matches);
 
@@ -52,7 +48,6 @@ export const CustomCursor = () => {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // Dynamic hover detection for interactive elements
     const handleMouseOver = (e) => {
       const target = e.target;
       if (!target) return;
@@ -82,12 +77,10 @@ export const CustomCursor = () => {
     };
   }, [isVisible, mouseX, mouseY]);
 
-  // Don't render on mobile or touchscreens
   if (isTouchDevice) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden select-none">
-      {/* 1. Trailing Ambient Halo Ring with Spring Dynamics */}
       <motion.div
         className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border flex items-center justify-center transition-colors duration-200"
         style={{
@@ -98,8 +91,8 @@ export const CustomCursor = () => {
         animate={{
           scale: isPressed ? 0.8 : isHovered ? 1.7 : 1,
           borderColor: isHovered 
-            ? 'rgba(254, 240, 138, 0.9)' // Warm Amber Glow on hover
-            : 'rgba(255, 255, 255, 0.45)', // Crisp White Frosted Halo
+            ? 'rgba(254, 240, 138, 0.9)'
+            : 'rgba(255, 255, 255, 0.45)',
           backgroundColor: isHovered 
             ? 'rgba(245, 158, 11, 0.16)' 
             : 'rgba(255, 255, 255, 0.05)',

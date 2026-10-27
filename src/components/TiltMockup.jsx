@@ -10,7 +10,7 @@ export const TiltMockup = ({
   badgeText = 'Inspect Fullscreen',
   maxTilt = 10,
   glare = true,
-  ambientGlow = true,
+  ambientGlow = false,
   float = true
 }) => {
   const containerRef = useRef(null);
@@ -64,7 +64,7 @@ export const TiltMockup = ({
     });
   };
 
-  // Mobile Touch Tilt & Specular Flare
+  // Touch interaction handlers
   const handleTouchStart = (e) => {
     setIsInteracting(true);
     if (!containerRef.current || e.touches.length === 0) return;

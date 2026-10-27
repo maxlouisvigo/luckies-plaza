@@ -12,8 +12,8 @@ export const Footer = ({ t }) => {
     <footer className="w-full py-8 px-6 bg-brand-umber-dark text-white/70 text-xs border-t border-white/10">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <p>© 2026 <span className="font-bold text-white">Maximilianus Louis Vigo F.</span> (Louis Vigo) — {footer?.rights || 'All Rights Reserved.'}</p>
-          <p className="text-[11px] text-white/50 mt-0.5">{footer?.subtitle || 'Designed with Visual Mastery & Built for High-Impact Communication.'}</p>
+          <p>© 2026 <span className="font-bold text-white">Maximilianus Louis Vigo F.</span> (Louis Vigo). {footer?.rights || 'All Rights Reserved.'}</p>
+          <p className="text-xs text-white/80 mt-1">{footer?.subtitle || 'Visual communication design, branding systems, and art direction by Louis Vigo.'}</p>
         </div>
 
         <button

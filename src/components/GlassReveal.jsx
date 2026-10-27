@@ -33,7 +33,7 @@ export const GlassReveal = ({
       transition={{ 
         duration, 
         delay, 
-        ease: [0.16, 1, 0.3, 1] // Snappy yet organic spring-like deceleration
+        ease: [0.16, 1, 0.3, 1]
       }}
       className={className}
     >

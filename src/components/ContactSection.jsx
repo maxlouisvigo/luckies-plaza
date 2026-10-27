@@ -6,7 +6,6 @@ import {
   ExternalLink, 
   Download, 
   MessageCircle, 
-  Sparkles,
   ArrowUpRight
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -37,10 +36,10 @@ export const ContactSection = ({ lang = 'en', t = portfolioData, onOpenCV }) => 
       {/* Background subtle cross-stitch texture */}
       <div className="absolute inset-0 stitch-bg opacity-30 pointer-events-none" />
 
-      {/* Decorative top badge */}
+      {/* Status badge */}
       <div className="z-10 pt-4">
         <span className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-white/15 text-white border border-white/20">
-          <Sparkles className="w-3.5 h-3.5 text-white" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
           <span>{contact?.badge || 'Available for New Projects & Full-Time Roles'}</span>
         </span>
       </div>

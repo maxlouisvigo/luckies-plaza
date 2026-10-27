@@ -1,4 +1,21 @@
+# Block AI Scrapers & Data Harvesters completely
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Bytespider
+User-agent: Diffbot
+User-agent: FacebookBot
+User-agent: Applebot-Extended
+Disallow: /
+
+# General Search Engines (Google, Bing, Yahoo, DuckDuckGo)
 User-agent: *
+Disallow: /luiarchives/
 Allow: /
 
 Sitemap: https://louisvigo.com/sitemap.xml

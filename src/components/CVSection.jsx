@@ -34,10 +34,7 @@ export const CVSection = ({ t = portfolioData, onOpenCV }) => {
         <GlassReveal delay={0.05} yOffset={20}>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
-              <span className="text-xs font-semibold tracking-widest uppercase text-white/70">
-                {cv?.badge || 'Credentials & Track Record'}
-              </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-1">
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
                 {cv?.sectionTitle || 'Curriculum Vitae'}
               </h2>
             </div>
@@ -121,7 +118,7 @@ export const CVSection = ({ t = portfolioData, onOpenCV }) => {
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-sm text-white">{tool.name}</span>
                     </div>
-                    <span className="text-[10px] text-white/60 tracking-wide mt-1 block uppercase">
+                    <span className="text-xs text-white/80 tracking-wide mt-1 block uppercase font-medium">
                       {tool.category}
                     </span>
                   </div>

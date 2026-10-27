@@ -54,11 +54,8 @@ export const CoverSection = ({ t = portfolioData }) => {
         </p>
       </div>
 
-      {/* Centerpiece: The Cross-Stitch "Portfolio" Artwork with Luminous Ambient Backlight */}
+      {/* Centerpiece: The Cross-Stitch "Portfolio" Artwork */}
       <div className="relative my-auto py-8 z-10 w-full max-w-6xl px-4 flex items-center justify-center">
-        {/* Soft Warm Ambient Glow */}
-        <div className="absolute w-72 h-72 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] rounded-full bg-gradient-to-tr from-amber-400/25 via-brand-orange/30 to-amber-200/20 blur-3xl pointer-events-none -z-10 animate-pulse-glow" />
-
         <img 
           src="/assets/extracted/intro/portfolio_title_transparent.png" 
           alt="Portfolio - Louis Vigo" 

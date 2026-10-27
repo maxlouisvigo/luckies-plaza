@@ -29,7 +29,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
 
   const profile = t?.profile || portfolioData.profile;
 
-  // Language Pill Switch with Kinetic Spring Sliding Motion
+  // Language toggle component
   const LanguageToggle = ({ className = '', idPrefix = 'desktop' }) => (
     <div className={`relative inline-flex items-center bg-black/25 backdrop-blur-md rounded-full p-0.5 border border-white/20 shadow-inner ${className}`}>
       <button
@@ -94,11 +94,11 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           
-          {/* Left Title: Exactly "Visual Portfolio — [Section]" */}
+          {/* Left Title: Section Indicator */}
           <div className="flex items-center space-x-3 text-white">
             <span className="font-semibold text-sm md:text-base tracking-wide flex items-center">
               <span>{(t?.nav?.viewPdf || 'Visual Portfolio').replace(/\s*—\s*$/, '')}</span>
-              <span className="mx-2.5 text-white/60 font-light">—</span>
+              <span className="mx-2 text-white/50 font-light">/</span>
               <span className="font-light tracking-wider capitalize text-white/90">
                 {activeSection || 'Cover'}
               </span>

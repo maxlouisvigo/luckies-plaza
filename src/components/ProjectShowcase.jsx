@@ -20,9 +20,9 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
 
   // Collect all inspectable assets for this project
   const allInspectable = useMemo(() => [
-    { src: project.heroMockup, caption: `${project.title} — ${project.heroMockupAlt || 'Digital Mockup'}` },
-    ...(project.secondaryMockup ? [{ src: project.secondaryMockup, caption: `${project.title} — ${project.secondaryTitle}` }] : []),
-    ...(project.deliverablesGallery || []).map(d => ({ src: d.src, caption: `${project.title} — ${d.title} (${d.category})` }))
+    { src: project.heroMockup, caption: `${project.title}: ${project.heroMockupAlt || 'Digital Mockup'}` },
+    ...(project.secondaryMockup ? [{ src: project.secondaryMockup, caption: `${project.title}: ${project.secondaryTitle}` }] : []),
+    ...(project.deliverablesGallery || []).map(d => ({ src: d.src, caption: `${project.title}: ${d.title} (${d.category})` }))
   ], [project]);
 
   // Deliverables gallery
@@ -50,9 +50,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
     >
       <div className="max-w-7xl mx-auto w-full space-y-20">
         
-        {/* ========================================================================= */}
-        {/* PART 1: HERO STAGE — NATIVE EDITORIAL STORY & 3D TILT DEVICE MOCKUP */}
-        {/* ========================================================================= */}
+        {/* Hero stage: case study narrative and 3D mockup */}
         <GlassReveal delay={0.06} yOffset={24}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
@@ -181,9 +179,7 @@ export const ProjectShowcase = ({ project, index, t = portfolioData, onOpenLight
         </div>
         </GlassReveal>
 
-        {/* ========================================================================= */}
-        {/* PART 2: DELIVERABLES STAGE — REAL PRINT, FLYERS, POSTERS & PACKAGING */}
-        {/* ========================================================================= */}
+        {/* Deliverables stage */}
         {project.deliverablesGallery && project.deliverablesGallery.length > 0 && (
           <GlassReveal delay={0.12} yOffset={24}>
             <div className="pt-12 border-t border-white/15 space-y-6">

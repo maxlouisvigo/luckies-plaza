@@ -78,7 +78,8 @@ export const AboutSection = ({ lang = 'en', t = portfolioData }) => {
                 📍 {profile.location}
               </span>
               <span className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-lg bg-white/20 text-white border border-white/20">
-                ✨ {profile.status}
+                <span className="w-2 h-2 rounded-full bg-emerald-400 mr-2 shrink-0" />
+                {profile.status}
               </span>
             </div>
           </GlassReveal>

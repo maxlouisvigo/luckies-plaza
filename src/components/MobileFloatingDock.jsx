@@ -48,21 +48,21 @@ export const MobileFloatingDock = ({
           title="Back to Top"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
-          <span className="truncate text-[11px] font-sans font-medium text-white/95">
+          <span className="truncate text-xs font-sans font-medium text-white">
             {activeSection}
           </span>
-          <ArrowUp className="w-3 h-3 text-white/60 shrink-0 ml-0.5" />
+          <ArrowUp className="w-3 h-3 text-white/80 shrink-0 ml-0.5" />
         </button>
 
         {/* Right Action Buttons */}
         <div className="flex items-center space-x-2 shrink-0">
           {/* Dual Pill Language Toggle with Sliding Animation */}
-          <div className="relative inline-flex items-center bg-black/40 backdrop-blur-md rounded-full p-0.5 border border-white/20 shadow-inner">
+          <div className="relative inline-flex items-center bg-black/50 backdrop-blur-md rounded-full p-0.5 border border-white/25 shadow-inner">
             <button
               type="button"
               onClick={() => onToggleLang && onToggleLang('en')}
-              className={`relative z-10 px-2 py-0.5 text-[10px] font-bold rounded-full transition-colors duration-200 select-none ${
-                lang === 'en' ? 'text-[#3D1504] font-extrabold' : 'text-white/75 hover:text-white'
+              className={`relative z-10 px-2 py-0.5 text-xs font-bold rounded-full transition-colors duration-200 select-none ${
+                lang === 'en' ? 'text-[#3D1504] font-extrabold' : 'text-white/90 hover:text-white'
               }`}
               title="English"
             >
@@ -78,8 +78,8 @@ export const MobileFloatingDock = ({
             <button
               type="button"
               onClick={() => onToggleLang && onToggleLang('id')}
-              className={`relative z-10 px-2 py-0.5 text-[10px] font-bold rounded-full transition-colors duration-200 select-none ${
-                lang === 'id' ? 'text-[#3D1504] font-extrabold' : 'text-white/75 hover:text-white'
+              className={`relative z-10 px-2 py-0.5 text-xs font-bold rounded-full transition-colors duration-200 select-none ${
+                lang === 'id' ? 'text-[#3D1504] font-extrabold' : 'text-white/90 hover:text-white'
               }`}
               title="Bahasa Indonesia"
             >

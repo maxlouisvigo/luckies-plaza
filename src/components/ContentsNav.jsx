@@ -18,9 +18,6 @@ export const ContentsNav = ({ t = portfolioData }) => {
         {/* Page 4 Title: "Contents" in deep terracotta accent with Glass Entrance */}
         <GlassReveal delay={0.05} yOffset={20}>
           <div className="mb-14">
-            <span className="text-xs font-semibold tracking-widest uppercase text-white/70 block mb-2">
-              {contents?.badge || 'Table of Deliverables & Case Studies'}
-            </span>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-brand-umber font-sans select-none">
               {contents?.sectionTitle || 'Contents'}
             </h2>

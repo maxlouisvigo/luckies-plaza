@@ -10,7 +10,6 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
 import { CVModal } from './components/CVModal';
-import { CustomCursor } from './components/CustomCursor';
 import { MarqueeTicker } from './components/MarqueeTicker';
 import { MobileFloatingDock } from './components/MobileFloatingDock';
 import { Analytics } from '@vercel/analytics/react';
@@ -36,7 +35,7 @@ export function App() {
 
   const [isFading, setIsFading] = useState(false);
 
-  // Silky smooth soft crossfade dissolve on language switch (Zero physical jumping/bounce)
+  // Crossfade on language switch
   const handleToggleLang = (newLang) => {
     if (newLang === lang) return;
     setIsFading(true);
@@ -69,7 +68,7 @@ export function App() {
 
   const t = portfolioTranslations[lang] || portfolioTranslations.en;
 
-  // ScrollSpy to update "Visual Portfolio — [Current Section]" in Navbar
+  // ScrollSpy to update active section in Navbar
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[data-section]');
@@ -110,9 +109,6 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-brand-orange text-white overflow-x-hidden">
-      {/* Interactive Magnetic & Ambient Halo Cursor (Desktop Only) */}
-      <CustomCursor />
-
       {/* Sticky Top Header */}
       <Navbar 
         activeSection={activeSection} 

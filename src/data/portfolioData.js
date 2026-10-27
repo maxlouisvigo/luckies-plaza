@@ -10,7 +10,7 @@ export const portfolioTranslations = {
       viewPdf: "Visual Portfolio"
     },
     cover: {
-      tagline: "Branding — Social Media — Print Media",
+      tagline: "Branding • Social Media • Print Media",
       scroll: "Scroll to Explore"
     },
     about: {
@@ -64,7 +64,7 @@ export const portfolioTranslations = {
     },
     footer: {
       rights: "All Rights Reserved.",
-      subtitle: "Designed with Visual Mastery & Built for High-Impact Communication.",
+      subtitle: "Visual communication design, branding systems, and art direction by Louis Vigo.",
       backToTop: "Back to Top"
     },
     profile: {
@@ -72,11 +72,11 @@ export const portfolioTranslations = {
       displayName: "Louis Vigo",
       nickname: "Lui",
       tagline: "Visual Specialist & Creative Strategist",
-      subtagline: "Branding — Social Media — Print & Editorial",
+      subtagline: "Branding • Social Media • Print & Editorial",
       experienceYears: "7+",
-      location: "Indonesia (UTC+7) — Open Worldwide",
+      location: "Indonesia (UTC+7), Open Worldwide",
       status: "Available for Remote Roles & Global Relocation",
-      bio: "I'm a Visual Specialist and Communication Expert with 7+ years of experience translating complex corporate goals into high-impact visual solutions. From executive B2B pitch decks to end-to-end event art direction, I blend a marketer's strategy with advanced design and AI workflows. I don't just make things look good — I craft strategic visuals that communicate clearly and drive real results.",
+      bio: "I'm a Visual Specialist and Communication Designer with 7+ years of experience translating corporate goals into clear, production-grade visual assets. From executive B2B pitch decks to nationwide event art direction, I combine brand strategy with grounded design craft. I craft strategic visuals that communicate clearly and deliver measurable results.",
       introBanner: "/assets/extracted/intro/intro_banner_4k.png",
       expertise: [
         { name: "Art Direction & Branding", desc: "Cohesive visual identities, typography hierarchy, and production-grade art direction." },
@@ -112,16 +112,16 @@ export const portfolioTranslations = {
       }
     ],
     softwareCompetences: [
-      { name: "Adobe Illustrator", category: "Vector & Branding", level: 95 },
-      { name: "Adobe Photoshop", category: "Raster & Photo Manipulation", level: 95 },
-      { name: "Adobe Premiere Pro", category: "Video Production & Editing", level: 90 },
-      { name: "Adobe After Effects", category: "Motion Graphics & VFX", level: 85 },
-      { name: "Adobe Lightroom", category: "Color Grading & Photo Dev", level: 90 },
-      { name: "Figma", category: "UI/UX & Design Systems", level: 85 },
-      { name: "CapCut", category: "Fast-Paced Social Video", level: 95 },
-      { name: "Canva", category: "Rapid Prototyping & Templating", level: 95 },
-      { name: "Gemini AI", category: "Generative AI & Content Strategy", level: 95 },
-      { name: "Google Flow", category: "Productivity & Orchestration", level: 90 }
+      { name: "Adobe Illustrator", category: "Vector & Branding" },
+      { name: "Adobe Photoshop", category: "Raster & Photo Manipulation" },
+      { name: "Adobe Premiere Pro", category: "Video Production & Editing" },
+      { name: "Adobe After Effects", category: "Motion Graphics & VFX" },
+      { name: "Adobe Lightroom", category: "Color Grading & Photo Dev" },
+      { name: "Figma", category: "UI/UX & Design Systems" },
+      { name: "CapCut", category: "Fast-Paced Social Video" },
+      { name: "Canva", category: "Rapid Prototyping & Templating" },
+      { name: "Gemini AI", category: "Generative Workflows & Strategy" },
+      { name: "Google Flow", category: "Productivity & Orchestration" }
     ],
     languages: [
       { name: "Bahasa Indonesia", level: "Native Proficiency", badge: "Native" },
@@ -185,7 +185,7 @@ export const portfolioTranslations = {
         secondaryTitle: "Nationwide Workshop Print & Course Materials",
         description: "I handle the end-to-end visual design for Harmoni Diri's (HADIR) social media content, encompassing educational movement posts, wellness campaigns, and nationwide workshop promotions (including Jakarta, Surabaya, Bali, and Semarang).",
         focus: "My focus is on establishing a clean, premium, and consistent visual identity that perfectly aligns with the brand's core values in wellness management.",
-        challenge: "The main challenge is translating complex anatomy and movement concepts—curated with experts—into engaging assets, social media posts, UI/UX. I solve this through strategic content hierarchy and strong typography, making technical information easily digestible for public audiences.",
+        challenge: "The main challenge is translating complex anatomy and movement concepts (curated with experts) into engaging assets, social media posts, and UI layouts. I solve this through strategic content hierarchy and strong typography, making technical information easily digestible for public audiences.",
         deliverables: [
           "Nationwide Workshop Standing Banners",
           "Clinical Anatomy Course 50 Jam Posters",
@@ -343,7 +343,7 @@ export const portfolioTranslations = {
     ]
   },
 
-  // INDONESIAN TRANSLATION (NATURAL, PROFESSIONAL & CREATIVE-SAVVY)
+  // Indonesian translations
   id: {
     nav: {
       about: "Tentang",
@@ -355,7 +355,7 @@ export const portfolioTranslations = {
       viewPdf: "Visual Portfolio"
     },
     cover: {
-      tagline: "Branding — Media Sosial — Desain Cetak",
+      tagline: "Branding • Media Sosial • Desain Cetak",
       scroll: "Scroll untuk Melihat"
     },
     about: {
@@ -417,7 +417,7 @@ export const portfolioTranslations = {
       displayName: "Louis Vigo",
       nickname: "Lui",
       tagline: "Spesialis Visual & Creative Strategist",
-      subtagline: "Branding — Media Sosial — Desain Cetak",
+      subtagline: "Branding • Media Sosial • Desain Cetak",
       experienceYears: "7+ Tahun",
       location: "Semarang / Yogyakarta, Indonesia",
       status: "Terbuka untuk Kontrak, Full-Time, Remote & Relokasi",

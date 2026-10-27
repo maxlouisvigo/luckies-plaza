@@ -175,7 +175,7 @@ export const portfolioTranslations = {
       {
         id: "harmoni-diri",
         title: "Harmoni Diri",
-        subtitle: "Social Media and Print Design",
+        subtitle: "Brand Identity, UI/UX Website & Campaign Design",
         category: "Wellness & Physical Health",
         period: "2025 – Present",
         logo: "/assets/extracted/harmoni_diri/hadir_logo.png",
@@ -183,21 +183,22 @@ export const portfolioTranslations = {
         heroMockupAlt: "Harmoni Diri Mobile App & Feed Showcase",
         secondaryMockup: "/assets/extracted/harmoni_diri/hadir_standing_banner.png",
         secondaryTitle: "Nationwide Workshop Print & Course Materials",
-        description: "I handle the end-to-end visual design for Harmoni Diri's (HADIR) social media content, encompassing educational movement posts, wellness campaigns, and nationwide workshop promotions (including Jakarta, Surabaya, Bali, and Semarang).",
+        description: "I handle the visual direction and UI/UX design for Harmoni Diri (HADIR), encompassing the official website (harmonidiri.id), educational movement content, wellness campaigns, and nationwide workshop collateral across 4 major cities (Jakarta, Surabaya, Bali, and Semarang).",
         focus: "My focus is on establishing a clean, premium, and consistent visual identity that perfectly aligns with the brand's core values in wellness management.",
-        challenge: "The main challenge is translating complex anatomy and movement concepts (curated with experts) into engaging assets, social media posts, and UI layouts. I solve this through strategic content hierarchy and strong typography, making technical information easily digestible for public audiences.",
+        challenge: "The main challenge is translating complex anatomy and movement concepts (curated with experts) into engaging assets, social media posts, and intuitive UI layouts. I solve this through strategic content hierarchy and strong typography, making technical information easily digestible for public audiences.",
         deliverables: [
+          "Official Website UI/UX (harmonidiri.id)",
           "Nationwide Workshop Standing Banners",
           "Clinical Anatomy Course 50 Jam Posters",
-          "Social Media Carousels & Motion Briefs",
-          "UI/UX App & Web Presentation Layouts"
+          "Social Media Carousels & Motion Briefs"
         ],
         stats: [
           { label: "Workshop Coverage", value: "4 Major Cities" },
           { label: "Discipline", value: "Anatomy & Movement" },
-          { label: "Deliverables", value: "Digital + Print" }
+          { label: "Deliverables", value: "Web UI/UX + Digital + Print" }
         ],
         deliverablesGallery: [
+          { src: "/assets/extracted/harmoni_diri/hadir_web_showcase.png", title: "Harmoni Diri Official Website UI/UX", category: "Web Design" },
           { src: "/assets/extracted/harmoni_diri/posters/scoliosis_surabaya_1.png", title: "Scoliosis Therapy (Surabaya)", category: "Clinical Poster" },
           { src: "/assets/extracted/harmoni_diri/posters/tsk_semarang_soft.png", title: "Anatomi Klinis 50 Jam (Semarang)", category: "Workshop Flyer" },
           { src: "/assets/extracted/harmoni_diri/posters/fungsi_sendi_5.png", title: "Sendi Bukan Sekadar Engsel", category: "Educational Carousel" },
@@ -520,7 +521,7 @@ export const portfolioTranslations = {
       {
         id: "harmoni-diri",
         title: "Harmoni Diri",
-        subtitle: "Desain Media Sosial & Media Cetak",
+        subtitle: "Identitas Brand, Desain UI/UX Website & Media Cetak",
         category: "Kebugaran & Kesehatan Fisik",
         period: "2025 – Sekarang",
         logo: "/assets/extracted/harmoni_diri/hadir_logo.png",
@@ -528,21 +529,22 @@ export const portfolioTranslations = {
         heroMockupAlt: "Showcase Aplikasi & Feeds Harmoni Diri",
         secondaryMockup: "/assets/extracted/harmoni_diri/hadir_standing_banner.png",
         secondaryTitle: "Materi Cetak Workshop Nasional & Kursus Klinis",
-        description: "Menangani seluruh kebutuhan visual Harmoni Diri (HADIR), mulai dari materi edukasi anatomi gerak, kampanye media sosial, hingga materi promosi workshop offline di 4 kota besar (Jakarta, Surabaya, Semarang, dan Bali).",
+        description: "Merancang arah visual dan desain UI/UX untuk Harmoni Diri (HADIR), mencakup website resmi (harmonidiri.id), materi edukasi anatomi gerak, kampanye media sosial, hingga promosi workshop offline di 4 kota besar (Jakarta, Surabaya, Semarang, dan Bali).",
         focus: "Membangun identitas visual yang bersih, rapi, dan konsisten agar materi edukasi kesehatan anatomi terlihat profesional dan mudah dipahami masyarakat luas.",
         challenge: "Materi anatomi klinis memiliki istilah teknis yang rumit. Tantangannya adalah menyederhanakan data medis tersebut ke dalam poster dan carousel visual yang jelas tanpa mengurangi akurasi informasinya.",
         deliverables: [
+          "Desain UI/UX Website Resmi (harmonidiri.id)",
           "Standing Banner Workshop Nasional",
           "Poster Kursus Anatomi Klinis 50 Jam",
-          "Carousel Media Sosial & Motion",
-          "Desain Presentasi Web & UI/UX"
+          "Carousel Media Sosial & Konten Edukatif"
         ],
         stats: [
           { label: "Cakupan Workshop", value: "4 Kota Besar" },
           { label: "Kategori", value: "Kebugaran & Anatomi" },
-          { label: "Format Output", value: "Digital & Cetak" }
+          { label: "Format Output", value: "Web UI/UX + Digital + Cetak" }
         ],
         deliverablesGallery: [
+          { src: "/assets/extracted/harmoni_diri/hadir_web_showcase.png", title: "Desain UI/UX Website Resmi Harmoni Diri", category: "Desain Web" },
           { src: "/assets/extracted/harmoni_diri/posters/scoliosis_surabaya_1.png", title: "Terapi Skoliosis Tipe C & S (Surabaya)", category: "Poster Klinis" },
           { src: "/assets/extracted/harmoni_diri/posters/tsk_semarang_soft.png", title: "Anatomi Klinis 50 Jam (Semarang)", category: "Flyer Workshop" },
           { src: "/assets/extracted/harmoni_diri/posters/fungsi_sendi_5.png", title: "Sendi Bukan Sekadar Engsel", category: "Carousel Edukasi" },

@@ -87,6 +87,17 @@ export const ALL_LETTERS = stickerWords.reduce((acc, wordObj) => {
 export const TOTAL_LETTERS = Object.keys(ALL_LETTERS).length;
 
 /**
+ * 12 clockwise slots for the circular loading ring (starting at -60 deg / 1 o'clock).
+ */
+export const RING_STICKERS = Array.from({ length: 12 }, (_, idx) => ({
+  id: idx,
+  angleDeg: -60 + idx * 30,
+  threshold: ((idx + 1) / 12) * 96,
+  rotate: ROTATIONS[idx % ROTATIONS.length],
+  ...PERSONA_STICKERS[idx % PERSONA_STICKERS.length],
+}));
+
+/**
  * Preload all 10 WebP 3D objects on mount so letter swaps trigger with zero latency.
  */
 export function preloadStickers() {

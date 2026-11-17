@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Download, MessageCircle, Mail, Menu, X, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Download, MessageCircle, Mail, Menu, X, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 
@@ -19,6 +20,17 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile drawer on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { label: t?.nav?.about || 'About', href: '#about' },
@@ -89,30 +101,38 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
           scrolled 
             ? 'bg-[#F05A22]/95 backdrop-blur-md shadow-md py-3 border-b border-white/15' 
-            : 'bg-transparent py-5'
+            : 'bg-transparent py-4 sm:py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           
-          {/* Left Title: Section Indicator */}
-          <div className="flex items-center space-x-3 text-white">
-            <span className="font-semibold text-sm md:text-base tracking-wide flex items-center">
-              <span>{(t?.nav?.viewPdf || 'Visual Portfolio').replace(/\s*—\s*$/, '')}</span>
-              <span className="mx-2 text-white/50 font-light">/</span>
-              <span className="font-light tracking-wider capitalize text-white/90">
+          {/* Left Title: Section Indicator & Back to Home */}
+          <div className="flex items-center space-x-2 sm:space-x-3 text-white min-w-0">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-full bg-white/15 hover:bg-white/25 border border-white/20 text-xs font-mono text-white transition-all duration-150 shadow-sm select-none shrink-0"
+              title="Return to Home"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Home</span>
+            </Link>
+            <span className="font-semibold text-xs sm:text-sm md:text-base tracking-wide flex items-center min-w-0">
+              <span className="hidden sm:inline">{(t?.nav?.viewPdf || 'Visual Portfolio').replace(/\s*—\s*$/, '')}</span>
+              <span className="hidden sm:inline mx-1.5 sm:mx-2 text-white/50 font-light">/</span>
+              <span className="font-light tracking-wider capitalize text-white/95 text-xs sm:text-sm truncate">
                 {activeSection || 'Cover'}
               </span>
             </span>
           </div>
 
-          {/* Right Header Navigation & Actions (Desktop) */}
-          <div className="hidden md:flex items-center space-x-7">
+          {/* Right Header Navigation & Actions (Desktop lg+) */}
+          <div className="hidden lg:flex items-center space-x-7">
             <nav className="flex items-center space-x-6 text-sm font-medium">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-white/80 hover:text-white transition-colors duration-200 relative group py-1"
+                  className="text-white/85 hover:text-white transition-colors duration-200 relative group py-1"
                 >
                   {link.label}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-200 group-hover:w-full" />
@@ -127,7 +147,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
               <button
                 type="button"
                 onClick={onOpenCV}
-                className="flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-brand-orange border border-white/30 transition-all duration-200 shadow-sm cursor-pointer"
+                className="flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 min-h-[36px] rounded-full bg-white/10 hover:bg-white text-white hover:text-[#3D1504] border border-white/30 transition-all duration-200 shadow-sm cursor-pointer"
                 title="Preview & Download CV"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -138,7 +158,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
                 href={lang === 'id' ? profile.contact.whatsappUrl : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}
                 target={lang === 'id' ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-[#5C2208] hover:bg-[#3D1504] text-white transition-all duration-200 shadow-sm"
+                className="flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-1.5 min-h-[36px] rounded-full bg-[#3D1504] hover:bg-[#260C02] text-white transition-all duration-200 shadow-sm"
               >
                 {lang === 'id' ? (
                   <>
@@ -159,15 +179,17 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
             </div>
           </div>
 
-          {/* Mobile Right Controls: Language Pill + Name + Hamburger Button */}
-          <div className="md:hidden flex items-center space-x-2.5">
+          {/* Mobile Right Controls: Language Pill + Hamburger Button */}
+          <div className="lg:hidden flex items-center space-x-2 shrink-0">
             {/* Quick Language Switcher on Mobile Top Bar */}
             <LanguageToggle idPrefix="nav-mobile-top" />
 
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-white hover:bg-white/10 rounded-lg transition-colors ml-1"
-              aria-label="Toggle menu"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center text-white hover:bg-white/10 rounded-lg transition-colors ml-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -176,34 +198,27 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#F05A22] border-b border-white/20 px-6 py-5 shadow-2xl animate-fade-in">
-            <nav className="flex flex-col space-y-4 text-base font-medium">
+          <div className="lg:hidden bg-[#F05A22] border-b border-white/20 px-6 py-5 shadow-2xl max-h-[calc(100dvh-4.5rem)] overflow-y-auto">
+            <nav className="flex flex-col space-y-1 text-base font-medium">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-white hover:text-brand-umber transition-colors"
+                  className="min-h-[44px] flex items-center text-white hover:text-amber-200 transition-colors py-1.5 border-b border-white/10"
                 >
                   {link.label}
                 </a>
               ))}
               
-              <div className="pt-4 border-t border-white/20 flex flex-col space-y-3">
-                <div className="flex items-center justify-between py-1">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-white/80">
-                    Language / Bahasa
-                  </span>
-                  <LanguageToggle idPrefix="nav-mobile-drawer" />
-                </div>
-
+              <div className="pt-4 flex flex-col space-y-3">
                 <button
                   type="button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     if (onOpenCV) onOpenCV();
                   }}
-                  className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-white text-brand-orange font-bold text-sm shadow cursor-pointer"
+                  className="min-h-[46px] flex items-center justify-center space-x-2 px-4 rounded-lg bg-white text-[#3D1504] font-bold text-sm shadow cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>{t?.cv?.downloadButton || 'Lihat / Unduh CV (PDF)'}</span>
@@ -213,7 +228,7 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
                   href={lang === 'id' ? profile.contact.whatsappUrl : `mailto:${profile.contact.email}?subject=Project%20Inquiry%20via%20Portfolio`}
                   target={lang === 'id' ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-[#5C2208] text-white font-bold text-sm shadow"
+                  className="min-h-[46px] flex items-center justify-center space-x-2 px-4 rounded-lg bg-[#3D1504] text-white font-bold text-sm shadow"
                 >
                   {lang === 'id' ? (
                     <>
@@ -235,3 +250,4 @@ export const Navbar = ({ activeSection, lang = 'en', onToggleLang, onOpenCV, t =
     </>
   );
 };
+export default Navbar;

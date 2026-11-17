@@ -1,146 +1,97 @@
 /**
- * 10 curated 3D sticker segments distributed across two architectural lines:
- * Line 1: "Maximilianus" (4 segments)
- * Line 2: "Louis Vigo" (6 segments)
- * Centered directly over letterforms (-18% / 6%) with personal micro-captions
- * and transient sinking ("tenggelam") physics when cursor leaves.
+ * 10 curated 3D persona objects mapped across every individual letter of
+ * "Maximilianus Louis Vigo" (21 characters, id 0..20) for bidirectional
+ * letter-to-3D swap motion.
  */
-export const stickerLines = [
+export const PERSONA_STICKERS = [
   {
-    id: 'line-1',
-    words: [
-      {
-        word: 'Maximilianus',
-        segments: [
-          {
-            id: 0,
-            text: 'Ma',
-            label: 'Visual Photography',
-            caption: 'VISUAL STORYTELLER',
-            src: '/assets/stickers/camera.webp',
-            rotate: -12,
-            offsetY: '-18%',
-          },
-          {
-            id: 1,
-            text: 'xim',
-            label: 'Brand & Color Systems',
-            caption: '7+ YEARS IN BRANDING',
-            src: '/assets/stickers/palette.webp',
-            rotate: 10,
-            offsetY: '6%',
-          },
-          {
-            id: 2,
-            text: 'ili',
-            label: 'Motion & Direction',
-            caption: 'CREATIVE DIRECTION',
-            src: '/assets/stickers/clapperboard.webp',
-            rotate: -8,
-            offsetY: '-18%',
-          },
-          {
-            id: 3,
-            text: 'anus',
-            label: 'Digital Product & UI/UX',
-            caption: 'UI/UX & DIGITAL CRAFT',
-            src: '/assets/stickers/laptop.webp',
-            rotate: 11,
-            offsetY: '6%',
-          },
-        ],
-      },
-    ],
+    src: '/assets/stickers/camera.webp',
+    label: 'Visual Photography',
+    caption: 'VISUAL STORYTELLER',
   },
   {
-    id: 'line-2',
-    words: [
-      {
-        word: 'Louis',
-        segments: [
-          {
-            id: 4,
-            text: 'Lo',
-            label: 'Mechanical Craft',
-            caption: 'ESSENTIAL 75 DAILY',
-            src: '/assets/stickers/keyboard.webp',
-            rotate: -10,
-            offsetY: '-18%',
-          },
-          {
-            id: 5,
-            text: 'u',
-            label: 'Daily Miles',
-            caption: 'MORNING MILES RUNNER',
-            src: '/assets/stickers/running-shoe.webp',
-            rotate: 13,
-            offsetY: '6%',
-          },
-          {
-            id: 6,
-            text: 'is',
-            label: 'Sonic Rhythm',
-            caption: 'ON REPEAT: FKJ & NIKI',
-            src: '/assets/stickers/headphones.webp',
-            rotate: -9,
-            offsetY: '-18%',
-          },
-        ],
-      },
-      {
-        word: 'Vigo',
-        segments: [
-          {
-            id: 7,
-            text: 'Vi',
-            label: 'Strategic Play',
-            caption: 'BALATRO STRATEGIST',
-            src: '/assets/stickers/cards.webp',
-            rotate: 9,
-            offsetY: '6%',
-          },
-          {
-            id: 8,
-            text: 'g',
-            label: 'Figo Heritage',
-            caption: 'NAMED AFTER LUIS FIGO',
-            src: '/assets/stickers/soccer-ball.webp',
-            rotate: -14,
-            offsetY: '-18%',
-          },
-          {
-            id: 9,
-            text: 'o',
-            label: 'Creative Fuel',
-            caption: 'FUELED BY ESPRESSO',
-            src: '/assets/stickers/coffee.webp',
-            rotate: 11,
-            offsetY: '6%',
-          },
-        ],
-      },
-    ],
+    src: '/assets/stickers/palette.webp',
+    label: 'Brand & Color Systems',
+    caption: '7+ YEARS IN BRANDING',
+  },
+  {
+    src: '/assets/stickers/clapperboard.webp',
+    label: 'Motion & Direction',
+    caption: 'CREATIVE DIRECTION',
+  },
+  {
+    src: '/assets/stickers/laptop.webp',
+    label: 'Digital Product & UI/UX',
+    caption: 'UI/UX & DIGITAL CRAFT',
+  },
+  {
+    src: '/assets/stickers/keyboard.webp',
+    label: 'Mechanical Craft',
+    caption: 'ESSENTIAL 75 DAILY',
+  },
+  {
+    src: '/assets/stickers/running-shoe.webp',
+    label: 'Daily Miles',
+    caption: 'MORNING MILES RUNNER',
+  },
+  {
+    src: '/assets/stickers/headphones.webp',
+    label: 'Sonic Rhythm',
+    caption: 'ON REPEAT: FKJ & NIKI',
+  },
+  {
+    src: '/assets/stickers/cards.webp',
+    label: 'Strategic Play',
+    caption: 'BALATRO STRATEGIST',
+  },
+  {
+    src: '/assets/stickers/soccer-ball.webp',
+    label: 'Figo Heritage',
+    caption: 'NAMED AFTER LUIS FIGO',
+  },
+  {
+    src: '/assets/stickers/coffee.webp',
+    label: 'Creative Fuel',
+    caption: 'FUELED BY ESPRESSO',
   },
 ];
 
-export const ALL_SEGMENTS = stickerLines.reduce((acc, line) => {
-  line.words.forEach((word) => {
-    word.segments.forEach((seg) => {
-      acc[seg.id] = seg;
-    });
+const ROTATIONS = [-10, 8, -7, 11, -9, 12, -8, 9, -11, 10];
+const WORD_STRINGS = ['Maximilianus', 'Louis', 'Vigo'];
+
+let runningId = 0;
+
+export const stickerWords = WORD_STRINGS.map((word) => ({
+  word,
+  letters: Array.from(word).map((char) => {
+    const id = runningId;
+    runningId += 1;
+    const sticker = PERSONA_STICKERS[id % PERSONA_STICKERS.length];
+    const rotate = ROTATIONS[id % ROTATIONS.length];
+    return {
+      id,
+      char,
+      rotate,
+      ...sticker,
+    };
+  }),
+}));
+
+export const ALL_LETTERS = stickerWords.reduce((acc, wordObj) => {
+  wordObj.letters.forEach((letter) => {
+    acc[letter.id] = letter;
   });
   return acc;
 }, {});
 
-export const TOTAL_STICKERS = Object.keys(ALL_SEGMENTS).length;
+export const TOTAL_LETTERS = Object.keys(ALL_LETTERS).length;
 
 /**
- * Warm browser cache for all 10 sticker WebP files on mount
- * so hover/touch reveals have zero network latency.
+ * Preload all 10 WebP 3D objects on mount so letter swaps trigger with zero latency.
  */
 export function preloadStickers() {
   if (typeof window === 'undefined') return;
-  Object.values(ALL_SEGMENTS).forEach(({ src }) => {
+  PERSONA_STICKERS.forEach(({ src }) => {
     const img = new window.Image();
     img.src = src;
   });

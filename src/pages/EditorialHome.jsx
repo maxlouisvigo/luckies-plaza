@@ -465,7 +465,7 @@ export const EditorialHome = () => {
                   onTouchMove={handleTouchMove}
                   onTouchEnd={handleTouchEnd}
                   aria-label="Maximilianus Louis Vigo"
-                  className="font-serif text-[clamp(3.25rem,13.5vw,4.75rem)] sm:text-[clamp(3.5rem,10.2vw,10.2rem)] sm:whitespace-nowrap font-normal tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)] px-4 py-6 -my-6 select-none touch-pan-y cursor-default"
+                  className="font-serif text-[clamp(2.75rem,11vw,4rem)] sm:text-[clamp(3rem,8.2vw,8.2rem)] sm:whitespace-nowrap font-normal tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)] px-4 py-6 -my-6 select-none touch-pan-y cursor-default"
                 >
                   {stickerWords.map((wordObj, wordIndex) => (
                     <React.Fragment key={wordObj.word}>

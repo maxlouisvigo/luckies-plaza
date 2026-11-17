@@ -63,10 +63,13 @@ export const EditorialHome = () => {
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
 
-      // Keep multi-line mobile hover isolated to the active line
-      if (Math.abs(clientY - cy) > h * 0.65) continue;
+      // Allow generous vertical hitbox on single-line desktop while keeping mobile lines isolated
+      const isDesktopSingleLine =
+        typeof window !== 'undefined' && window.innerWidth >= 640;
+      const yTolerance = isDesktopSingleLine ? h * 0.95 : h * 0.62;
+      if (Math.abs(clientY - cy) > yTolerance) continue;
 
-      const radius = Math.max(h * 1.15, 58);
+      const radius = Math.max(h * 1.2, 68);
       const dx = Math.abs(clientX - cx);
       if (dx >= radius) continue;
 
@@ -240,7 +243,7 @@ export const EditorialHome = () => {
       </header>
 
       {/* Center Stage — Proximity Dock Wave & Letter-to-3D Swap */}
-      <main className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-12 my-auto py-6 sm:py-8 text-center flex flex-col items-center">
+      <main className="relative z-10 w-full max-w-[92vw] xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-10 my-auto py-6 sm:py-8 text-center flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -255,7 +258,7 @@ export const EditorialHome = () => {
           {/* Wordmark + Horizontally Tracking Caption Wrapper */}
           <div
             ref={headingContainerRef}
-            className="relative w-full max-w-6xl flex flex-col items-center"
+            className="relative w-full flex flex-col items-center"
           >
             <h1
               onPointerMove={handlePointerMove}
@@ -263,7 +266,7 @@ export const EditorialHome = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               aria-label="Maximilianus Louis Vigo"
-              className="font-serif text-[clamp(2.25rem,6.2vw,6.2rem)] sm:whitespace-nowrap font-normal tracking-tight text-white leading-[1.1] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)] px-2 py-2 select-none touch-pan-y cursor-default"
+              className="font-serif text-[clamp(3.25rem,13.5vw,4.75rem)] sm:text-[clamp(3.5rem,10.2vw,10.2rem)] sm:whitespace-nowrap font-normal tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)] px-4 py-6 -my-6 select-none touch-pan-y cursor-default"
             >
               {stickerWords.map((wordObj, wordIndex) => (
                 <React.Fragment key={wordObj.word}>
@@ -366,7 +369,7 @@ export const EditorialHome = () => {
             </h1>
 
             {/* Horizontally Tracking Micro-Caption Pill Slot (Fixed-height, CLS = 0) */}
-            <div className="relative w-full h-10 mt-5 sm:mt-6">
+            <div className="relative w-full h-10 mt-8 sm:mt-10">
               <div
                 style={{
                   left: captionX !== null ? `${captionX}px` : '50%',

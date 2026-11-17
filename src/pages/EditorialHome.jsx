@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Mail, ExternalLink, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  stickerWords,
+  stickerLines,
   TOTAL_STICKERS,
   preloadStickers,
 } from '../data/stickerData';
@@ -12,6 +12,7 @@ export const EditorialHome = () => {
   const [stampedMap, setStampedMap] = useState({});
   const zCounterRef = useRef(10);
   const lastTouchSlideAtRef = useRef(0);
+  const lastStampedAtRef = useRef({});
 
   useEffect(() => {
     preloadStickers();
@@ -23,13 +24,16 @@ export const EditorialHome = () => {
     setStampedMap((prev) => {
       if (prev[id] !== undefined) return prev;
       zCounterRef.current += 1;
+      lastStampedAtRef.current[id] = Date.now();
       return { ...prev, [id]: zCounterRef.current };
     });
   }, []);
 
   const toggleSegment = useCallback((id) => {
-    // Prevent accidental peel right after a touch-slide gesture ends
-    if (Date.now() - lastTouchSlideAtRef.current < 350) return;
+    const now = Date.now();
+    // Prevent accidental peel right after hover-stamp or touch-slide gesture ends
+    if (now - lastTouchSlideAtRef.current < 350) return;
+    if (now - (lastStampedAtRef.current[id] || 0) < 250) return;
 
     setStampedMap((prev) => {
       if (prev[id] !== undefined) {
@@ -38,12 +42,14 @@ export const EditorialHome = () => {
         return next;
       }
       zCounterRef.current += 1;
+      lastStampedAtRef.current[id] = now;
       return { ...prev, [id]: zCounterRef.current };
     });
   }, []);
 
   const resetAllStamps = useCallback(() => {
     setStampedMap({});
+    lastStampedAtRef.current = {};
   }, []);
 
   const handleTouchMove = useCallback(
@@ -105,7 +111,7 @@ export const EditorialHome = () => {
       </header>
 
       {/* Center Stage — Interactive Sticker Type Hero */}
-      <main className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-12 my-auto py-6 sm:py-8 md:py-10 text-center flex flex-col items-center">
+      <main className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-12 my-auto py-6 sm:py-8 text-center flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -113,85 +119,93 @@ export const EditorialHome = () => {
           className="w-full flex flex-col items-center"
         >
           {/* Eyebrow Label */}
-          <p className="font-mono text-xs sm:text-sm tracking-[0.16em] uppercase text-white/95 mb-4 sm:mb-5 font-semibold">
+          <p className="font-mono text-xs sm:text-sm tracking-[0.16em] uppercase text-white/95 mb-5 sm:mb-7 font-semibold">
             Visual Direction &amp; Identity Systems
           </p>
 
-          {/* Primary Display Name with Interactive 3D Stickers */}
+          {/* Primary Display Name with Two-Line Architectural Layout & 10 Alternating 3D Stickers */}
           <h1
             onTouchMove={handleTouchMove}
             aria-label="Maximilianus Louis Vigo"
-            className="font-serif text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-8xl font-normal tracking-tight text-white leading-[1.16] sm:leading-[1.1] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)] max-w-5xl px-2 select-none touch-pan-y"
+            className="font-serif text-[3.1rem] sm:text-7xl md:text-8xl lg:text-[6rem] font-normal tracking-tight text-white leading-[1.02] drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)] max-w-5xl px-2 select-none touch-pan-y flex flex-col items-center gap-y-2 sm:gap-y-3"
           >
-            {stickerWords.map((wordObj, wordIndex) => (
-              <React.Fragment key={wordObj.word}>
-                <span className="inline-block whitespace-nowrap">
-                  {wordObj.segments.map((seg) => {
-                    const zOrder = stampedMap[seg.id];
-                    const isStamped = zOrder !== undefined;
+            {stickerLines.map((line) => (
+              <span
+                key={line.id}
+                className="block whitespace-nowrap"
+              >
+                {line.words.map((wordObj, wordIndex) => (
+                  <React.Fragment key={wordObj.word}>
+                    <span className="inline-block whitespace-nowrap">
+                      {wordObj.segments.map((seg) => {
+                        const zOrder = stampedMap[seg.id];
+                        const isStamped = zOrder !== undefined;
 
-                    return (
-                      <span
-                        key={seg.id}
-                        data-sticker-id={seg.id}
-                        onPointerEnter={(e) => {
-                          if (e.pointerType === 'mouse') {
-                            stampSegment(seg.id);
-                          }
-                        }}
-                        onClick={() => toggleSegment(seg.id)}
-                        className="relative inline-block cursor-pointer select-none transition-opacity duration-200 hover:text-[#FFF4EE]"
-                      >
-                        <span>{seg.text}</span>
+                        return (
+                          <span
+                            key={seg.id}
+                            data-sticker-id={seg.id}
+                            onPointerEnter={(e) => {
+                              if (e.pointerType === 'mouse') {
+                                stampSegment(seg.id);
+                              }
+                            }}
+                            onClick={() => toggleSegment(seg.id)}
+                            className="relative inline-block cursor-pointer select-none transition-opacity duration-200 hover:text-[#FFF4EE]"
+                          >
+                            <span>{seg.text}</span>
 
-                        <AnimatePresence>
-                          {isStamped && (
-                            <motion.img
-                              src={seg.src}
-                              alt={seg.label}
-                              draggable={false}
-                              style={{
-                                zIndex: zOrder,
-                                top: seg.offsetY,
-                              }}
-                              initial={{
-                                scale: 0,
-                                rotate: seg.rotate - 20,
-                                opacity: 0,
-                                x: '-50%',
-                              }}
-                              animate={{
-                                scale: 1,
-                                rotate: seg.rotate,
-                                opacity: 1,
-                                x: '-50%',
-                              }}
-                              exit={{
-                                scale: 0,
-                                rotate: seg.rotate + 16,
-                                opacity: 0,
-                                x: '-50%',
-                              }}
-                              transition={{
-                                type: 'spring',
-                                stiffness: 480,
-                                damping: 22,
-                              }}
-                              className="pointer-events-none select-none absolute left-1/2 w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 max-w-none object-contain drop-shadow-[0_12px_18px_rgba(61,21,4,0.48)] will-change-transform"
-                            />
-                          )}
-                        </AnimatePresence>
-                      </span>
-                    );
-                  })}
-                </span>
-                {wordIndex < stickerWords.length - 1 ? ' ' : null}
-              </React.Fragment>
+                            <AnimatePresence>
+                              {isStamped && (
+                                <motion.img
+                                  src={seg.src}
+                                  alt={seg.label}
+                                  draggable={false}
+                                  style={{
+                                    zIndex: zOrder,
+                                    top: seg.offsetY,
+                                  }}
+                                  initial={{
+                                    scale: 0,
+                                    rotate: seg.rotate - 18,
+                                    opacity: 0,
+                                    x: '-50%',
+                                  }}
+                                  animate={{
+                                    scale: 1,
+                                    rotate: seg.rotate,
+                                    opacity: 1,
+                                    x: '-50%',
+                                  }}
+                                  exit={{
+                                    scale: 0,
+                                    rotate: seg.rotate + 14,
+                                    opacity: 0,
+                                    x: '-50%',
+                                  }}
+                                  transition={{
+                                    type: 'spring',
+                                    stiffness: 520,
+                                    damping: 24,
+                                    mass: 0.8,
+                                  }}
+                                  className="pointer-events-none select-none absolute left-1/2 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 max-w-none object-contain drop-shadow-[0_12px_18px_rgba(61,21,4,0.48)] will-change-transform"
+                                />
+                              )}
+                            </AnimatePresence>
+                          </span>
+                        );
+                      })}
+                    </span>
+                    {wordIndex < line.words.length - 1 ? ' ' : null}
+                  </React.Fragment>
+                ))}
+              </span>
             ))}
           </h1>
 
           {/* Fixed-height slot for Replay / Stamp Progress Pill (CLS = 0) */}
-          <div className="h-11 mt-3 sm:mt-4 flex items-center justify-center">
+          <div className="h-11 mt-6 sm:mt-8 flex items-center justify-center">
             <AnimatePresence>
               {stampedCount > 0 && (
                 <motion.button
@@ -220,7 +234,7 @@ export const EditorialHome = () => {
           </p>
 
           {/* Editorial Philosophy Statement */}
-          <p className="font-serif italic text-base sm:text-xl md:text-2xl text-white max-w-2xl mx-auto mt-4 sm:mt-6 leading-relaxed font-normal px-2 drop-shadow-sm">
+          <p className="font-serif italic text-base sm:text-xl md:text-2xl text-white max-w-2xl mx-auto mt-4 sm:mt-5 leading-relaxed font-normal px-2 drop-shadow-sm">
             &ldquo;Focusing on timeless brand systems, editorial discipline, and
             thoughtful digital interfaces.&rdquo;
           </p>
